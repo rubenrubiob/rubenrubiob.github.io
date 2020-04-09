@@ -1,10 +1,10 @@
-# Value Objects
+# _Value Object_: email
 
 Este es el primer apartado de desarrollo dentro del proyecto. Debemos empezar de lo más interno a lo más externo, de modo que la primera capa de trabajo es el Dominio. Y, dentro del Dominio, los elementos más básicos a desarrollar son los _Value Objects_.
 
 Un _Value Object_ es un objeto que se define por su valor (+ definiciones). Si no estamos familiarizados con los _Value Objects_, esta definición quizá no nos dice gran cosa, pero veremos su sentido con el primer ejemplo, el de dirección de correo electrónico.
 
-Los _Value Object_ son un concepto potentísimo, especialmente para trabajar con los siempre problemáticos números flotantes (citas).
+Los _Value Object_ son un concepto potentísimo, especialmente para trabajar con los siempre problemáticos números flotantes (citas). Todos los atributos de nuestras entidades serán _Value Objects_, no usaremos en ningún caso tipos primitivos del lenguaje.
 
 ## Email
 
@@ -162,13 +162,14 @@ final class EmailAddress
 - Hemos añadido un método `equalsTo`, para comparar dos _Value Object_. No es estrictamente necesario, pero es un método muy simple de crear y testear, y ayuda en el proceso de test.
 - Un _Value Object_ siempre es inmutable, de modo que hemos añadido la anotación correspondiente para _Psalm_.
 - Usamos la librería [`webmozart/assert`](https://github.com/webmozart/assert), ya que simplifica mucho el proceso de validación.
+- Vemos que la excepción que lanzamos, aunque el nombre sea largo, es bastante legible: `throw EmailAddressIsNotValid::becauseItIsNotAValidEmailAddress`.
 
 
 ### Test
 
 El test que hemos creado para este objeto es el siguiente:
 
-```
+```php
 <?php
 declare(strict_types=1);
 
@@ -253,98 +254,3 @@ class EmailTest extends TestCase
 - Usamos un _Data provider_ (enlace) para el test de `equalsTo`.
 
 ### Salidas Mutation, psalm, testing
-
-## Id
-
-- No usar id autogenerados
-	- Un objeto ha de ser siempre válido, desde el momento de su creación
-	- No acceso a infrastructura
-- Uso de UUID:
-	- Colisión baja
-	- Aleatorio
-- ramsey/uuid: https://github.com/ramsey/uuid
-- Id:
-	- Podríamos tener instancias por cada tipo de id
-	- Generar
-	- Desde string
-	- Comparar
-
-### Salidas Mutation, psalm, testing
-
-```bash
-$ vendor/bin/phpunit
-PHPUnit 9.1.1 by Sebastian Bergmann and contributors.
-
-...........                                                       11 / 11 (100%)
-
-Time: 174 ms, Memory: 10.00 MB
-
-OK (11 tests, 11 assertions)
-```
-
-```bash
-$ composer psalm        
-> vendor/bin/psalm
-Scanning files...
-Analyzing files...
-
-░░░░
-
-------------------------------
-No errors found!
-------------------------------
-
-Checks took 6.03 seconds and used 138.514MB of memory
-Psalm was able to infer types for 100% of the codebase
-
-```
-
-```bash
-$ composer infection
-> vendor/bin/infection
-You are running Infection with Xdebug enabled.
-
-    ____      ____          __  _
-   /  _/___  / __/__  _____/ /_(_)___  ____
-   / // __ \/ /_/ _ \/ ___/ __/ / __ \/ __ \
- _/ // / / / __/  __/ /__/ /_/ / /_/ / / / /
-/___/_/ /_/_/  \___/\___/\__/_/\____/_/ /_/
-
-Infection - PHP Mutation Testing Framework 0.16.2@9a3bca95fa873fba4a4a37a5fd35c6d572c0f23b
-
-Running initial test suite...
-
-PHPUnit version: 9.1.1
-
-    0 [>---------------------------] < 1 sec
-    1 [->--------------------------] < 1 sec
-    3 [--->------------------------]  1 sec
-   10 [----->----------------------]  1 sec
-   20 [------->--------------------]  1 secProcessing source code files: 0/4
-
-Generate mutants...
-
-
-Processing source code files: 2/4
-Processing source code files: 4/4
-.: killed, M: escaped, S: uncovered, E: fatal error, T: timed out
-
-.................                                    (17 / 17)
-
-17 mutations were generated:
-      17 mutants were killed
-       0 mutants were not covered by tests
-       0 covered mutants were not detected
-       0 errors were encountered
-       0 time outs were encountered
-
-Metrics:
-         Mutation Score Indicator (MSI): 100%
-         Mutation Code Coverage: 100%
-         Covered Code MSI: 100%
-
-Please note that some mutants will inevitably be harmless (i.e. false positives).
-
-Time: 4s. Memory: 14.00MB
-
-```
