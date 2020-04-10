@@ -260,3 +260,10 @@ Lo más interesante en este test es que comprobamos el mensaje de la excepción 
 
 Una estrategia para evitar mirar el mensaje de la excepción podría haber sido lanzar excepciones diferentes en función del error. La contra es que nos añadiría una serie de clases de excepción extra en nuestro Dominio.
 
+- Nombre
+- Sólo aceptamos:
+	- int
+	- string: validar previamente
+- Validación específica: el año 0 no existe
+- Test para detectar que la excepción lanzada es la correcta (Mutation testing nos avisa)
+
