@@ -1,0 +1,6 @@
+- Nombre
+- Sólo aceptamos:
+	- int
+	- string: validar previamente
+- Validación específica: el año 0 no existe
+- Test para detectar que la excepción lanzada es la correcta (Mutation testing nos avisa)
