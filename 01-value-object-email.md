@@ -1,4 +1,4 @@
-# _Value Object_: email
+# _Value Object_: `EmailAddress`
 
 Este es el primer apartado de desarrollo dentro del proyecto. Debemos empezar de lo más interno a lo más externo, de modo que la primera capa de trabajo es el Dominio. Y, dentro del Dominio, los elementos más básicos a desarrollar son los _Value Objects_.
 
@@ -49,7 +49,7 @@ public function notify(string $email) : void
 
 Para estar seguros, esta validación deberíamos tenerla en cada método que implementemos y que reciba un parámetro que sea una dirección de correo electrónico. Deberíamos hacer lo mismo para cualquier otro parámetro que recibamos en cada función.
 
-Ya vemos que esto nos implica una validación redundante en cada método. Además, nos añadiría caminos de test que nada tienen que ver con el mètodo que estamos testeando.
+Ya vemos que esto nos implica una validación redundante en cada método. Además, nos añadiría caminos de test que nada tienen que ver con el método que estamos testeando.
 
 La solución es tener un _Value Object_, llamado por ejemplo `EmailAddress`, que podemos pasar como tipo de parámetro de los métodos:
 
@@ -60,40 +60,11 @@ public function notify(EmailAddress $email) : void
 }
 ```
 
-De este modo, en este método sabemos con toda certeza que `$email` es de tipo `EmailAddress`. Si la construcción del objeto `EmailAddress` fallase en un punto previo de la ejecución, sería responsabidad de esa porción de código tratar la excepción.
-
-### Excepción
-
-En todos los casos del Dominio en los que la ejecución no sea válida, lanzaremos una excepción específica. Para ello, deberemos crear una clase. Una posible implementación sería:
-
-```
-<?php
-
-declare(strict_types=1);
-
-namespace Domain\Exception\ValueObject;
-
-use Exception;
-use function Safe\sprintf;
-
-final class EmailAddressIsNotValid extends Exception
-{
-    public static function becauseItIsNotAValidEmailAddress(string $emailAddress) : self
-    {
-        return new self(
-            sprintf(
-                '"%s" is not a valid email address',
-                $emailAddress
-            )
-        );
-    }
-}
-```
-
-- Siguiendo algunas recomendaciones (enlace), creamos un _named constructor_, para generar la excepción. A mí me gusta que el código se pueda leer en la medida de lo posible, aunque no sea tan breve, de ahí que el nombre sea tan largo. Se puede ver un ejemplo de uso en el siguiente apartado.
-- Utilizamos la librería [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que contiene las funciones de PHP pero con una API más usable. En el caso de `sprintf`, si el número de parámetros no es válido, lanza una excepción, en lugar de devolver `false`.
+De este modo, en este método sabemos con toda certeza que `$email` es de tipo `EmailAddress`. Si la construcción del objeto `EmailAddress` fallase en un punto previo de la ejecución, sería responsabilidad de esa porción de código tratar la excepción.
 
 ### Implementación
+
+Ubicación: `Domain\ValueObject` --> `src/Domain/ValueObject`.
 
 Una posible implementación del _Value Object_ `EmailAddress` podría ser la siguiente:
 
@@ -164,6 +135,36 @@ final class EmailAddress
 - Usamos la librería [`webmozart/assert`](https://github.com/webmozart/assert), ya que simplifica mucho el proceso de validación.
 - Vemos que la excepción que lanzamos, aunque el nombre sea largo, es bastante legible: `throw EmailAddressIsNotValid::becauseItIsNotAValidEmailAddress`.
 
+### Excepción
+
+En todos los casos del Dominio en los que la ejecución no sea válida, lanzaremos una excepción específica. Para ello, deberemos crear una clase. Una posible implementación sería:
+
+```
+<?php
+
+declare(strict_types=1);
+
+namespace Domain\Exception\ValueObject;
+
+use Exception;
+use function Safe\sprintf;
+
+final class EmailAddressIsNotValid extends Exception
+{
+    public static function becauseItIsNotAValidEmailAddress(string $emailAddress) : self
+    {
+        return new self(
+            sprintf(
+                '"%s" is not a valid email address',
+                $emailAddress
+            )
+        );
+    }
+}
+```
+
+- Siguiendo algunas recomendaciones (enlace), creamos un _named constructor_, para generar la excepción. A mí me gusta que el código se pueda leer en la medida de lo posible, aunque no sea tan breve, de ahí que el nombre sea tan largo. Se puede ver un ejemplo de uso en el siguiente apartado.
+- Utilizamos la librería [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que contiene las funciones de PHP pero con una API más usable. En el caso de `sprintf`, si el número de parámetros no es válido, lanza una excepción, en lugar de devolver `false`.
 
 ### Test
 
@@ -252,5 +253,3 @@ class EmailTest extends TestCase
 - Testeamos en métodos aparte las excepciones que se pueden generar para el método _create_. En este caso, tenemos dos: que el _string_ que nos pasan o bien no sea una dirección de correo electrónico, o bien que sea un _string_ vacío.
 - Aunque no es estríctamente necesario, testeamos la creación correcta del objeto y el uso del método `asString`, para que Infection nos valide correctamente la visibilidad del método.
 - Usamos un _Data provider_ (enlace) para el test de `equalsTo`.
-
-### Salidas Mutation, psalm, testing
