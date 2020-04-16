@@ -1,4 +1,4 @@
-# _Value Object_: Anyo
+# _Value Object_: `Anyo`
 
 El siguiente _Value Object_ que vamos a implementar es el que representa un año. Lo utilizaremos con varios fines: el año de nacimiento y muerte de un autor, el año de publicación de un libro...
 
