@@ -62,9 +62,15 @@ public function notify(EmailAddress $email) : void
 
 De este modo, en este método sabemos con toda certeza que `$email` es de tipo `EmailAddress`. Si la construcción del objeto `EmailAddress` fallase en un punto previo de la ejecución, sería responsabilidad de esa porción de código tratar la excepción.
 
-### Implementación
+### _Namespace_
 
-Ubicación: `Domain\ValueObject` --> `src/Domain/ValueObject`.
+El _Value Object_ `EmailAddress` es algo que podrá reutilizarse en diferentes partes de la aplicación: podría servir para los usuarios de la aplicación, como dato de contacto de una editorial...
+
+Así pues, este _Value Object_ lo colocaremos dentro del _namespace_ `Domain\ValueObject`, que corresponderá al directorio físico dentro del proyecto `src/Domain/ValueObject`.
+
+En la explicación del _Value Object_ de formato de una edición de un libro veremos dónde colocar _Value Objects_ que no sean genéricos y reusables para toda la aplicación.
+
+### Implementación
 
 Una posible implementación del _Value Object_ `EmailAddress` podría ser la siguiente:
 
