@@ -2,19 +2,19 @@
 
 Este post es el primero de una serie en la que se pretende mostrar el desarrollo completo de un proyecto utilizando _Domain Driven Design_ —DDD— con arquitectura hexagonal en PHP. El objetivo principal es mostrar cómo implementar las partes más importantes de las diferentes capas que son parte de la aqruitectura hexagonal.
 
-Para tal fin, desarrollaremos un catálogo de libros, para poder generar referencias bibliográficas en diferentes formatos —APA, Chicago...
+Para tal fin, desarrollaremos un catálogo de libros con el fin de poder generar referencias bibliográficas en diferentes formatos —APA, Chicago...
 
 La intención es que el desarrollo del proyecto sirva como guía de desarrollo, de modo que la teoría emanará de la práctica, y no al revés.
 
 Antes de empezar a programar, debemos definir lo que se denomina _dominio_ o _negocio_. El domino[^1] dicta cómo debe comportarse nuestra aplicación. Entre otras cosas, contiene:
 
 - Los conceptos del dominio que debemos modelar.
-- Las reglas que nuestra acciones ha de seguir.
+- Las reglas o restricciones que se imponen para nuestros modelos.
 - Las acciones o casos de uso de nuestra aplicación.
 
 Es importante hacer notar que, en este punto, no nos preocupamos sobre infraestructura. No pensamos cómo vamos a almacenar los datos, ni el _framework_ que vamos a utilizar o las tecnologías del _frontend_. Nos importa el dominio, nada más.
 
-El dominio debe venir definido por la gente de producto, ya sean de nuestro equipo, ya sea un cliente. Siguiendo DDD, el lenguaje ha de ser ubicuo, es decir, se deben utilizar los conceptos del dominio en todo el proyecto. Por ejemplo, si la gente de producto llama _grupo_ a lo que comúnmente es una categoría, no debemos cometer el error de «traducirlo» como «categoría», sino que debemos mantener el nombre que utiliza la gente de negocio.
+El dominio debe venir definido por la gente de producto, ya sean de nuestro equipo, ya sea un cliente. Siguiendo DDD, el lenguaje ha de ser ubicuo, es decir, se deben utilizar los conceptos del dominio en todo el proyecto. Por ejemplo, si la gente de producto llama «grupo» a lo que comúnmente es una categoría, no debemos cometer el error de «traducirlo» como «categoría», sino que debemos mantener el nombre que utiliza la gente de negocio, «grupo» en este caso.
 
 De esto se desprende que tampoco debemos traducir al inglés los conceptos del dominio. Este es un debate interesante (enlace: https://twitter.com/ProjectPolly/status/1169877299337945090 ) y no hay una solución universal aplicable a todos los proyectos.
 
@@ -34,7 +34,14 @@ La pregunta «¿qué es un libro», por tanto, no nos dice mucho. Así pues, deb
 
 Podríamos decir que el sentido de un libro es contener un texto para ser leído. Vemos algo más de claridad aquí. Si es un texto, por un lado debe haber alguien, un _autor_ que lo escribiera; y por el otro, debe estar escrito en algún _idioma_.
 
-Tenemos, por tanto, un _autor_. No vamos a preguntarnos ahora «¿qué es un autor?»[^2], puesto que ya sabemos su _sentido_ para nosotros: escribir un texto que estará contenido en un libro. 
+Tenemos, por tanto, un _autor_. No vamos a preguntarnos ahora «¿qué es un autor?»[^2], puesto que ya sabemos su _sentido_ para nosotros: escribir un texto que estará contenido en un libro. Por tanto, nos interesará su «narración», su vida, sus datos biográficos.
+
+De entrada, queremos saber el nombre del autor. 
+
+_Traducción nombre_:
+    - Formas no latinas
+    - Reyes/papas/emperadores
+_Anónimo_
 
 ## Conclusión
 
