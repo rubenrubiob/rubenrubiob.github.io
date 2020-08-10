@@ -169,7 +169,7 @@ final class EmailAddressIsNotValid extends Exception
 }
 ```
 
-- Siguiendo algunas recomendaciones (enlace), creamos un _named constructor_, para generar la excepción. A mí me gusta que el código se pueda leer en la medida de lo posible, aunque no sea tan breve, de ahí que el nombre sea tan largo. Se puede ver un ejemplo de uso en el siguiente apartado.
+- Siguiendo algunas recomendaciones (enlace), creamos un _named constructor_, para generar la excepción. A mí me gusta que el código se pueda leer en la medida de lo posible, aunque no sea tan breve, de ahí que el nombre sea tan largo.
 - Utilizamos la librería [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que contiene las funciones de PHP pero con una API más usable. En el caso de `sprintf`, si el número de parámetros no es válido, lanza una excepción, en lugar de devolver `false`.
 
 ### Test
@@ -255,7 +255,7 @@ class EmailTest extends TestCase
 }
 ```
 
-- Todos los nombres de los métodos de test están con _snake_case_. Es algo que uso solo en los test, puesto que uso nombres muy específicos que acaban siendo largo, y creo que simplifica bastante la lectura.
+- Todos los nombres de los métodos de test están con _snake_case_. Es algo que uso solo en los test, puesto que uso nombres muy específicos que acaban siendo largos, y creo que simplifica bastante la lectura.
 - Testeamos en métodos aparte las excepciones que se pueden generar para el método _create_. En este caso, tenemos dos: que el _string_ que nos pasan o bien no sea una dirección de correo electrónico, o bien que sea un _string_ vacío.
 - Aunque no es estríctamente necesario, testeamos la creación correcta del objeto y el uso del método `asString`, para que Infection nos valide correctamente la visibilidad del método.
 - Usamos un _Data provider_ (enlace) para el test de `equalsTo`.
