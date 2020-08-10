@@ -84,6 +84,9 @@ Este proyecto lo desarrollaremos con el siguiente entorno:
 
 - PHP 7.4
 - Symfony 5.1
+- MySQL 5.7
+- ElasticSearch 6.8
+- Apache 2.4
 
 
 [^1]: No me gusta el nombre «negocio», porque tiene la connotación que todo lo que desarrollemos debe tener como objetivo obtener un beneficio, lleva implícito un espíritu capitalista. Quizá alguien debería estudiar cómo el capitalismo está imbuido en el desarrollo de _software_, donde todo lo que se programa ha de ser productivo; si no lo es, se considera inválido. Utilizaremos el nombre «dominio», que, por contra, creo que no es suficientemente claro.
