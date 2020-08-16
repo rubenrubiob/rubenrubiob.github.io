@@ -16,6 +16,8 @@ Es importante hacer notar que, en este punto, no nos preocupamos sobre infraestr
 
 Haciendo una burda analogía, el dominio sería la partitura de una sinfonía, mientras que la infraestructura una de entre muchas interpretaciones.
 
+TODO: añadir capas y deptrac
+
 ## Lenguaje ubicuo y traducción
 
 El dominio debe venir definido por los expertos de producto, ya sean de nuestro equipo, ya sea un cliente externo. Siguiendo DDD, el lenguaje ha de ser ubicuo, es decir, se deben utilizar los conceptos del dominio en todo el proyecto. Por ejemplo, si los expertos de negocio llaman «grupo» a lo que comúnmente es una categoría, no debemos cometer el error de «traducirlo» como «categoría», sino que debemos mantener el nombre que utilizan los expertos, «grupo» en este caso, puesto que ellos son los conocedores del negocio. Como explica Gadamer en «Verdad y método», en la traducción siempre hay una pérdida del sentido original del texto.
@@ -39,7 +41,7 @@ Así pues, tendremos autores, de los cuales almacenaremos la información básic
 Tendremos las siguientes restricciones para dicha información:
 
 - Biografía:
-    - Puede que no sepamos la fecha de nacimiento o de muerte del autor, como en el caso de Homero.
+    - Puede que no sepamos la fecha exacta de nacimiento o de muerte del autor, como en el caso de Homero.
     - Para autores vivos, sólo tendremos la fecha de nacimiento.
     - En el caso en que sepamos ambas fechas, la fecha de nacimiento debe ser anterior a la de fallecimiento.
     - Podemos tener fechas anteriores antes de nuestra era (a.C.), tanto para el nacimiento como para la muerte.

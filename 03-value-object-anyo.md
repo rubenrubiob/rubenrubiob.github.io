@@ -260,3 +260,8 @@ Lo más interesante en este test es que comprobamos el mensaje de la excepción 
 
 Una estrategia para evitar mirar el mensaje de la excepción podría haber sido lanzar excepciones diferentes en función del error. La contra es que nos añadiría una serie de clases de excepción extra en nuestro Dominio.
 
+
+
+- Mirar `Biografia`
+- Errores de `Anyo` no hay que testearlos
+- Sólo contemplamos caso de autores con fechas conocidas --> futuro: Por ahora, con el fin de simplificar la aplicación, no contemplaremos este caso, aunque en el futuro podremos añadir una extensión del _Value Object_ que permita introducir el siglo de nacimiento y el de muerte del autor.

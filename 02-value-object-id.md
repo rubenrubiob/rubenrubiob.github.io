@@ -7,7 +7,7 @@ Sin embargo, no usaremos identificadores autoincrementales, principalmente por d
 - Un objeto ha de estar siempre en un estado válido, desde el momento de su creación. Si esperamos a que la base de datos nos proporcione el identificador, habremos creado una entidad sin identificador, de modo que estaría en un estado inválido —y los test nos deberían fallar.
 - Como las entidades están en la capa de Dominio, no podemos depender de la capa Infraestructura. Además, ¿quién nos garantiza que el sistema de persistencia tenga un generador de números autoincrementales? ¿Y si usamos un sistema No-SQL para persistir datos, como Elasticsearch? ¿O si necesitamos identificadores para los ficheros que van a disco?
 
-Como alternativa, utilizaremos UUIDs —_Universally unique identifier_— (enlace), en su versión 4. Estos UUIDs son _strings_ aleatorios con una baja probabilidad de colisión, y tienen la forma:
+Como alternativa, utilizaremos [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)) —_Universally unique identifier_—, en su versión 4. Estos UUIDs son _strings_ aleatorios con una baja probabilidad de colisión, y tienen la forma:
 
 ```
 e9f7ff88-49d8-4574-aa32-0f0728e3ac20
@@ -41,7 +41,7 @@ final class Id
         $this->id = $id;
     }
 
-    public static function generate() : self
+    public static function generate(): self
     {
         return new self(
             Uuid::uuid4()->toString()
@@ -51,19 +51,19 @@ final class Id
     /**
      * @throws IdIsNotValid
      */
-    public static function fromString(string $id) : self
+    public static function fromString(string $id): self
     {
         self::validate($id);
 
         return new self($id);
     }
 
-    public function asString() : string
+    public function asString(): string
     {
         return $this->id;
     }
 
-    public function equalsTo(Id $anotherId) : bool
+    public function equalsTo(Id $anotherId): bool
     {
         return $this->id === $anotherId->id;
     }
@@ -71,19 +71,20 @@ final class Id
     /**
      * @throws IdIsNotValid
      */
-    private static function validate(string $id) : void
+    private static function validate(string $id): void
     {
         try {
             Assert::uuid($id);
         } catch (InvalidArgumentException $e) {
-            throw IdIsNotValid::becauseItDoesNotHaveAValidFormat($id);
+            throw IdIsNotValid::withFormat($id);
         }
     }
 }
+
 ```
 
 - Usaremos este _Value Object_ para todos nuestros ids. Alternativamente, podríamos tener un tipo diferente para cada uno que necesitásemos —`AutorId`, `LibroId`...
-- Tenemos una _named constructor_ para generar nuevos ids. Para generar los id utilizamos la librería ramsey/uuid: https://github.com/ramsey/uuid
+- Tenemos una _named constructor_ para generar nuevos ids. Para generar los id utilizamos la librería [`ramsey/uuid`](https://github.com/ramsey/uuid).
 - Tenemos otro `named constructor` para reconstruir el id a partir de un string, cosa que nos servirá para reconstruir objetos desde la capa de persistencia.
 - Siguiendo lo visto en la construcción del _Value Object_ `EmailAddress`, añadimos un método para comparar dos instancias de la clase.
 
@@ -91,6 +92,7 @@ El test que hemos implementado es el siguiente:
 
 ```
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Domain\ValueObject;
@@ -105,7 +107,7 @@ class IdTest extends TestCase
     /**
      * @test
      */
-    public function generate() : void
+    public function generate(): void
     {
         $this->assertTrue(
             (new Validator())->validate(
@@ -117,7 +119,7 @@ class IdTest extends TestCase
     /**
      * @test
      */
-    public function from_string() : void
+    public function from_string(): void
     {
         $idAsString = 'accbfed6-2a47-486e-b5e8-89e9616cb445';
 
@@ -132,7 +134,7 @@ class IdTest extends TestCase
     /**
      * @test
      */
-    public function from_string_with_invalid_id_throws_exception() : void
+    public function from_string_with_invalid_id_throws_exception(): void
     {
         $this->expectException(IdIsNotValid::class);
 
@@ -142,7 +144,7 @@ class IdTest extends TestCase
     /**
      * @test
      */
-    public function from_string_with_empty_id_throws_exception() : void
+    public function from_string_with_empty_id_throws_exception(): void
     {
         $this->expectException(IdIsNotValid::class);
 
@@ -153,7 +155,7 @@ class IdTest extends TestCase
      * @test
      * @dataProvider provideForEqualsTo
      */
-    public function equals_to(string $firstId, string $secondId, bool $expected) : void
+    public function equals_to(string $firstId, string $secondId, bool $expected): void
     {
         $this->assertSame(
             $expected,
@@ -163,7 +165,10 @@ class IdTest extends TestCase
         );
     }
 
-    public function provideForEqualsTo() : array
+    /**
+     * @return array[]
+     */
+    public function provideForEqualsTo(): array
     {
         return [
             'equals' => [
@@ -179,6 +184,7 @@ class IdTest extends TestCase
         ];
     }
 }
+
 ```
 
 Lo más importante a destacar en el test es que para la validación del formato hemos usado una librería diferente a la del objeto. Así testeamos el comportamiento del test y no su implementación.
