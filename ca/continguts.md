@@ -1,8 +1,8 @@
 ---
 layout: content-list
-lang: es
+lang: ca
 is-content-list-page: true
 lang-ref: content-list
 ---
 
-# Lista de contenidos
+# Continguts

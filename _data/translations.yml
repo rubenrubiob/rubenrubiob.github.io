@@ -8,8 +8,8 @@ menu.home:
   ca: "Inici"
   es: "Inicio"
 menu.content:
-  ca: "Llistat de continguts"
-  es: "Listado de contenidos"
+  ca: "Continguts"
+  es: "Contenidos"
 menu.search:
   ca: "Cercar"
   es: "Buscar"
