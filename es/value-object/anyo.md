@@ -1,3 +1,12 @@
+---
+lang: es
+lang-ref: value-object-anyo
+tags: [domain,value-object,año]
+is-content-page: true
+layout: content-page
+order: 3
+---
+
 # _Value Object_: `Anyo`
 
 El siguiente _Value Object_ que vamos a implementar es el que representa un año. Lo utilizaremos con varios fines: el año de nacimiento y muerte de un autor, el año de publicación de un libro...
@@ -260,6 +269,7 @@ Lo más interesante en este test es que comprobamos el mensaje de la excepción 
 
 Una estrategia para evitar mirar el mensaje de la excepción podría haber sido lanzar excepciones diferentes en función del error. La contra es que nos añadiría una serie de clases de excepción extra en nuestro Dominio.
 
+<<<<<<< HEAD
 - Nombre
 - Sólo aceptamos:
 	- int
@@ -267,3 +277,9 @@ Una estrategia para evitar mirar el mensaje de la excepción podría haber sido 
 - Validación específica: el año 0 no existe
 - Test para detectar que la excepción lanzada es la correcta (Mutation testing nos avisa)
 
+=======
+
+
+- Mirar `Biografia`
+- Errores de `Anyo` no hay que testearlos
+- Sólo contemplamos caso de autores con fechas conocidas --> futuro: Por ahora, con el fin de simplificar la aplicación, no contemplaremos este caso, aunque en el futuro podremos añadir una extensión del _Value Object_ que permita introducir el siglo de nacimiento y el de muerte del autor.

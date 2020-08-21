@@ -1,15 +1,13 @@
 ---
 lang: ca
 lang-ref: value-object-email-address
-tags: [value-object, email]
+tags: [domain,value-object,email]
 is-content-page: true
 layout: content-page
 order: 1
 ---
 
 # _Value Object_: `EmailAddress`
-
-En català
 
 Este es el primer apartado de desarrollo dentro del proyecto. Debemos empezar de lo más interno a lo más externo, de modo que la primera capa de trabajo es el Dominio. Y, dentro del Dominio, los elementos más básicos a desarrollar son los _Value Objects_.
 
@@ -157,7 +155,7 @@ final class EmailAddress
 
 En todos los casos del Dominio en los que la ejecución no sea válida, lanzaremos una excepción específica. Para ello, deberemos crear una clase. Una posible implementación sería:
 
-```php
+```
 <?php
 
 declare(strict_types=1);

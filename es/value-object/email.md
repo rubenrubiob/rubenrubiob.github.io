@@ -1,3 +1,12 @@
+---
+lang: es
+lang-ref: value-object-email-address
+tags: [domain,value-object,email]
+is-content-page: true
+layout: content-page
+order: 1
+---
+
 # _Value Object_: `EmailAddress`
 
 Este es el primer apartado de desarrollo dentro del proyecto. Debemos empezar de lo más interno a lo más externo, de modo que la primera capa de trabajo es el Dominio. Y, dentro del Dominio, los elementos más básicos a desarrollar son los _Value Objects_.
@@ -100,7 +109,7 @@ final class EmailAddress
     /**
      * @throws EmailAddressIsNotValid
      */
-    public static function create(string $emailAddress) : self
+    public static function create(string $emailAddress): self
     {
         self::validate($emailAddress);
 
@@ -109,12 +118,12 @@ final class EmailAddress
         );
     }
 
-    public function asString() : string
+    public function asString(): string
     {
         return $this->emailAddress;
     }
 
-    public function equalsTo(EmailAddress $anotherEmailAddress) : bool
+    public function equalsTo(EmailAddress $anotherEmailAddress): bool
     {
         return $this->emailAddress === $anotherEmailAddress->emailAddress;
     }
@@ -122,7 +131,7 @@ final class EmailAddress
     /**
      * @throws EmailAddressIsNotValid
      */
-    private static function validate(string $emailAddress) : void
+    private static function validate(string $emailAddress): void
     {
         try {
             Assert::email($emailAddress);
@@ -131,6 +140,7 @@ final class EmailAddress
         }
     }
 }
+
 ```
 
 - Como seguimos _composition over inheritance_, todas las clases que generemos, salvo algunas excepciones, [serán declaradas como `final`](https://ocramius.github.io/blog/when-to-declare-classes-final/).
@@ -153,11 +163,12 @@ declare(strict_types=1);
 namespace Domain\Exception\ValueObject;
 
 use Exception;
+
 use function Safe\sprintf;
 
 final class EmailAddressIsNotValid extends Exception
 {
-    public static function withFormat(string $emailAddress) : self
+    public static function withFormat(string $emailAddress): self
     {
         return new self(
             sprintf(
@@ -167,6 +178,7 @@ final class EmailAddressIsNotValid extends Exception
         );
     }
 }
+
 ```
 
 - Siguiendo [algunas recomendaciones](https://www.nikolaposa.in.rs/assets/uploads/slides/phpbnl20/handling-exceptional-conditions/#/), creamos un _named constructor_, para generar la excepción, cosa que, además, hace más legible el código.
@@ -178,6 +190,7 @@ El test que hemos creado para este objeto es el siguiente:
 
 ```php
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Domain\ValueObject;
@@ -191,7 +204,7 @@ class EmailAddressTest extends TestCase
     /**
      * @test
      */
-    public function create() : void
+    public function create(): void
     {
         $email = 'valid@email.address';
 
@@ -207,7 +220,7 @@ class EmailAddressTest extends TestCase
      * @test
      * @dataProvider provideForEqualsTo
      */
-    public function equals_to(string $firstEmailAddress, string $secondEmailAddress, bool $expected) : void
+    public function equals_to(string $firstEmailAddress, string $secondEmailAddress, bool $expected): void
     {
         $this->assertSame(
             $expected,
@@ -220,7 +233,7 @@ class EmailAddressTest extends TestCase
     /**
      * @test
      */
-    public function create_with_invalid_email_address_throws_exception() : void
+    public function create_with_invalid_email_address_throws_exception(): void
     {
         $this->expectException(EmailAddressIsNotValid::class);
 
@@ -230,7 +243,7 @@ class EmailAddressTest extends TestCase
     /**
      * @test
      */
-    public function create_with_empty_email_address_throws_exception() : void
+    public function create_with_empty_email_address_throws_exception(): void
     {
         $this->expectException(EmailAddressIsNotValid::class);
 
@@ -240,7 +253,7 @@ class EmailAddressTest extends TestCase
     /**
      * @return array[]
      */
-    public function provideForEqualsTo() : array
+    public function provideForEqualsTo(): array
     {
         return [
             'equal email addresses' => [
@@ -256,6 +269,7 @@ class EmailAddressTest extends TestCase
         ];
     }
 }
+
 ```
 
 - Todos los nombres de los métodos de test están con *snake_case*. Es algo que uso solo en los test, puesto que uso nombres muy específicos que acaban siendo largos, y creo que [simplifica bastante la lectura](https://matthiasnoback.nl/2020/06/unit-test-naming-conventions/).
