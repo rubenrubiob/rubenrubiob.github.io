@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<article class="page">
+
+  <h1>{{ page.title }}</h1>
+
+  {% include content-in-another-language.html %}
+
+  <div class="entry">
+    {% assign content_pages=site.pages | where:"is-content-page", true | sort: 'order' %}
+    {% assign content_pages=content_pages | where: "lang", page.lang  %}
+    <ol>
+    {% for content_page in content_pages %}
+      <li>
+        <a href="{{ site.baseurl }}{{ content_page.url }}">
+          {{ content_page.title }}
+        </a>
+      </li>
+    {% endfor %}
+    </ol>
+  </div>
+</article>

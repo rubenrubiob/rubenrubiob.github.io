@@ -2,5 +2,17 @@ relatedPosts:
   ca: "Articles relacionats"
   es: "Artículos relacionados"
 differentLanguage:
-  ca: "Llegir aquesta pàgina en un idioma diferent"
-  es: "Leer esta página en un idioma diferente"
+  ca: "Llegir aquest contingut en castellà"
+  es: "Leer este contenido en catalán"
+menu.home:
+  ca: "Inici"
+  es: "Inicio"
+menu.content:
+  ca: "Llistat de continguts"
+  es: "Listado de contenidos"
+menu.search:
+  ca: "Cercar"
+  es: "Buscar"
+search.placeholder:
+  ca: "Cercar als continguts..."
+  es: "Buscar en los contenidos..."

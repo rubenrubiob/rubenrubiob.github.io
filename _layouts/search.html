@@ -1,0 +1,38 @@
+---
+layout: page
+---
+
+<div id="search-container">
+  <input type="text" id="search-input" placeholder="{{ site.data.translations['search.placeholder'][page.lang] }}">
+  <ul id="results-container"></ul>
+</div>
+
+<script src="{{ site.baseurl }}/assets/simple-jekyll-search.min.js" type="text/javascript"></script>
+
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    searchResultTemplate: '<div style="text-align: left !important;"><a href="{url}"><h1 style="text-align:left !important;">{title}</h1></a><div style="text-align:left !important;" class="post-tags">{tags}</div><br /><div style="text-align:left !important;">{summary}</div></div>',
+    json: '{{ site.baseurl }}/search-{{ page.lang }}.json',
+    templateMiddleware: function (prop, value, template) {
+      if (prop !== 'tags') {
+        return;
+      }
+
+      tags = value.split(',');
+      numberOfTags = tags.length;
+
+      if (numberOfTags === 0) {
+        return;
+      }
+
+      content = '';
+      for (i = 0; i < numberOfTags; i++) {
+        content += '<a href="javascript:" style="margin-right: 5px;">'+tags[i]+'</a>';
+      }
+
+      return content;
+    }
+  });
+</script>

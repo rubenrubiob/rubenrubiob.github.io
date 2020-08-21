@@ -1,0 +1,10 @@
+{% assign content_page=site.pages | where:"lang-ref", "content-list" %}
+{% assign content_page=content_page | where: "lang", page.lang | first  %}
+
+{% assign search_page=site.pages | where:"lang-ref", "search" %}
+{% assign search_page=search_page | where: "lang", page.lang | first  %}
+
+
+<a href="{{ site.baseurl }}/{{ page.lang }}/">{{ site.data.translations['menu.home'][page.lang] }}</a>
+<a href="{{ site.baseurl }}{{ content_page.url }}">{{ site.data.translations['menu.content'][page.lang] }}</a>
+<a href="{{ site.baseurl }}{{ search_page.url }}">{{ site.data.translations['menu.search'][page.lang] }}</a>
