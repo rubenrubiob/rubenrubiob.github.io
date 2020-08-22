@@ -6,13 +6,20 @@ lang-ref: home
 
 # Introducció
 
+* TOC
+{:toc}
+
 En aquest projecte intentaré mostrar el desenvolupament complet d'un projecte simple fent servir _Domain Driven Design_ —DDD— amb arquitectura hexagonal a PHP. L'objectiu principal és explicar com implementar les parts més importants de les diferents capes que formen part de l'arquitectura hexagonal. La intenció és que el desenvolupament del projecte serveixi com a guia de desenvolupament, de manera que la teoria sorgirà de la pràctica, i no a l'inrevés.
 
-Així doncs, desenvoluparem un catàleg de llibres amb l'objectiu de poder generar referències bibliogràfiques en diferents formats: APA, Chicago...
+Així doncs, desenvoluparem una aplicació web per a gestionar un catàleg de llibres, amb la possibilitat de generar referències bibliogràfiques en diferents formats: APA, Chicago...
 
-## Domini i infraestructura
+El codi del projecte estarà disponible al repositori [`rubenrubiob/gestor-libros`](https://github.com/rubenrubiob/gestor-libros).
 
-Això no obstant, abans de començar a programar, hem de definir el que s'anomena _domini_ o _negoci_. El domini [^1] dicta com ha de comportar-se la nostra aplicacion. Entre altres coses, conté:
+## DDD i arquitectura hexagonal
+
+L'objectiu d'aquest projecte no consisteix a explicar què és DDD. Qui vulgui més informació, hi ha una gran quantitat de llibres i recursos on s'explica en detall[^1]. Per tant, no ens preguntarem «què és DDD?»; més aviat, com Heidegger va fer a «Ésser i temps», canviarem la pregunta: en lloc de preguntar-nos pel ser de la cosa, ens preguntarem pel sentit de ser de la cosa.
+
+És a dir, no ens preguntarem «què és DDD?», sinó «quin és el sentit de DDD?». Com el seu nom indica, el sentit és dissenyar el projecte, pensar-lo, enfocant-lo al _domini_ o _negoci_. El domini[^2] dicta com ha de comportar-se la nostra aplicació. Entre altres coses, conté:
 
 - Els conceptes del domini que hem de modelar.
 - Les regles o restriccions que s'imposen als nostres models.
@@ -22,9 +29,22 @@ Cal remarcar que, en aquest punt, no ens preocupem sobre infraestructura, i aix�
 
 Fent una simple analogia, el domini seria la partitura d'una simfonia, mentre que la infraestructura és una d'entre les moltes interpretacions que n'hi poden haver.
 
-## Arquitectura hexagonal
+Ara bé, DDD defineix com pensar el projecte, però no com implementar-lo en codi, donat que hi ha diferents maneres de fer-ho. A aquest projecte farem servir arquitectura hexagonal, també coneguda com a arquitectura de ports i adaptadors. Aquest patró proposa una separació per capes: tindrem una capa que és el domini, a la qual s'accedeix amb uns adaptadors, que poden intercanviar-se fàcilment. Així doncs, se separa el domini de la infraestructura, de manera que encaixa amb DDD.
 
-TODO: añadir capas y deptrac
+Per exemple, un port podria ser la interfície d'un repositori de lectura d'un producte. A aquest port hi podríem connectar diferents adaptadors, que són les implementacions concretes: un adaptador podria connectar-se a la base de dades per a obtenir el producte, un altre el podria llegir des d'un fitxer, un altre el podria obtenir d'una API externa... A la capa de domini no ens importa quin adaptador es faci servir, són intercanviables. Aquesta explicació pot ser una mica teòrica, però veurem exemples d'ús al llarg del desenvolupament del projecte.
+
+Per a aquest projecte, tindrem les següents capes:
+
+![](images/general/capas-hexagonal-png)
+
+- `Domain` (Domini): on resideixen els models que representen el negoci.
+- `Application` (Aplicació): conté els serveis d'aplicació, que modelen els casos d'ús de la nostra aplicació.
+- `Infrastructure` (Infraestructura): conté les implementacions concretes dels serveis.
+- `Ui` (per _User Interface_): és una capa d'infraestructura, que separem per comoditat. S'hi troben els punts d'entrada de l'aplicació: per peticions HTTP, per línea d'ordres...
+
+Cada capa només pot accedir als elements de la seva capa i als de les capes anteriors. Així doncs, des de `Ui` podem cridar a la capa `Application`, però no ho podem fer des de `Domain`.
+
+Al projecte també hi aplicarem els principis SOLID[^3], que serveixen per a obtenir un _software_ robust. També els anirem veient al llarg del desenvolupament del projecte.
 
 ## Llenguatge ubic i traducció
 
@@ -32,7 +52,7 @@ El domini ha de venir definit pels experts de producte, siguin del nostre equip,
 
 D'això es desprèn, com a conseqüència, que tampoc hem de traduir a l'anglès els conceptes del domini que fem servir al nostre codi font. Aquest és un [debat interessant](https://twitter.com/ProjectPolly/status/1169877299337945090) i no hi ha una solució universal aplicable a tots els projectes. Depèn del projecte en si, de l'equip que el desenvoluparà, de l'àmbit en què es desenvolupa...
 
-Com a exemple, en aquest projecte els conceptes del domini seran en castellà[^2], i la restà, en anglès. Per exemple, tindrem el concepte «Libro», i podríem tenir una interfície anomenada `LibroRepository`. Al principi ens pot resultar estrany però, com tot, només ens hi hem d'acostumar.
+Com a exemple, en aquest projecte els conceptes del domini seran en castellà[^4], i la restà, en anglès. Per exemple, tindrem el concepte «Libro», i podríem tenir una interfície anomenada `LibroRepository`. Al principi ens pot resultar estrany però, com tot, només ens hi hem d'acostumar.
 
 ## Definició
 
@@ -99,7 +119,10 @@ Aquest projecte el desenvoluparem amb el següent entorn:
 - ElasticSearch 6.8
 - Apache 2.4
 
+[^1]: Per a entrar a fons en DDD, tenim els [llibres d'Eric Evans](https://domainlanguage.com/ddd/reference/), qui va definir per primer cop el concepte, i els [de Vaugh Vernon](https://www.informit.com/authors/bio/5e9dfebf-9550-4a11-800d-35a57c5fa11e). Específic per a PHP, tenim el llibre [«Domain-Driven Design in PHP»](https://leanpub.com/ddd-in-php).
 
-[^1]: No m'agrada el nom «negoci», perquè té la connotació que tot el que desenvolupem ha de tenir com a objectiu un benefici, duu implícit un esperit capitalista. Potser algú hauria d'estudiar com el capitalisme subjau al desenvolupament de _software_, on tot el que es programa ha de ser productiu; si no ho és, es considera invàlid. Farem servir el nom «domini» que, per contra, crec que no és prou clar.
+[^2]: No m'agrada el nom «negoci», perquè té la connotació que tot el que desenvolupem ha de tenir com a objectiu un benefici, duu implícit un esperit capitalista. Potser algú hauria d'estudiar com el capitalisme subjau al desenvolupament de _software_, on tot el que es programa ha de ser productiu; si no ho és, es considera invàlid. Farem servir el nom «domini» que, per contra, crec que no és prou clar.
 
-[^2]: Com que aquest projecte s'explica tant en castellà com en català, es fan servir els noms en castellà per evitar haver de mantenir dos repositoris amb el mateix codi, on només hi canviessin els noms de les classes.
+[^3]: Els va definir [originalment Robert C. Martin](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod). En trobem una bona explicació en castellà  al [blog d'Asier Marqués](https://asiermarques.com/2018/principios-solid/) i al [blog de Fran Iglesias](https://franiglesias.github.io/principios-solid/).
+
+[^4]: Com que aquest projecte s'explica tant en castellà com en català, es fan servir els noms en castellà per evitar haver de mantenir dos repositoris amb el mateix codi, on només hi canviessin els noms de les classes.

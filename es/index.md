@@ -6,23 +6,45 @@ lang-ref: home
 
 # Introducción
 
+* TOC
+{:toc}
+
 En este proyecto pretendo mostrar el desarrollo completo de un proyecto simple utilizando _Domain Driven Design_ —DDD— con arquitectura hexagonal en PHP. El objetivo principal es explicar cómo implementar las partes más importantes de las diferentes capas que son parte de la arquitectura hexagonal. La intención es que el avance del proyecto sirva como guía de desarrollo, de modo que la teoría emanará de la práctica, y no al revés.
 
-Para tal fin, desarrollaremos un catálogo de libros con el objetivo de poder generar referencias bibliográficas en diferentes formatos: APA, Chicago...
+Así pues, desarrollaremos una aplicación web para gestionar un catálogo de libros, con la posibilidad de generar referencias bibliográficas en diferentes formatos: APA, Chicago...
 
-## Dominio e infraestructura
+El código del proyecto estará disponible en el repositorio [`rubenrubiob/gestor-libros`](https://github.com/rubenrubiob/gestor-libros).
 
-Sin embargo, antes de empezar a programar, debemos definir lo que se denomina _dominio_ o _negocio_. El dominio[^1] dicta cómo debe comportarse nuestra aplicación. Entre otras cosas, contiene:
+## DDD y arquitectura hexagonal
+
+El objetivo de este proyecto no consiste en explicar qué es DDD. Para quien quiera más información, hay abundancia de libros y recursos[^1] donde se explica en detalle. Por tanto, no vamos a preguntarnos «¿qué es DDD?»; más bien, como Heidegger hiciera en «Ser i tiempo», vamos a cambiar la pregunta: en lugar de preguntarnos por el ser de la cosa, nos preguntaremos por el sentido de ser de la cosa.
+
+Es decir, no vamos a preguntarnos «¿qué es DDD?», sino «¿cuál es el sentido de DDD?». Como nos indica el nombre, su sentido es diseñar el proyecto, pensarlo, enfocándolo al _dominio_ o _negocio_. El dominio[^2] dicta cómo debe comportarse nuestra aplicación. Entre otras cosas, contiene:
 
 - Los conceptos del dominio que debemos modelar.
 - Las reglas o restricciones que se imponen para nuestros modelos.
 - Las acciones o casos de uso de nuestra aplicación.
 
-Es importante hacer notar que, en este punto, no nos preocupamos sobre infraestructura, y esta es una diferenciación crucial: no pensamos cómo vamos a almacenar los datos, ni el _framework_ que vamos a utilizar o las tecnologías del _frontend_. Nos importa cómo debe comportarse nuestra aplicación, independientemente de cómo se implemente, nada más. El propio nombre ya lo dice: Domain-Driven Design, diseño enfocado al dominio.
+Es importante hacer notar que, en este punto, no nos preocupamos sobre infraestructura, y esta es una diferenciación crucial: no pensamos cómo vamos a almacenar los datos, ni el _framework_ que vamos a utilizar o las tecnologías del _frontend_. Nos importa cómo debe comportarse nuestra aplicación, independientemente de cómo se implemente, nada más. El sentido de DDD es, pues, pensar el proyecto centrándonos en el dominio.
 
 Haciendo una burda analogía, el dominio sería la partitura de una sinfonía, mientras que la infraestructura una de entre muchas interpretaciones.
 
-TODO: añadir capas y deptrac
+Ahora bien, DDD define cómo pensar el proyecto, pero no cómo implementarlo en código, puesto que hay diferentes maneras para hacerlo. En este proyecto utilizaremos arquitectura hexagonal, también conocida como arquitectura de puertos y adaptadores. Este patrón propone una separación por capas: tenemos una capa que es el dominio, a la cual se accede por unos puertos. Estos puertos se conectan con unos adaptadores, que pueden intercambiarse fácilmente. Así pues, se separa el dominio de la infraestructura, de modo que encaja con DDD.
+
+Por ejemplo, un puerto podría ser la interfaz de un repositorio de lectura de un producto. A este puerto podríamos conectar adaptadores, que son las implementaciones concretas: un adaptador podría conectarse a la base de datos para obtener el producto, otro podría leerlo de fichero, otro podría obtenerlo de una API externa... En la capa de dominio no nos importa qué adaptador se use, son intercambiables. Esta explicación puede pecar de ser demasiado teórica, pero veremos ejemplos de uso a lo largo del desarrollo del proyecto.
+
+Concretamente, tendremos las siguientes capas:
+
+![](images/general/capas-hexagonal-png)
+
+- `Domain` (Dominio): donde residen los modelos que representan el negocio.
+- `Application` (Aplicación): contiene los servicios de aplicación, que modelan los casos de uso de nuestra aplicación.
+- `Infrastructure` (Infraestructura): contiene las implementaciones concretas de los servicios.
+- `Ui` (por _User Interface_): es una capa más de infraestructura, pero que separamos por comodidad. En ella se encuentran los puntos de entrada a la aplicación: por peticiones HTTP, por línea de comandos...
+
+Cada capa sólo puede acceder a los elementos de su capa y a los de las capa anteriores. Así pues, desde `Ui` podemos llamar a la capa `Application`, pero no así desde `Domain`.
+
+En el proyecto también aplicaremos los principios SOLID[^3], que sirven para obtener un _software_ robusto. De igual modo, los iremos viendo a lo largo del desarrollo del proyecto.
 
 ## Lenguaje ubicuo y traducción
 
@@ -97,4 +119,8 @@ Este proyecto lo desarrollaremos con el siguiente entorno:
 - Apache 2.4
 
 
-[^1]: No me gusta el nombre «negocio», porque tiene la connotación que todo lo que desarrollemos debe tener como objetivo obtener un beneficio, lleva implícito un espíritu capitalista. Quizá alguien debería estudiar cómo el capitalismo está imbuido en el desarrollo de _software_, donde todo lo que se programa ha de ser productivo; si no lo es, se considera inválido. Utilizaremos el nombre «dominio», que, por contra, creo que no es suficientemente claro.
+[^1]: Para a entrar a fondo en DDD, tenemos los [libros de Eric Evans](https://domainlanguage.com/ddd/reference/), que definió por primera vez el concepto, i los [de Vaugh Vernon](https://www.informit.com/authors/bio/5e9dfebf-9550-4a11-800d-35a57c5fa11e). Específico para PHP, tenemos el libro [«Domain-Driven Design in PHP»](https://leanpub.com/ddd-in-php).
+
+[^2]: No me gusta el nombre «negocio», porque tiene la connotación que todo lo que desarrollemos debe tener como objetivo obtener un beneficio, lleva implícito un espíritu capitalista. Quizá alguien debería estudiar cómo el capitalismo está imbuido en el desarrollo de _software_, donde todo lo que se programa ha de ser productivo; si no lo es, se considera inválido. Utilizaremos el nombre «dominio», que, por contra, creo que no es suficientemente claro.
+
+[^3]: Los definió [originalmente Robert C. Martin](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod). Encontramos una buena explicación en castellano sobre ellos en el [blog de Asier Marqués](https://asiermarques.com/2018/principios-solid/) i en el [blog de Fran Iglesias](https://franiglesias.github.io/principios-solid/).
