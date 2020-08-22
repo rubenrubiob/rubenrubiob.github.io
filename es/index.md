@@ -13,7 +13,7 @@ En este proyecto pretendo mostrar el desarrollo completo de un proyecto simple u
 
 Así pues, desarrollaremos una aplicación web para gestionar un catálogo de libros, con la posibilidad de generar referencias bibliográficas en diferentes formatos: APA, Chicago...
 
-El código del proyecto estará disponible en el repositorio [`rubenrubiob/gestor-libros`](https://github.com/rubenrubiob/gestor-libros).
+El código del proyecto estará disponible en el repositorio [rubenrubiob/gestor-libros](https://github.com/rubenrubiob/gestor-libros).
 
 ## DDD y arquitectura hexagonal
 
