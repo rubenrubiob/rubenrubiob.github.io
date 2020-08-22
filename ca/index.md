@@ -35,7 +35,7 @@ Per exemple, un port podria ser la interfície d'un repositori de lectura d'un p
 
 Per a aquest projecte, tindrem les següents capes:
 
-![](images/general/capas-hexagonal-png)
+![](/images/general/capas-hexagonal.png)
 
 - `Domain` (Domini): on resideixen els models que representen el negoci.
 - `Application` (Aplicació): conté els serveis d'aplicació, que modelen els casos d'ús de la nostra aplicació.
@@ -52,7 +52,7 @@ El domini ha de venir definit pels experts de producte, siguin del nostre equip,
 
 D'això es desprèn, com a conseqüència, que tampoc hem de traduir a l'anglès els conceptes del domini que fem servir al nostre codi font. Aquest és un [debat interessant](https://twitter.com/ProjectPolly/status/1169877299337945090) i no hi ha una solució universal aplicable a tots els projectes. Depèn del projecte en si, de l'equip que el desenvoluparà, de l'àmbit en què es desenvolupa...
 
-Com a exemple, en aquest projecte els conceptes del domini seran en castellà[^4], i la restà, en anglès. Per exemple, tindrem el concepte «Libro», i podríem tenir una interfície anomenada `LibroRepository`. Al principi ens pot resultar estrany però, com tot, només ens hi hem d'acostumar.
+Com a exemple, en aquest projecte els conceptes del domini seran en castellà[^4], i la resta, en anglès. Per exemple, tindrem el concepte «Libro», i podríem tenir una interfície anomenada `LibroRepository`. Al principi ens pot resultar estrany però, com tot, només ens hi hem d'acostumar.
 
 ## Definició
 

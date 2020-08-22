@@ -35,7 +35,7 @@ Por ejemplo, un puerto podría ser la interfaz de un repositorio de lectura de u
 
 Concretamente, tendremos las siguientes capas:
 
-![](images/general/capas-hexagonal-png)
+![](/images/general/capas-hexagonal.png)
 
 - `Domain` (Dominio): donde residen los modelos que representan el negocio.
 - `Application` (Aplicación): contiene los servicios de aplicación, que modelan los casos de uso de nuestra aplicación.
