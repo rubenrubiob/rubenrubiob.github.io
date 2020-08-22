@@ -503,6 +503,14 @@ body:after {
   line-height: 1.2;
 }
 
+article.page > .entry a {
+  text-decoration: underline;
+}
+
+.lang-options a {
+  text-decoration: underline;
+}
+
 .author_title{
   text-align: center;
   color: #939aa1;
@@ -791,6 +799,11 @@ Modules - reusable parts of our design
   border-top: 1px solid;
   margin-top: 50px;
   padding-top: 5px;
+}
+
+sup a.footnote {
+  vertical-align: super;
+  font-size: smaller;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 759px) {
