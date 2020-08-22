@@ -531,6 +531,25 @@ body:after {
   font-weight: bold;
 }
 
+// Adding 'Contents' headline to the TOC
+#markdown-toc::before {
+  content: "Índex";
+  font-weight: bold;
+}
+
+
+// Using numbers instead of bullets for listing
+#markdown-toc ul {
+  list-style: decimal;
+}
+
+#markdown-toc {
+  border: 1px solid $darkerGray;
+  list-style: decimal;
+  display: inline-block;
+  padding: 10px 30px 10px 50px;
+}
+
 /* --------------------------------
 
 Modules - reusable parts of our design
