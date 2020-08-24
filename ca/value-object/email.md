@@ -9,19 +9,20 @@ order: 1
 
 # _Value Object_: `EmailAddress`
 
-En català
+* TOC
+{:toc}
 
-Este es el primer apartado de desarrollo dentro del proyecto. Debemos empezar de lo más interno a lo más externo, de modo que la primera capa de trabajo es el Dominio. Y, dentro del Dominio, los elementos más básicos a desarrollar son los _Value Objects_.
+[Consultar aquesta funcionalitat al _pull request_](https://github.com/rubenrubiob).
 
-Un _Value Object_ es un objeto que se define por su valor (+ definiciones). Si no estamos familiarizados con los _Value Objects_, esta definición quizá no nos dice gran cosa, pero veremos su sentido con el primer ejemplo, el de dirección de correo electrónico.
+Aquest és el primer apartat de desenvolupament dins del projecte. Hem de començar de la capa més interna a la més externa, de manera que la primera capa que hem de desenvolupar és la de Domini. I, dins del Domini, els elements més bàsics a desenvolupar són els _Value Objects_.
 
-Los _Value Object_ son un concepto potentísimo, especialmente para trabajar con los siempre problemáticos números flotantes (citas). Todos los atributos de nuestras entidades serán _Value Objects_, no usaremos en ningún caso tipos primitivos del lenguaje.
+Un _Value Object_ és un objecte que es defineix pel seu valor. Si no estem familiaritzats amb el concepte, potser aquesta definició no ens diu gran cosa, però en veurem el seu sentit amb el primer exemple, el d'adreça de correu electrònic.
 
-## Email
+Els _Value Object_ són un concepte potentíssim, especialment a l'hora de treballar amb els sempre [problemàtics nombres flotants per a imports monetaris](https://martinfowler.com/eaaCatalog/money.html). Tots els atributs de les nostres entitats seran _Value Objects_, no farem servir en cap cas els tipus primitius del llenguatge.
 
-### Introducción
+## Problemàtica
 
-Empecemos con un contraejemplo. Imaginemos que en un objeto cualquiera tenemos la siguiente definición de un método que envía una notificación a una dirección de correo electrónico de un usuario:
+Comencem amb un contraexemple. Imaginem que en un servei qualsevol tenim la següent definició d'un mètode que envia una notificació a una adreça de correu electrònic d'un usuari:
 
 ```php
 public function notify(string $email) : void
@@ -30,7 +31,7 @@ public function notify(string $email) : void
 }
 ```
 
-O, peor aún, sin la especificación del tipo de dato:
+O, encara pitjor, sense l'especificació del tipus de dada:
 
 ```php
 public function notify($email) : void
@@ -39,13 +40,13 @@ public function notify($email) : void
 }
 ```
 
-¿Cómo sabemos que el valor de `$email` es realmente un _string_ con una dirección de correo electrónico válida? En el segundo caso, además, tampoco estamos seguros de que el tipo de `$email` sea un _string_.
+Com sabem que el valor de `$email` és realment un _string_ amb una adreça de correu electrònic vàlida? En el segon cas, a més a més, tampoc no estem segurs que el tipus de `$email` sigui un _string_.
 
-Sabemos que una dirección de correo electrónico es siempre un _string_, pero no todo _string_ es una dirección de correo electrónico. Es decir, las direcciones de correo electrónico son un subconjunto de todos los _string_ existentes:
+Sabem que una adreça de correu electrònic és sempre un _string_, però no tot _string_ és una adreça de correu electrònic. És a dir, les adreces de correu electrònic són un subconjunt de tots els _string_ existents:
 
-(Añadir imagen)
+![](/images/value-object/diagrama-venn-email.png)
 
-Así pues, lo primero que deberíamos hacer en esta función es validar que el _string_ que nos pasan es efectivamente una dirección de correo electrónico válida, y lanzar una excepción si no lo es:
+Així doncs, el primer que hauríem de fer a aquesta funció és validar que l'_string_ que ens arriba és efectivament una adreça de correu electrònic, i llançar una excepció en cas que no ho sigui:
 
 ```php
 public function notify(string $email) : void
@@ -58,11 +59,11 @@ public function notify(string $email) : void
 }
 ```
 
-Para estar seguros, esta validación deberíamos tenerla en cada método que implementemos y que reciba un parámetro que sea una dirección de correo electrónico. Deberíamos hacer lo mismo para cualquier otro parámetro que recibamos en cada función.
+Per a estar segurs, hauríem de tenir aquesta validació a cada mètode que implementem i que esperi rebre un paràmetre que sigui una adreça de correu electrònic. Hauríem de fer el mateix amb qualsevol altre paràmetre que rebem a cada mètode.
 
-Ya vemos que esto nos implica una validación redundante en cada método. Además, nos añadiría caminos de test que nada tienen que ver con el método que estamos testeando.
+Ja veiem que aquesta aproximació ens implica una validació redundant a cada mètode. A més a més, ens afegiria camins de test que no tenen res a veure amb el mètode que estem testejant: en el cas de l'exemple anterior, el que hem de validar és que l'enviament de la notificació funcioni, no la validació del paràmetre.
 
-La solución es tener un _Value Object_, llamado por ejemplo `EmailAddress`, que podemos pasar como tipo de parámetro de los métodos:
+La solució és tenir un _Value Object_, anomenat per exemple `EmailAddress`, que podem passar com a tipus de paràmetre als mètodes:
 
 ```php
 public function notify(EmailAddress $email) : void
@@ -71,19 +72,21 @@ public function notify(EmailAddress $email) : void
 }
 ```
 
-De este modo, en este método sabemos con toda certeza que `$email` es de tipo `EmailAddress`. Si la construcción del objeto `EmailAddress` fallase en un punto previo de la ejecución, sería responsabilidad de esa porción de código tratar la excepción.
+D'aquesta manera, en aquest mètode sabem amb tota certesa que `$email` és de tipus `EmailAddress`. Si la construcció de l'objecte `EmailAddress` fallés en un punt previ de l'execució, seria responsabilitat d'aquella porció de codi tractar l'excepció.
 
-### _Namespace_
+## _Namespace_
 
-El _Value Object_ `EmailAddress` es algo que podrá reutilizarse en diferentes partes de la aplicación: podría servir para los usuarios de la aplicación, como dato de contacto de una editorial...[^1]
+El _Value Object_ `EmailAddress` es podrà reutilitzar a diferents parts de l'aplicació: podria servir con a identificador dels usuaris de l'aplicació, com una dada de contacte d'una editorial...[^1]
 
-Así pues, este _Value Object_ lo colocaremos dentro del _namespace_ `Domain\ValueObject`, que corresponderá al directorio físico dentro del proyecto `src/Domain/ValueObject`.
+Així doncs, aquest _Value Object_ el situarem al _namespace_ `Domain\ValueObject`, que dins del projecte correspondrà al directori físic `src/Domain/ValueObject`.
+
+A l'explicació del _Value Object_ del format de l'edició d'un llibre veurem on situar _Value Objects_ que no siguin genèrics, és a dir, que no siguin reutilitzables a tota l'aplicació.
 
 En la explicación del _Value Object_ de formato de una edición de un libro veremos dónde colocar _Value Objects_ que no sean genéricos y reusables para toda la aplicación.
 
-### Implementación
+## Implementació
 
-Una posible implementación del _Value Object_ `EmailAddress` podría ser la siguiente:
+Una possible implementació del _Value Object_ `EmailAddress` podria ser la següent:
 
 ```php
 <?php
@@ -145,17 +148,18 @@ final class EmailAddress
 
 ```
 
-- Como seguimos _composition over inheritance_, todas las clases que generemos, salvo algunas excepciones, [serán declaradas como `final`](https://ocramius.github.io/blog/when-to-declare-classes-final/).
-- El constructor es privado. De este modo, forzamos a [utilizar siempre el _named constructor_](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460614781), y evitamos [casos extraños](https://twitter.com/DaveLiddament/status/1239259573493604352) que permite el lenguaje y que harían que el objeto fuese mutable.
-- Hemos añadido un método `asString`, que permite obtener el valor del objeto como un _string_. No utilizamos el método mágico `__toString` [para evitar problemas](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460441229). En otros objetos podemos tener varios métodos; por ejemplo, en un importe, podríamos tener `asString`, `asFloat`...
-- Hemos añadido un método `equalsTo`, para comparar dos _Value Object_. No es estrictamente necesario, pero es un método muy simple de crear y testear, y ayuda en el proceso de test.
+- Com que seguim [_composition over inheritance_](https://en.wikipedia.org/wiki/Composition_over_inheritance), totes les classes que implementem, excepte algunes excepcions, [seran declarades com a `final`](https://ocramius.github.io/blog/when-to-declare-classes-final/).
+- El constructor és privat. D'aquesta manera, obliguem a [fer servir sempre el _named constructor_](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460614781) i evitem [casos estranys](https://twitter.com/DaveLiddament/status/1239259573493604352) que permet el llenguatge i que farien que l'objecte fos mutable.
+- Hem afegit un mètode `asString`, que permet obtenir el valor de l'objecte com un _string_. No fem servir el mètode màgic `__toString` [per a evitar problemes](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460441229). A altres objectes podem tenir diversos mètodes diferents per a obtenir el valor del _Value Object_; per exemple, en un import monetari podríem tenir `asString`, `asFloat`, `asInt`...
+- Hem afegit un mètode `equalsTo` per a comparar dos _Value Object_ de tipus `EmailAddress`. No és un mètode estríctament necessari, però és un mètode molt senzill de crear i testejar, i ajuda molt al procés de test.
+- Un _Value Object_ sempre és immutable, de manera que hem afegit l'anotació corresponent per a `Psalm`.
 - Un _Value Object_ siempre es inmutable, de modo que hemos añadido la anotación correspondiente para _Psalm_.
-- Usamos la librería [`webmozart/assert`](https://github.com/webmozart/assert), ya que simplifica mucho el proceso de validación.
-- Vemos que la excepción que lanzamos es bastante legible: `throw EmailAddressIsNotValid::withFormat`.
+- Fem servir la llibreria [`webmozart/assert`](https://github.com/webmozart/assert), ja que simplifica molt el procés de validació.
+- L'excepció que llencem en cas que el valor no sigui correcte és molt llegible: `throw EmailAddressIsNotValid::withFormat`.
 
-### Excepción
+## Excepció
 
-En todos los casos del Dominio en los que la ejecución no sea válida, lanzaremos una excepción específica. Para ello, deberemos crear una clase. Una posible implementación sería:
+En tots els casos del Domini en què l'execució no sigui vàlida, llençarem una excepció específica. N'haurem de crear una classe. Una possible implementació seria la següent:
 
 ```php
 <?php
@@ -183,12 +187,12 @@ final class EmailAddressIsNotValid extends Exception
 
 ```
 
-- Siguiendo [algunas recomendaciones](https://www.nikolaposa.in.rs/assets/uploads/slides/phpbnl20/handling-exceptional-conditions/#/), creamos un _named constructor_, para generar la excepción, cosa que, además, hace más legible el código.
-- Utilizamos la librería [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que contiene las funciones de PHP pero con una API más usable que lanza excepciones en lugar de devolver `false` si la llamada es in´valida. En el caso de `sprintf`, si el número de parámetros no es válido, lanza una excepción.
+- Seguint [algunes recomanacions](https://www.nikolaposa.in.rs/assets/uploads/slides/phpbnl20/handling-exceptional-conditions/#/), creem un _named constructor_ per a generar l'excepció, cosa que, a més a més, fa més llegible el codi.
+- Fem servir la llibreria [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que conté les funcions de PHP però amb una API més usable, que llença excepcions en lloc de retornar `false` si la crida és invàlida. En el cas de `sprintf`, si el número de paràmetres no és vàlid, `Safe` llença una excepció en comptes de retornar `false`.
 
-### Test
+## Test
 
-El test que hemos creado para este objeto es el siguiente:
+El test que hem creat per a aquest objecte és el següent:
 
 ```php
 <?php
@@ -274,10 +278,10 @@ class EmailAddressTest extends TestCase
 
 ```
 
-- Todos los nombres de los métodos de test están con *snake_case*. Es algo que uso solo en los test, puesto que uso nombres muy específicos que acaban siendo largos, y creo que [simplifica bastante la lectura](https://matthiasnoback.nl/2020/06/unit-test-naming-conventions/).
-- Testeamos en métodos aparte las excepciones que se pueden generar para el método _create_. En este caso, tenemos dos: que el _string_ que nos pasan o bien no sea una dirección de correo electrónico, o bien que sea un _string_ vacío.
-- Aunque no es estríctamente necesario, testeamos la creación correcta del objeto y el uso del método `asString`, para que Infection nos valide correctamente la visibilidad del método.
-- Usamos un [_Data provider_](https://phpunit.readthedocs.io/en/9.3/writing-tests-for-phpunit.html#data-providers) para el test de `equalsTo`.
+- Tots els noms dels mètodes de test estan en format *snake_case*. És una cosa que només faig servir als tests, donat que els noms són molt específics i acaben essent molt llargs, i crec que en [simplifica la lectura](https://matthiasnoback.nl/2020/06/unit-test-naming-conventions/). També existeix [l'opció d'utilitzar caràcters transparents](https://github.com/brefphp/bref/blob/41c634f151d13d30ac323e5d2d78d383bdcc971e/tests/Sam/PhpFpmRuntimeTest.php#L26), però em resulta més complicat escriure el codi.
+- Testejem en mètodes separats les excepcions que es poden generar al mètode `create`. En aquest cas, en tenim dues: que l'_string_ que ens passin o bé no sigui una adreça de correu electrònic, o bé que sigui buit.
+- Tot i no ser estríctament necessari, testejem la creació correcta de l'objecte i l'ús del mètode `asString`, perquè `Infection` validi correctament la visibilitat del mètode.
+- Fem servir un [_Data provider_](https://phpunit.readthedocs.io/en/9.3/writing-tests-for-phpunit.html#data-providers) pel test de `equalsTo`.
 
 
-[^1]: Cabe aclarar que este _Value Object_ no es estrictamente necesario para la primera fase de desarrollo, pero seguramente sea el más ilustrativo para la explicación sobre qué es un _Value Object_.
+[^1]: Cal dir que aquest _Value Object_ no és estríctament necessari per a la primera fase de desenvolupament, però trobo que és el més il·lustratiu per a l'explicació dels _Value Object_.

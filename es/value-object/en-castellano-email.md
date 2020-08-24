@@ -9,19 +9,20 @@ order: 1
 
 # _Value Object_: `EmailAddress`
 
-En castellano
+* TOC
+{:toc}
+
+[Consultar esta funcionalidad en _pull request_](https://github.com/rubenrubiob).
 
 Este es el primer apartado de desarrollo dentro del proyecto. Debemos empezar de lo más interno a lo más externo, de modo que la primera capa de trabajo es el Dominio. Y, dentro del Dominio, los elementos más básicos a desarrollar son los _Value Objects_.
 
-Un _Value Object_ es un objeto que se define por su valor (+ definiciones). Si no estamos familiarizados con los _Value Objects_, esta definición quizá no nos dice gran cosa, pero veremos su sentido con el primer ejemplo, el de dirección de correo electrónico.
+Un _Value Object_ es un objeto que se define por su valor. Si no estamos familiarizados con los _Value Objects_, esta definición quizá no nos dice gran cosa, pero veremos su sentido con el primer ejemplo, el de dirección de correo electrónico.
 
-Los _Value Object_ son un concepto potentísimo, especialmente para trabajar con los siempre problemáticos números flotantes (citas). Todos los atributos de nuestras entidades serán _Value Objects_, no usaremos en ningún caso tipos primitivos del lenguaje.
+Los _Value Object_ son un concepto potentísimo, especialmente para trabajar con los siempre [problemáticos números flotantes para importes monetarios](https://martinfowler.com/eaaCatalog/money.html). Todos los atributos de nuestras entidades serán _Value Objects_, no usaremos en ningún caso tipos primitivos del lenguaje.
 
-## Email
+## Problemática
 
-### Introducción
-
-Empecemos con un contraejemplo. Imaginemos que en un objeto cualquiera tenemos la siguiente definición de un método que envía una notificación a una dirección de correo electrónico de un usuario:
+Empecemos con un contraejemplo. Imaginemos que en un servicio cualquiera tenemos la siguiente definición de un método que envía una notificación a una dirección de correo electrónico de un usuario:
 
 ```php
 public function notify(string $email) : void
@@ -43,7 +44,7 @@ public function notify($email) : void
 
 Sabemos que una dirección de correo electrónico es siempre un _string_, pero no todo _string_ es una dirección de correo electrónico. Es decir, las direcciones de correo electrónico son un subconjunto de todos los _string_ existentes:
 
-(Añadir imagen)
+![](/images/value-object/diagrama-venn-email.png)
 
 Así pues, lo primero que deberíamos hacer en esta función es validar que el _string_ que nos pasan es efectivamente una dirección de correo electrónico válida, y lanzar una excepción si no lo es:
 
@@ -58,9 +59,9 @@ public function notify(string $email) : void
 }
 ```
 
-Para estar seguros, esta validación deberíamos tenerla en cada método que implementemos y que reciba un parámetro que sea una dirección de correo electrónico. Deberíamos hacer lo mismo para cualquier otro parámetro que recibamos en cada función.
+Para estar seguros, esta validación deberíamos tenerla en cada método que implementemos y que reciba un parámetro que sea una dirección de correo electrónico. Deberíamos hacer lo mismo para cualquier otro parámetro que recibamos en cada método.
 
-Ya vemos que esto nos implica una validación redundante en cada método. Además, nos añadiría caminos de test que nada tienen que ver con el método que estamos testeando.
+Ya vemos que esta aproximación nos implica una validación redundante en cada método. Además, nos añadiría caminos de test que nada tienen que ver con el método que estamos testeando: en el caso del ejemplo anterior, lo que debemos validar es que el envío de la notificación funcione, no la validación del parámetro.
 
 La solución es tener un _Value Object_, llamado por ejemplo `EmailAddress`, que podemos pasar como tipo de parámetro de los métodos:
 
@@ -73,15 +74,15 @@ public function notify(EmailAddress $email) : void
 
 De este modo, en este método sabemos con toda certeza que `$email` es de tipo `EmailAddress`. Si la construcción del objeto `EmailAddress` fallase en un punto previo de la ejecución, sería responsabilidad de esa porción de código tratar la excepción.
 
-### _Namespace_
+## _Namespace_
 
-El _Value Object_ `EmailAddress` es algo que podrá reutilizarse en diferentes partes de la aplicación: podría servir para los usuarios de la aplicación, como dato de contacto de una editorial...[^1]
+El _Value Object_ `EmailAddress` podrá reutilizarse en diferentes partes de la aplicación: podría servir como identificador para para los usuarios de la aplicación, como dato de contacto de una editorial...[^1]
 
-Así pues, este _Value Object_ lo colocaremos dentro del _namespace_ `Domain\ValueObject`, que corresponderá al directorio físico dentro del proyecto `src/Domain/ValueObject`.
+Así pues, este _Value Object_ lo colocaremos en el _namespace_ `Domain\ValueObject`, que corresponderá al directorio físico dentro del proyecto `src/Domain/ValueObject`.
 
-En la explicación del _Value Object_ de formato de una edición de un libro veremos dónde colocar _Value Objects_ que no sean genéricos y reusables para toda la aplicación.
+En la explicación del _Value Object_ de formato de una edición de un libro veremos dónde colocar _Value Objects_ que no sean genéricos, es decir, que no sean reusables en toda la aplicación.
 
-### Implementación
+## Implementación
 
 Una posible implementación del _Value Object_ `EmailAddress` podría ser la siguiente:
 
@@ -145,15 +146,15 @@ final class EmailAddress
 
 ```
 
-- Como seguimos _composition over inheritance_, todas las clases que generemos, salvo algunas excepciones, [serán declaradas como `final`](https://ocramius.github.io/blog/when-to-declare-classes-final/).
+- Como seguimos [_composition over inheritance_](https://en.wikipedia.org/wiki/Composition_over_inheritance), todas las clases que implementemos, salvo algunas excepciones, [serán declaradas como `final`](https://ocramius.github.io/blog/when-to-declare-classes-final/).
 - El constructor es privado. De este modo, forzamos a [utilizar siempre el _named constructor_](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460614781), y evitamos [casos extraños](https://twitter.com/DaveLiddament/status/1239259573493604352) que permite el lenguaje y que harían que el objeto fuese mutable.
-- Hemos añadido un método `asString`, que permite obtener el valor del objeto como un _string_. No utilizamos el método mágico `__toString` [para evitar problemas](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460441229). En otros objetos podemos tener varios métodos; por ejemplo, en un importe, podríamos tener `asString`, `asFloat`...
-- Hemos añadido un método `equalsTo`, para comparar dos _Value Object_. No es estrictamente necesario, pero es un método muy simple de crear y testear, y ayuda en el proceso de test.
-- Un _Value Object_ siempre es inmutable, de modo que hemos añadido la anotación correspondiente para _Psalm_.
+- Hemos añadido un método `asString`, que permite obtener el valor del objeto como un _string_. No utilizamos el método mágico `__toString` [para evitar problemas](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460441229). En otros objetos podemos tener diversos métodos para obtener el valor del _Value Object_; por ejemplo, en un importe monetario, podríamos tener `asString`, `asFloat`, `asInt`...
+- Hemos añadido un método `equalsTo`, para comparar dos _Value Object_ de tipo `EmailAddress`. No es estrictamente necesario, pero es un método muy simple de crear y testear, y ayuda en el proceso de test.
+- Un _Value Object_ siempre es inmutable, de modo que hemos añadido la anotación correspondiente para `Psalm`.
 - Usamos la librería [`webmozart/assert`](https://github.com/webmozart/assert), ya que simplifica mucho el proceso de validación.
-- Vemos que la excepción que lanzamos es bastante legible: `throw EmailAddressIsNotValid::withFormat`.
+- La excepción que lanzamos en caso de que el valor no sea correcta es muy legible: `throw EmailAddressIsNotValid::withFormat`.
 
-### Excepción
+## Excepción
 
 En todos los casos del Dominio en los que la ejecución no sea válida, lanzaremos una excepción específica. Para ello, deberemos crear una clase. Una posible implementación sería:
 
@@ -184,9 +185,9 @@ final class EmailAddressIsNotValid extends Exception
 ```
 
 - Siguiendo [algunas recomendaciones](https://www.nikolaposa.in.rs/assets/uploads/slides/phpbnl20/handling-exceptional-conditions/#/), creamos un _named constructor_, para generar la excepción, cosa que, además, hace más legible el código.
-- Utilizamos la librería [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que contiene las funciones de PHP pero con una API más usable que lanza excepciones en lugar de devolver `false` si la llamada es in´valida. En el caso de `sprintf`, si el número de parámetros no es válido, lanza una excepción.
+- Utilizamos la librería [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que contiene las funciones de PHP pero con una API más usable que lanza excepciones en lugar de devolver `false` si la llamada es inválida. En el caso de `sprintf`, si el número de parámetros no es válido, `Safe` lanza una excepción en lugar de devolver `false`.
 
-### Test
+## Test
 
 El test que hemos creado para este objeto es el siguiente:
 
@@ -274,10 +275,10 @@ class EmailAddressTest extends TestCase
 
 ```
 
-- Todos los nombres de los métodos de test están con *snake_case*. Es algo que uso solo en los test, puesto que uso nombres muy específicos que acaban siendo largos, y creo que [simplifica bastante la lectura](https://matthiasnoback.nl/2020/06/unit-test-naming-conventions/).
-- Testeamos en métodos aparte las excepciones que se pueden generar para el método _create_. En este caso, tenemos dos: que el _string_ que nos pasan o bien no sea una dirección de correo electrónico, o bien que sea un _string_ vacío.
+- Todos los nombres de los métodos de test están con *snake_case*. Es algo que uso solo en los test, puesto que uso nombres muy específicos que acaban siendo largos, y creo que [simplifica la lectura](https://matthiasnoback.nl/2020/06/unit-test-naming-conventions/). Existe también la [opción de utilizar carácteres transparentes](https://github.com/brefphp/bref/blob/41c634f151d13d30ac323e5d2d78d383bdcc971e/tests/Sam/PhpFpmRuntimeTest.php#L26), pero me resulta más complicado escribir el código.
+- Testeamos en métodos separados las excepciones que se pueden generar en el método `create`. En este caso, tenemos dos: que el _string_ que nos pasan o bien no sea una dirección de correo electrónico, o bien que sea un _string_ vacío.
 - Aunque no es estríctamente necesario, testeamos la creación correcta del objeto y el uso del método `asString`, para que Infection nos valide correctamente la visibilidad del método.
 - Usamos un [_Data provider_](https://phpunit.readthedocs.io/en/9.3/writing-tests-for-phpunit.html#data-providers) para el test de `equalsTo`.
 
 
-[^1]: Cabe aclarar que este _Value Object_ no es estrictamente necesario para la primera fase de desarrollo, pero seguramente sea el más ilustrativo para la explicación sobre qué es un _Value Object_.
+[^1]: Cabe aclarar que este _Value Object_ no es estrictamente necesario para la primera fase de desarrollo, pero creo que es el más ilustrativo para la explicación de los _Value Object_.
