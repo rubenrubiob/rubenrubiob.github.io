@@ -19,9 +19,9 @@ Para instalar Symfony, lo mejor es seguir la [guía oficial de instalación](htt
 
 ## 2. Añadir el fichero `.editorconfig`
 
-Este fichero sirve para que todo aquel que trabaje en el proyecto tenga la misma configuración de espaciado, tabulación, saltos de línea y codificación —siempre y cuando su editor soporte este tipo de ficheros. De este modo, todo el mundo tiene la misma configuración evitamos mezclar estilos que dependen en muchas ocasiones del sistema operativo.
+Este fichero sirve para que todo aquel que trabaje en el proyecto tenga la misma configuración de espaciado, tabulación, saltos de línea y codificación —siempre y cuando el editor soporte este tipo de ficheros. De este modo, todo el mundo tiene la misma configuración evitamos mezclar estilos que dependen en muchas ocasiones del sistema operativo.
 
-El contenido del fichero está basado en esta [guía de Tomas Votruba](https://www.tomasvotruba.com/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository/).
+El contenido del fichero está basado en la [guía de Tomas Votruba](https://www.tomasvotruba.com/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository/).
 
 ```
 # .editorconfig
@@ -38,7 +38,7 @@ indent_size = 4
 
 ## 3. _Doctrine coding standard_
 
-Para el proyecto utilizaremos los [estilos de código de Doctrine](https://www.doctrine-project.org/projects/doctrine-coding-standard/en/8.1/reference/index.html), que son más estrictos. Para instalarlos en el proyecto usando [CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer), basta ejecutar:
+Para el proyecto utilizaremos los [estilos de código de Doctrine](https://www.doctrine-project.org/projects/doctrine-coding-standard/en/8.1/reference/index.html), que son los más estrictos que hay en PHP. Para instalarlos en el proyecto usando [CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer), basta ejecutar:
 
 ```bash
 composer require --dev doctrine/coding-standard
@@ -48,7 +48,7 @@ En PHPStorm se configuran automáticamente para Mac y Linux, pero se puede segui
 
 ## 4. _Apache Pack_
 
-Como para las pruebas de este proyecto se utilizará Apache, para que funcionen las rutas de Symfony hay que instalar el pack de Apache:
+Como para las pruebas de este proyecto se utilizará Apache, para que funcionen las rutas de Symfony hay que instalar el [pack de Apache](https://github.com/symfony/apache-pack):
 
 ```
 composer require apache-pack
@@ -56,7 +56,7 @@ composer require apache-pack
 
 ## 5. Configurar Symfony para usar arquitectura hexagonal
 
-Usaremos la siguiente estructura de directorios para implementar arquitectura hexagonal:
+Siguiendo lo que se explica en la [introducción](https://rubenrubiob.github.io/es/), usaremos la siguiente estructura de directorios para implementar arquitectura hexagonal:
 
 ```bash
 ├── src
@@ -131,7 +131,7 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
          },
     ```
 
-4. Actualizar el namespace del _Kernel_ en el fichero `bin/console`:
+4. Actualizar el _namespace_ del _Kernel_ en el fichero `bin/console`:
 
     ```diff
      #!/usr/bin/env php
@@ -142,7 +142,7 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
      use Symfony\Bundle\FrameworkBundle\Console\Application;
     ```
 
-5. Actualizar el namespace del _Kernel_ en el fichero `public/index.php`:
+5. Actualizar el _namespace_ del _Kernel_ en el fichero `public/index.php`:
 
     ```diff
      <?php
@@ -243,11 +243,11 @@ composer require --dev infection/infection
 
 ### 6.3. Analizadores estáticos de código
 
-PHP es un lenguaje débilmente tipado, es decir, las variables no tienen un tipo fijo. Estoy conduce a múltiples errores a la hora de programar. Para analizar nuestro código con los tipos correctos, podemos usar librerías. En este proyecto usaremos dos que son complementarias, [psalm](https://psalm.dev/) y [PHPStan](https://phpstan.org).
+PHP es un lenguaje débilmente tipado, es decir, las variables no tienen un tipo fijo. Esto conduce a múltiples errores a la hora de programar. Para analizar nuestro código con los tipos correctos, podemos usar librerías. En este proyecto usaremos dos, que son complementarias: [Psalm](https://psalm.dev/) y [PHPStan](https://phpstan.org).
 
 #### 6.3.1. Psalm
 
-La instalamos con composer:
+La instalamos con `composer`:
 
 ```bash
 composer require vimeo/psalm:"dev-master"

@@ -13,15 +13,15 @@ pull-request: 1
 * TOC
 {:toc}
 
-## 1. Instalar Symfony
+## 1. Instal·lar Symfony
 
-Para instalar Symfony, lo mejor es seguir la [guía oficial de instalación](https://symfony.com/doc/current/setup.html).
+Per a instal·lar Symfony, el millor és seguir la [guia oficial d'instal·lació](https://symfony.com/doc/current/setup.html).
 
-## 2. Añadir el fichero `.editorconfig`
+## 2. Afegir el fitxer `.editorconfig`
 
-Este fichero sirve para que todo aquel que trabaje en el proyecto tenga la misma configuración de espaciado, tabulación, saltos de línea y codificación —siempre y cuando su editor soporte este tipo de ficheros. De este modo, todo el mundo tiene la misma configuración evitamos mezclar estilos que dependen en muchas ocasiones del sistema operativo.
+Aquest fitxer serveix perquè tothom qui treballi al projecte tingui la mateixa configuració d'espaiat, tabulat, salts de línia i codificació —sempre que l'editor suporti aquest tipus de fitxers. D'aquesta manera, tothom té la mateixa configuració i evitem barrejar estils que en moltes ocasions depenen del sistema operatiu.
 
-El contenido del fichero está basado en esta [guía de Tomas Votruba](https://www.tomasvotruba.com/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository/).
+El contingut del fitxer està basat en la [guia de Tomas Votruba](https://www.tomasvotruba.com/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository/).
 
 ```
 # .editorconfig
@@ -38,25 +38,25 @@ indent_size = 4
 
 ## 3. _Doctrine coding standard_
 
-Para el proyecto utilizaremos los [estilos de código de Doctrine](https://www.doctrine-project.org/projects/doctrine-coding-standard/en/8.1/reference/index.html), que son más estrictos. Para instalarlos en el proyecto usando [CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer), basta ejecutar:
+Al projecte farem servir els [estils de codi de Doctrine](https://www.doctrine-project.org/projects/doctrine-coding-standard/en/8.1/reference/index.html), que són els més estrictes que hi ha a PHP. Per a instal·lar-los al projecte utilitzant [CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer), n'hi ha prou amb executar:
 
 ```bash
 composer require --dev doctrine/coding-standard
 ```
 
-En PHPStorm se configuran automáticamente para Mac y Linux, pero se puede seguir [su guía](https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html) si hay algún problema.
+A PHPStorm es configuren automàticament per a Mac i Linux, però es pot seguir [la seva guia](https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html) si hi ha cap problema.
 
 ## 4. _Apache Pack_
 
-Como para las pruebas de este proyecto se utilizará Apache, para que funcionen las rutas de Symfony hay que instalar el pack de Apache:
+Per a les proves d'aquest projecte s'utilitzarà Apache, de manera que cal instal·lar el [pack d'Apache](https://github.com/symfony/apache-pack) perquè funcionin les rutes de Symfony:
 
 ```
 composer require apache-pack
 ```
 
-## 5. Configurar Symfony para usar arquitectura hexagonal
+## 5. Configurar Symfony per utilitzar arquitectura hexagonal
 
-Usaremos la siguiente estructura de directorios para implementar arquitectura hexagonal:
+Seguint el que s'explica a la [introducció](https://rubenrubiob.github.io/ca/), farem servir la següent estructura de directoris per implementar arquitectura hexagonal:
 
 ```bash
 ├── src
@@ -66,16 +66,16 @@ Usaremos la siguiente estructura de directorios para implementar arquitectura he
 │   └── Ui
 ```
 
-Así pues, hay que hacer algunos cambios de configuración en el esquema de directorios que por defecto viene en la instalación de Symfony.
+Així doncs, cal fer alguns canvis de configuració a l'esquema de directoris que per defecte ve amb la instal·lació de Symfony:
 
-1. Eliminar archivos y directorios que no necesitaremos:
+1. Eliminar arxius i directoris que no necessitarem:
 	- `bin/phpunit`
 	- `config/routes/annotations.yaml`
 	- `src/Controller/`
 	- `src/Entity/`
 	- `src/Repository/`
-2. Mover el fichero `src/Kernel.php` a `src/Infrastructure/Kernel/Symfony/Kernel.php`
-3. Actualizar el fichero `src/Infrastructure/Kernel/Symfony/Kernel.php` para que quede:
+2. Moure el fitxer `src/Kernel.php` a `src/Infrastructure/Kernel/Symfony/Kernel.php`
+3. Actualitzar el fitxer `src/Infrastructure/Kernel/Symfony/Kernel.php` perquè quedi:
 
 	```php
 	<?php
@@ -120,7 +120,7 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
 	
 	```
 
-4. Actualizar el _autoloading_ PSR-4 de `composer.json`:
+4. Actualitzar l'_autoloading_ PSR-4 de `composer.json`:
 
     ```diff
          "autoload": {
@@ -131,7 +131,7 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
          },
     ```
 
-4. Actualizar el namespace del _Kernel_ en el fichero `bin/console`:
+4. Actualitzar el _namespace_ del _Kernel_ al fitxer `bin/console`:
 
     ```diff
      #!/usr/bin/env php
@@ -142,7 +142,7 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
      use Symfony\Bundle\FrameworkBundle\Console\Application;
     ```
 
-5. Actualizar el namespace del _Kernel_ en el fichero `public/index.php`:
+5. Actualitzar el _namespace_ del _Kernel_ al fitxer `public/index.php`:
 
     ```diff
      <?php
@@ -153,7 +153,7 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
      use Symfony\Component\HttpFoundation\Request;
     ```
 
-6. Mover la configuración de servicios de `config/services.yaml` a cada carpeta de la arquitectura (de momento, sólo tenemos `infrastructure`):
+6. Moure la configuració de serveis de `config/services.yaml` a cada carpeta de l'arquitectura (de moment, només tenim `infrastructure`):
 
     ```diff
 	-# This file is the entry point to configure your own services.
@@ -191,7 +191,7 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
 	+    - { resource: 'services/' }
     ```
     
-7. Añadir el fichero `config/services/infrastructure.yaml` con el siguiente contenido:
+7. Afegir el fitxer `config/services/infrastructure.yaml` amb el contingut següent:
 
 	```php
 	services:
@@ -204,7 +204,7 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
 
 	```
 
-8. Eliminar la configuración de entidades de Doctrine del fichero `config/packages/doctrine.yaml`:
+8. Eliminar la configuració d'entitats de Doctrine del fitxer `config/packages/doctrine.yaml`:
 
 	```diff
 	         auto_generate_proxy_classes: true
@@ -219,15 +219,15 @@ Así pues, hay que hacer algunos cambios de configuración en el esquema de dire
 	-                alias: App
 	```
 
-## 6. Librerías
+## 6. Llibreries
 
-Para el desarrollo del proyecto utilizaremos algunas librerías adicionales, como herramientas de test o analizadores estáticos de código.
+Pel desenvolupament del projecte utilitzarem algunes llibreries addicionals, com eines de test o analitzadors estàtics de codi.
 
-Al final, añadiremos unos comandos de `composer` para poder ejecutar estas herramientas fácilmente.
+Al final, afegirem unes comandes de `composer` per a poder executar aquestes eines de manera senzilla.
 
 ### 6.1. PHPUnit
 
-Para escribir nuestros tests utilizaremos [PHPUnit](https://phpunit.de/):
+Pels nostres tests, farem servir [PHPUnit](https://phpunit.de/):
 
 ```bash
 composer require --dev phpunit/phpunit ^9
@@ -235,25 +235,25 @@ composer require --dev phpunit/phpunit ^9
 
 ### 6.2. Infection
 
-Para saber si nuestros tests funcionan o no usaremos mutación de tests. En PHP, lo haremos con la librería [Infection](https://infection.github.io/):
+Per saber si els nostres tests funcionen o no, farem servir mutació de tests. A PHP, utilitzarem la llibreria [Infection](https://infection.github.io/):
 
 ```
 composer require --dev infection/infection
 ```
 
-### 6.3. Analizadores estáticos de código
+### 6.3. Analitzadors estàtics de codi
 
-PHP es un lenguaje débilmente tipado, es decir, las variables no tienen un tipo fijo. Estoy conduce a múltiples errores a la hora de programar. Para analizar nuestro código con los tipos correctos, podemos usar librerías. En este proyecto usaremos dos que son complementarias, [psalm](https://psalm.dev/) y [PHPStan](https://phpstan.org).
+PHP és un llenguatge feblement tipat, és a dir, les variables no tenen un tipus fixe. Això provoca molts errors a l'hora de programar. Per analitzar el nostre codi amb tipus correctes, podem fer servir llibreries. En aquest projecte, en farem servir dues que són complementàries [Psalm](https://psalm.dev/) i [PHPStan](https://phpstan.org).
 
 #### 6.3.1. Psalm
 
-La instalamos con composer:
+L'instal·lem amb `composer`:
 
 ```bash
 composer require vimeo/psalm:"dev-master"
 ```
 
-Y añadimos el fichero de configuración `psalm.xml` a la raíz de nuestro proyecto:
+I afegim el fitxer de configuració `psalm.xml` a l'arrel del nostre projecte:
 
 ```xml
 <?xml version="1.0"?>
@@ -275,7 +275,7 @@ Y añadimos el fichero de configuración `psalm.xml` a la raíz de nuestro proye
 </psalm>
 ```
 
-Para realizar el análisis, simplemente ejecutaremos:
+Per a analitzar el codi, simplement executarem:
 
 ```bash
 vendor/bin/psalm
@@ -283,13 +283,13 @@ vendor/bin/psalm
 
 #### 6.3.2. PHPStan
 
-La instalamos con composer:
+L'instal·lem amb `composer`:
 
 ```bash
 composer require phpstan/phpstan
 ```
 
-Y añadimos el fichero de configuración `phpstan.neon.dist` a la raíz de nuestro proyecto:
+I afegim el fitxer de configuració `phpstan.neon.dist` a l'arrel del nostre projecte:
 
 ```neon
 parameters:
@@ -299,7 +299,7 @@ parameters:
 		- tests
 ```
 
-Para realizar el análisis, simplemente ejecutaremos:
+Per a analitzar el codi, simplement executarem:
 
 ```bash
 vendor/bin/phpstan analyse
@@ -307,7 +307,7 @@ vendor/bin/phpstan analyse
 
 ### _Scripts_ de `composer`
 
-Al fichero `composer.json` añadimos:
+Al fitxer `composer.json` hi afegim:
 
 ```diff
          ],
@@ -324,7 +324,7 @@ Al fichero `composer.json` añadimos:
          "symfony/symfony": "*"
 ```
 
-Así, podremos lanzar desde consola los siguientes comandos para ejecutar las diferentes librerías:
+D'aquesta manera, podrem llençar des de consola les següents comandes per a executar les diferents llibreries:
 
 ```
 composer infection
