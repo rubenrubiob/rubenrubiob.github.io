@@ -11,7 +11,7 @@ layout: default
   <div class="entry">
     {% assign content_pages=site.pages | where:"is-content-page", true | sort: 'order' %}
     {% assign content_pages=content_pages | where: "lang", page.lang  %}
-    <ol>
+    <ol start="0">
     {% for content_page in content_pages %}
       <li>
         <a href="{{ site.baseurl }}{{ content_page.url }}">
