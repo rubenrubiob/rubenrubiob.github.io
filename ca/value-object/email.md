@@ -1,18 +1,17 @@
 ---
 lang: ca
 lang-ref: value-object-email-address
-tags: [value-object, email]
+tags: [domain,value-object, email]
 is-content-page: true
 layout: content-page
 order: 1
+pull-request: 2
 ---
 
 # _Value Object_: `EmailAddress`
 
 * TOC
 {:toc}
-
-[Consultar aquesta funcionalitat al _pull request_](https://github.com/rubenrubiob).
 
 Aquest és el primer apartat de desenvolupament dins del projecte. Hem de començar de la capa més interna a la més externa, de manera que la primera capa que hem de desenvolupar és la de Domini. I, dins del Domini, els elements més bàsics a desenvolupar són els _Value Objects_.
 
@@ -44,7 +43,7 @@ Com sabem que el valor de `$email` és realment un _string_ amb una adreça de c
 
 Sabem que una adreça de correu electrònic és sempre un _string_, però no tot _string_ és una adreça de correu electrònic. És a dir, les adreces de correu electrònic són un subconjunt de tots els _string_ existents:
 
-![](/images/value-object/diagrama-venn-email.png)
+![](/images/value-object/diagrama-venn-email.png){:height="50%" width="50%"}
 
 Així doncs, el primer que hauríem de fer a aquesta funció és validar que l'_string_ que ens arriba és efectivament una adreça de correu electrònic, i llançar una excepció en cas que no ho sigui:
 

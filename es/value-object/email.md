@@ -1,18 +1,17 @@
 ---
 lang: es
 lang-ref: value-object-email-address
-tags: [value-object,email]
+tags: [domain,value-object,email]
 is-content-page: true
 layout: content-page
 order: 1
+pull-request: 2
 ---
 
 # _Value Object_: `EmailAddress`
 
 * TOC
 {:toc}
-
-[Consultar esta funcionalidad en _pull request_](https://github.com/rubenrubiob).
 
 Este es el primer apartado de desarrollo dentro del proyecto. Debemos empezar de lo más interno a lo más externo, de modo que la primera capa de trabajo es el Dominio. Y, dentro del Dominio, los elementos más básicos a desarrollar son los _Value Objects_.
 
@@ -44,7 +43,7 @@ public function notify($email) : void
 
 Sabemos que una dirección de correo electrónico es siempre un _string_, pero no todo _string_ es una dirección de correo electrónico. Es decir, las direcciones de correo electrónico son un subconjunto de todos los _string_ existentes:
 
-![](/images/value-object/diagrama-venn-email.png)
+![](/images/value-object/diagrama-venn-email.png){:height="50%" width="50%"}
 
 Así pues, lo primero que deberíamos hacer en esta función es validar que el _string_ que nos pasan es efectivamente una dirección de correo electrónico válida, y lanzar una excepción si no lo es:
 
