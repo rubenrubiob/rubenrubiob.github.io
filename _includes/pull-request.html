@@ -1,0 +1,7 @@
+{% if page.pull-request %}
+<div class="chip">
+    <a href="{{ site.pull_request_url_prefix }}{{ page.pull-request }}" target="_blank">
+        {{ site.data.translations['pull_request.link'][page.lang] }}
+    </a>
+</div>
+{% endif %}

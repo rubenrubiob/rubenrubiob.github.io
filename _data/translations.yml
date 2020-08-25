@@ -16,3 +16,6 @@ menu.search:
 search.placeholder:
   ca: "Cercar als continguts..."
   es: "Buscar en los contenidos..."
+pull_request.link:
+  ca: "Consultar el codi"
+  es: "Consultar el código"
