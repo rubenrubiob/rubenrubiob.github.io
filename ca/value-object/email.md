@@ -81,8 +81,6 @@ Així doncs, aquest _Value Object_ el situarem al _namespace_ `Domain\ValueObjec
 
 A l'explicació del _Value Object_ del format de l'edició d'un llibre veurem on situar _Value Objects_ que no siguin genèrics, és a dir, que no siguin reutilitzables a tota l'aplicació.
 
-En la explicación del _Value Object_ de formato de una edición de un libro veremos dónde colocar _Value Objects_ que no sean genéricos y reusables para toda la aplicación.
-
 ## Implementació
 
 Una possible implementació del _Value Object_ `EmailAddress` podria ser la següent:
@@ -150,9 +148,8 @@ final class EmailAddress
 - Com que seguim [_composition over inheritance_](https://en.wikipedia.org/wiki/Composition_over_inheritance), totes les classes que implementem, excepte algunes excepcions, [seran declarades com a `final`](https://ocramius.github.io/blog/when-to-declare-classes-final/).
 - El constructor és privat. D'aquesta manera, obliguem a [fer servir sempre el _named constructor_](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460614781) i evitem [casos estranys](https://twitter.com/DaveLiddament/status/1239259573493604352) que permet el llenguatge i que farien que l'objecte fos mutable.
 - Hem afegit un mètode `asString`, que permet obtenir el valor de l'objecte com un _string_. No fem servir el mètode màgic `__toString` [per a evitar problemes](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460441229). A altres objectes podem tenir diversos mètodes diferents per a obtenir el valor del _Value Object_; per exemple, en un import monetari podríem tenir `asString`, `asFloat`, `asInt`...
-- Hem afegit un mètode `equalsTo` per a comparar dos _Value Object_ de tipus `EmailAddress`. No és un mètode estríctament necessari, però és un mètode molt senzill de crear i testejar, i ajuda molt al procés de test.
+- Hem afegit un mètode `equalsTo` per a comparar dos _Value Object_ de tipus `EmailAddress`. No és un mètode estrictament necessari, però és un mètode molt senzill de crear i testejar, i ajuda molt al procés de test.
 - Un _Value Object_ sempre és immutable, de manera que hem afegit l'anotació corresponent per a `Psalm`.
-- Un _Value Object_ siempre es inmutable, de modo que hemos añadido la anotación correspondiente para _Psalm_.
 - Fem servir la llibreria [`webmozart/assert`](https://github.com/webmozart/assert), ja que simplifica molt el procés de validació.
 - L'excepció que llencem en cas que el valor no sigui correcte és molt llegible: `throw EmailAddressIsNotValid::withFormat`.
 
@@ -187,7 +184,7 @@ final class EmailAddressIsNotValid extends Exception
 ```
 
 - Seguint [algunes recomanacions](https://www.nikolaposa.in.rs/assets/uploads/slides/phpbnl20/handling-exceptional-conditions/#/), creem un _named constructor_ per a generar l'excepció, cosa que, a més a més, fa més llegible el codi.
-- Fem servir la llibreria [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que conté les funcions de PHP però amb una API més usable, que llença excepcions en lloc de retornar `false` si la crida és invàlida. En el cas de `sprintf`, si el número de paràmetres no és vàlid, `Safe` llença una excepció en comptes de retornar `false`.
+- Fem servir la llibreria [thecodingmachine/safe](https://github.com/thecodingmachine/safe), que conté les funcions de PHP però amb una API més usable, que llença excepcions en lloc de retornar `false` si la crida és invàlida. En el cas de `sprintf`, si el nombre de paràmetres no és vàlid, `Safe` llença una excepció en comptes de retornar `false`.
 
 ## Test
 
@@ -278,8 +275,8 @@ class EmailAddressTest extends TestCase
 ```
 
 - Tots els noms dels mètodes de test estan en format *snake_case*. És una cosa que només faig servir als tests, donat que els noms són molt específics i acaben essent molt llargs, i crec que en [simplifica la lectura](https://matthiasnoback.nl/2020/06/unit-test-naming-conventions/). També existeix [l'opció d'utilitzar caràcters transparents](https://github.com/brefphp/bref/blob/41c634f151d13d30ac323e5d2d78d383bdcc971e/tests/Sam/PhpFpmRuntimeTest.php#L26), però em resulta més complicat escriure el codi.
-- Testejem en mètodes separats les excepcions que es poden generar al mètode `create`. En aquest cas, en tenim dues: que l'_string_ que ens passin o bé no sigui una adreça de correu electrònic, o bé que sigui buit.
-- Tot i no ser estríctament necessari, testejem la creació correcta de l'objecte i l'ús del mètode `asString`, perquè `Infection` validi correctament la visibilitat del mètode.
+- Testegem en mètodes separats les excepcions que es poden generar al mètode `create`. En aquest cas, en tenim dues: que l'_string_ que ens passin o bé no sigui una adreça de correu electrònic, o bé que sigui buit.
+- Tot i no ser estrictament necessari, testegem la creació correcta de l'objecte i l'ús del mètode `asString`, perquè `Infection` validi correctament la visibilitat del mètode.
 - Fem servir un [_Data provider_](https://phpunit.readthedocs.io/en/9.3/writing-tests-for-phpunit.html#data-providers) pel test de `equalsTo`.
 
 

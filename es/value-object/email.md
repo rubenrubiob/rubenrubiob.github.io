@@ -75,11 +75,11 @@ De este modo, en este método sabemos con toda certeza que `$email` es de tipo `
 
 ## _Namespace_
 
-El _Value Object_ `EmailAddress` podrá reutilizarse en diferentes partes de la aplicación: podría servir como identificador para para los usuarios de la aplicación, como dato de contacto de una editorial...[^1]
+El _Value Object_ `EmailAddress` podrá reutilizarse en diferentes partes de la aplicación: podría servir como identificador para los usuarios de la aplicación, como dato de contacto de una editorial...[^1]
 
 Así pues, este _Value Object_ lo colocaremos en el _namespace_ `Domain\ValueObject`, que corresponderá al directorio físico dentro del proyecto `src/Domain/ValueObject`.
 
-En la explicación del _Value Object_ de formato de una edición de un libro veremos dónde colocar _Value Objects_ que no sean genéricos, es decir, que no sean reusables en toda la aplicación.
+En la explicación del _Value Object_ de formato de una edición de un libro veremos dónde colocar _Value Objects_ que no sean genéricos, es decir, que no sean reutilizable en toda la aplicación.
 
 ## Implementación
 
@@ -151,7 +151,7 @@ final class EmailAddress
 - Hemos añadido un método `equalsTo`, para comparar dos _Value Object_ de tipo `EmailAddress`. No es estrictamente necesario, pero es un método muy simple de crear y testear, y ayuda en el proceso de test.
 - Un _Value Object_ siempre es inmutable, de modo que hemos añadido la anotación correspondiente para `Psalm`.
 - Usamos la librería [`webmozart/assert`](https://github.com/webmozart/assert), ya que simplifica mucho el proceso de validación.
-- La excepción que lanzamos en caso de que el valor no sea correcta es muy legible: `throw EmailAddressIsNotValid::withFormat`.
+- La excepción que lanzamos en caso de que el valor no sea correcta es legible: `throw EmailAddressIsNotValid::withFormat`.
 
 ## Excepción
 
@@ -274,9 +274,9 @@ class EmailAddressTest extends TestCase
 
 ```
 
-- Todos los nombres de los métodos de test están con *snake_case*. Es algo que uso solo en los test, puesto que uso nombres muy específicos que acaban siendo largos, y creo que [simplifica la lectura](https://matthiasnoback.nl/2020/06/unit-test-naming-conventions/). Existe también la [opción de utilizar carácteres transparentes](https://github.com/brefphp/bref/blob/41c634f151d13d30ac323e5d2d78d383bdcc971e/tests/Sam/PhpFpmRuntimeTest.php#L26), pero me resulta más complicado escribir el código.
+- Todos los nombres de los métodos de test están con *snake_case*. Es algo que uso solo en los test, puesto que uso nombres muy específicos que acaban siendo largos, y creo que [simplifica la lectura](https://matthiasnoback.nl/2020/06/unit-test-naming-conventions/). Existe también la [opción de utilizar caracteres transparentes](https://github.com/brefphp/bref/blob/41c634f151d13d30ac323e5d2d78d383bdcc971e/tests/Sam/PhpFpmRuntimeTest.php#L26), pero me resulta más complicado escribir el código.
 - Testeamos en métodos separados las excepciones que se pueden generar en el método `create`. En este caso, tenemos dos: que el _string_ que nos pasan o bien no sea una dirección de correo electrónico, o bien que sea un _string_ vacío.
-- Aunque no es estríctamente necesario, testeamos la creación correcta del objeto y el uso del método `asString`, para que Infection nos valide correctamente la visibilidad del método.
+- Aunque no es estrictamente necesario, testeamos la creación correcta del objeto y el uso del método `asString`, para que Infection nos valide correctamente la visibilidad del método.
 - Usamos un [_Data provider_](https://phpunit.readthedocs.io/en/9.3/writing-tests-for-phpunit.html#data-providers) para el test de `equalsTo`.
 
 
