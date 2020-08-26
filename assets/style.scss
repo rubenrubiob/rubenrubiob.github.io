@@ -661,7 +661,7 @@ Modules - reusable parts of our design
 }
 
 .chip {
-    display: inline-block;
+    text-align: center;
     height: 32px;
     font-size: 14px;
     font-weight: 500;
@@ -764,6 +764,7 @@ Modules - reusable parts of our design
 .post-tags {
   text-align: center;
   line-height: 35px;
+  margin-bottom: 10px;
 }
 
 .post-tags a {

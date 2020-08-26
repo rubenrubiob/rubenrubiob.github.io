@@ -1,6 +1,7 @@
 theme: jekyll-theme-tactile
 lang: es 
 languages: ["es", "ca"]
+pull_request_url_prefix: https://github.com/rubenrubiob/gestor-libros/pull/
 
 titles_from_headings:
   enabled:     true
@@ -13,13 +14,13 @@ titles_from_headings:
 #
 
 # Name of your site (displayed in the header)
-name: DDDHPHP
+name: GLH
 
 # Name of the author
 author: Rubén Rubio
 
 # Short bio or description (displayed in the header)
-description: DDD + hexagonal in PHP
+description: Gestor Libros - hexagonal PHP
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 #avatar: /images/reverie.png

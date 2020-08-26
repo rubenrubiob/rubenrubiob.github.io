@@ -1,17 +1,15 @@
 {% if page.is-content-page or page.is-content-list-page %}
     {% assign content_pages=site.pages | where:"lang-ref", page.lang-ref | sort: 'lang' %}
     {% if content_pages.size > 0 %}
-    <div class="lang-options">
         {% for content_page in content_pages %}
             {% if content_page.lang != page.lang %}
-                <em>
+                <div class="chip">
                     <a href="{{ site.baseurl }}{{ content_page.url }}" class="{{ content_page.lang }}"
                        title="{{ site.data.translations['differentLanguage'][page.lang] }}">
                         {{ site.data.translations['differentLanguage'][page.lang] }}
                     </a>
-                </em>
+                </div>
             {% endif %}
         {% endfor %}
-    </div>
     {% endif %}
 {% endif %}

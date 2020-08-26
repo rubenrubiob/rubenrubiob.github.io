@@ -16,3 +16,9 @@ menu.search:
 search.placeholder:
   ca: "Cercar als continguts..."
   es: "Buscar en los contenidos..."
+pull_request.link:
+  ca: "Consultar el codi"
+  es: "Consultar el código"
+site.description:
+  ca: "Gestor LLibres - hexagonal PHP"
+  es: "Gestor Libros - hexagonal PHP"
