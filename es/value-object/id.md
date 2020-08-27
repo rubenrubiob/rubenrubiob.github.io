@@ -10,7 +10,7 @@ pull-request: 3
 
 # _Value Object_: Id
 
-## Problemática
+## Introducción
 
 Para nuestras entidades necesitaremos un identificador. El funcionamiento tradicional en las aplicaciones web consistía en utilizar como identificador un número entero autoincremental que nos proporcionaba la base de datos. De este modo, cada tabla tenía su propia ristra de identificadores.
 
