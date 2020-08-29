@@ -19,7 +19,7 @@ Un _Value Object_ es un objeto que se define por su valor. Si no estamos familia
 
 Los _Value Object_ son un concepto potentísimo, especialmente para trabajar con los siempre [problemáticos números flotantes para importes monetarios](https://martinfowler.com/eaaCatalog/money.html). Todos los atributos de nuestras entidades serán _Value Objects_, no usaremos en ningún caso tipos primitivos del lenguaje.
 
-## Problemática
+## Introducción
 
 Empecemos con un contraejemplo. Imaginemos que en un servicio cualquiera tenemos la siguiente definición de un método que envía una notificación a una dirección de correo electrónico de un usuario:
 
