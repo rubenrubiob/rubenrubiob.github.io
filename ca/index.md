@@ -77,7 +77,7 @@ Per a aquestes dades, tindrem les següents restriccions:
     - L'any 0 no existeix al nostre calendari.
 - Apel·latiu:
     - Ha de ser traduïble. Safo té el mateix nom en català i en castellà, però no en anglès, on s'escriu _Sappho_.
-    - Pot ser que no tinguem cognom de l'autor. Podem fer servir aquest camp pel denominatiu d'alguns autors, com Cristina de Pizan.
+    - Pot ser que no tinguem cognom de l'autor. Podem fer servir aquest camp pel toponímic d'alguns autors, com Cristina de Pizan.
     - El pseudònim és el nom pel qual es coneix l'autor. Per exemple, el pseudònim d'Arístocles d'Atenes és Plató.
 
 ### Llibre

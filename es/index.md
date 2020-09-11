@@ -76,7 +76,7 @@ Tendremos las siguientes restricciones para dicha información:
     - El año 0 no existe en nuestro calendario.
 - Apelativo:
     - Ha de ser traducible. Safo tiene el mismo nombre en catalán y en castellano, pero no así en inglés, idioma en el que se escribe _Sappho_.
-    - Puede que no tengamos apellido del autor. Podemos utilizar este campo para el denominativo en algunos autores, como para Cristina de Pizán.
+    - Puede que no tengamos apellido del autor. Podemos utilizar este campo para el toponímico en algunos autores, como para Cristina de Pizán.
     - El pseudónimo es el nombre por el cual se conoce al autor. Así por ejemplo, el seudónimo de Aristócles de Atenas es Platón.
 
 ### Libro
