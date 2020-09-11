@@ -15,7 +15,7 @@ pull-request: 5
 A continuación implementaremos el _Value Object_ que nos servirá para representar el nombre con el que se conoce a un autor. Recordemos las restricciones que teníamos según la [definición de la introducción](https://rubenrubiob.github.io/es/#autor):
 
 - Ha de ser traducible. Safo tiene el mismo nombre en catalán y en castellano, pero no así en inglés, idioma en el que se escribe _Sappho_.
-- Puede que no tengamos apellido del autor. Podemos utilizar este campo para el denominativo en algunos autores, como para Cristina de Pizán.
+- Puede que no tengamos apellido del autor. Podemos utilizar este campo para el toponímico en algunos autores, como para Cristina de Pizán.
 - El pseudónimo es el nombre por el cual se conoce al autor. Así por ejemplo, el seudónimo de Aristócles de Atenas es Platón.
 
 Se puede hacer una crítica a estas restricciones diciendo que son eurocentristas, porque pensamos en utilizar nombre y apellido, que no existen en todas las culturas; y la crítica sería acertada. Sin embargo, la edición de libros tal como la conocemos hoy en día nació en Europa y, por tanto, las referencias bibliográficas se basan justamente en este modelo cultural, ya que los formatos requieren especificar nombre y apellidos del autor por separado.
@@ -24,7 +24,7 @@ Así pues, como debemos dar cabida tanto a autores propiamente occidentales como
 
 - `Alias`: es como se conoce popularmente al autor. Con este campo, cubrimos todos los casos:
     - Los casos en que desconocemos nombre y apellidos del autor, como Homero.
-    - Los casos en que se conoce al autor por su denominativo, como Cristina de Pizán.
+    - Los casos en que se conoce al autor por su toponímico, como Cristina de Pizán.
     - Los casos en que el autor utiliza un pseudónimo diferente a su nombre. Tenemos los casos de Caterina Albert, que publicaba como Víctor Català, o de Aristocles de Atenas, que era conocido como Platón.
 - `Nombre`: es el nombre del autor. Como puede ser que lo desconozcamos, es un campo que podrá ser `null`.
 - `Apellido`: es el apellido o apellidos del autor. Como puede ser que lo desconozcamos, es un campo que podrá ser `null`.

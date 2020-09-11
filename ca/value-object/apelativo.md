@@ -15,7 +15,7 @@ pull-request: 5
 A continuació implementarem el _Value Object_ que ens servirà per a representar el nom amb què es coneix un autor. Recordem les restriccions que teníem segons la [definició de la introducció](https://rubenrubiob.github.io/ca/#autor):
 
 - Ha de ser traduïble. Safo té el mateix nom en català i en castellà, però no en anglès, on s’escriu _Sappho_.
-- Pot ser que no tinguem cognom de l’autor. Podem fer servir aquest camp pel denominatiu d’alguns autors, com Cristina de Pizan.
+- Pot ser que no tinguem cognom de l’autor. Podem fer servir aquest camp pel toponímic d’alguns autors, com Cristina de Pizan.
 - El pseudònim és el nom pel qual es coneix l’autor. Per exemple, el pseudònim d’Arístocles d’Atenes és Plató.
 
 És possible fer una crítica a aquestes restriccions dient que són eurocentristes, perquè pensem a fer servir nom i cognoms, que no existeixen a totes les cultures; i la crítica seria encertada. Això no obstant, l'edició de llibres tal com la coneixem actualment va néixer a Europa i, per tant, les referències bibliogràfiques es basen justament en aquest model cultural, ja que els formats requereixen especificar nom i cognoms de l'autor per separat.
@@ -24,7 +24,7 @@ Així doncs, com que hem de donar cabuda tant a autors pròpiament occidentals c
 
 - `Alias`: és com es coneix popularment l'autor. Amb aquest camp, cobrim tots els casos:
     - Els casos en què desconeixem nom i cognoms de l'autor, com Homer.
-    - Els casos en què es coneix l'autor pel seu denominatiu, com Cristina de Pizan.
+    - Els casos en què es coneix l'autor pel seu toponímic, com Cristina de Pizan.
     - Els casos en què l'autor utilitza un pseudònim diferent del seu nom. Tenim els casos de Caterina Albert, que publicava com a Víctor Català, o d'Arístocles d'Atenes, que era conegut com a Plató.
 - `Nombre`: és el nom de l'autor. Com pot ser desconegut, és un camp que podrà ser `null`.
 - `Apellido`: és el cognom o cognoms de l'autor. Com pot ser desconegut, és un camp que podrà ser `null`.
