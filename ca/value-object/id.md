@@ -10,6 +10,9 @@ pull-request: 3
 
 # _Value Object_: Id
 
+* TOC
+{:toc}
+
 ## Introducció
 
 A les nostres entitats necessitarem un identificador. El funcionament tradicional a les aplicacions web consistia a fer servir com a identificador un número enter autoincremental que ens proporcionava la base de dades. D'aquesta manera, cada taula tenia el seu propi rast d'identificadors.

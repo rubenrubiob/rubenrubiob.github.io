@@ -10,6 +10,9 @@ pull-request: 4
 
 # _Value Object_: Biografia
 
+* TOC
+{:toc}
+
 ## Introducció
 
 El següent _Value Object_ que implementarem és el que representa la biografia d'un autor, és a dir, en tindrà els anys de naixement i mort. Com s'explica a la [introducció](https://rubenrubiob.github.io/ca/), hi ha diverses restriccions pel que fa a la biografia d'un autor. Les reproduïm a continuació:
@@ -26,7 +29,7 @@ A diferència dels _Value Objects_ vists fins al moment, que només tenien un at
 
 Podríem tenir ambdós atributs com a `int` dins del _Value Object_. Això no obstant, a l'entitat `Edicion` també tenim l'any de publicació d'un llibre, de manera que, si optéssim per aquesta opció, acabaríem necessitant les validacions d'any a ambdós _Value Object_. Així doncs, crearem un _Value Object_ que representi un any, i s'emprarà dins de `Biografia`.
 
-## _Value Object_: `Anyo`
+## _Value Object_: Anyo
 
 Podríem emmagatzemar valors temporals més concrets, com per exemple el dia i mes de naixement d'un autor o de publicació d'un llibre. Això no obstant, hi ha moltes vegades que desconeixem les dates exactes —quin dia va néixer Plató o Aristòtil?—, de manera que amb la precisió d'un any en tenim prou, segons hem especificat al Domini. En tot cas, podríem ampliar aquesta precisió al futur, si calgués.
 
@@ -297,7 +300,7 @@ El més interessant en aquest test és que comprovem el missatge de l'excepció 
 
 Una estratègia per evitar mirar el missatge de l'excepció podria haver estat llençar excepcions diferents en funció de l'error. La contra és que ens afegiria una sèrie de classes d'excepció extra al nostre Domini. Veurem aquesta alternativa al _Value Object_ `Apelativo`.
 
-## _Value Object_: `Biografia`
+## _Value Object_: Biografia
 
 ### _Namespace_
 
