@@ -10,6 +10,9 @@ pull-request: 5
 
 # _Value Object_: Apelativo
 
+* TOC
+{:toc}
+
 ## Introducció
 
 A continuació implementarem el _Value Object_ que ens servirà per a representar el nom amb què es coneix un autor. Recordem les restriccions que teníem segons la [definició de la introducció](https://rubenrubiob.github.io/ca/#autor):
@@ -33,7 +36,7 @@ Cadascun d'aquests atributs serà un _Value Object_ de tipus `Nombre`.
 
 En aquest moment no ens importa la primera restricció, que el nom d'un autor ha de ser traduïble. Aquesta és una responsabilitat de l'entitat `Autor`. Un _Value Object_ `Apelativo` representarà l'apel·latiu d'un autor en qualsevol idioma.
 
-## _Value Object_: `Nombre`
+## _Value Object_: Nombre
 
 ### _Namespace_
 
@@ -246,7 +249,7 @@ class NombreTest extends TestCase
 - Com que llancem dues excepcions diferents, hem de testejar cadascuna d'elles en mètodes separats, però no és necessari mirar el missatge d'error per a diferenciar-les.
 - Comprovem que la neteja d'espais al principi i al final del valor funciona correctament, tant a l'hora de crear el _Value Object_ com a l'hora de comparar-lo.
 
-## _Value Object_: `Apelativo`
+## _Value Object_: Apelativo
 
 ### _Namespace_
 
