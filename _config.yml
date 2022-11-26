@@ -1,7 +1,6 @@
 theme: jekyll-theme-tactile
 lang: ca
 languages: ["es", "ca"]
-pull_request_url_prefix: https://github.com/rubenrubiob/gestor-libros/pull/
 
 titles_from_headings:
   enabled:     true
