@@ -360,7 +360,7 @@ p > img {
 .site-description {
   margin: -5px 0 0 0;
   color: $gray;
-  font-size: 16px;
+  font-size: 12px;
 
   @include mobile {
     margin: 3px 0;
@@ -369,7 +369,7 @@ p > img {
 
 nav {
   float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
+  margin-top: 20px; // @TODO: Vertically middle align
   font-family: $iaWriter;
   font-size: 18px;
 
