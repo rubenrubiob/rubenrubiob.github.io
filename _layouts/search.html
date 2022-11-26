@@ -13,8 +13,8 @@ layout: page
   SimpleJekyllSearch({
     searchInput: document.getElementById('search-input'),
     resultsContainer: document.getElementById('results-container'),
-    searchResultTemplate: '<div style="text-align: left !important;"><a href="{url}"><h1 style="text-align:left !important;">{title}</h1></a><div style="text-align:left !important;" class="post-tags">{tags}</div><br /><div style="text-align:left !important;">{summary}</div></div>',
-    json: '{{ site.baseurl }}/search-{{ page.lang }}.json',
+    searchResultTemplate: '<div style="text-align: left !important;"><a href="{url}"><h1 style="text-align:left !important;">{title}</h1></a><br /><div style="text-align:left !important;">{summary}</div></div>',
+    json: '{{ site.baseurl }}/search.json',
     templateMiddleware: function (prop, value, template) {
       if (prop !== 'tags') {
         return;

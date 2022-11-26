@@ -1,5 +1,5 @@
 theme: jekyll-theme-tactile
-lang: es 
+lang: ca
 languages: ["es", "ca"]
 pull_request_url_prefix: https://github.com/rubenrubiob/gestor-libros/pull/
 
@@ -14,13 +14,13 @@ titles_from_headings:
 #
 
 # Name of your site (displayed in the header)
-name: GLH
+name: Rubén Rubio
 
 # Name of the author
 author: Rubén Rubio
 
 # Short bio or description (displayed in the header)
-description: Gestor Libros - hexagonal PHP
+description: Rubén Rubio
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 #avatar: /images/reverie.png
@@ -81,7 +81,7 @@ kramdown:
 
 # Set the Sass partials directory, as we're using @imports
 sass:
-  style: :expanded # You might prefer to minify using :compressed
+  style: :compressed # You might prefer to minify using :compressed
 
 # Use the following plug-ins
 plugins:
@@ -96,4 +96,5 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - .idea/
 
