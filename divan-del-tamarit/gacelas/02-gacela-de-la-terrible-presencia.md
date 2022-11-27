@@ -30,7 +30,7 @@ Déjame en un ansia de planetas,<br />
 
 Temor del amante ante el desnudo de la persona amada.
 
-### Versos 1-8
+## Versos 1-8
 
 <p align="center">
 Yo quiero que el agua se quede sin cauce.<br />
@@ -66,7 +66,7 @@ Verso 7: ver muertos brillando («dientes de la calavera»).
 
 Verso 8: los gusanos («los amarillos») se adueñan del producto que se obtiene de ellos.
 
-### Versos 9-12
+## Versos 9-12
 
 <p align="center">
 Puedo ver el duelo de la noche herida<br />
@@ -84,7 +84,7 @@ Verso 11: el crepúsculo (que mata al día lentamente, con «verde veneno»).
 
 Verso 12: las muertes individuales, entendida como la ruptura del equilibrio entre vida y muerte («los arcos rotos»).
 
-### Versos 13-16
+## Versos 13-16
 
 <p align="center">
 Pero no me enseñes tu limpio desnudo<br />

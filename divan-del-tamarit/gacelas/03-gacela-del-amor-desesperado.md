@@ -28,7 +28,7 @@ y tú mueras por mí.
 
 Desesperación de los amantes que comprenden que morirán el uno a causa de la ausencia del otro.
 
-### Versos 1-7
+## Versos 1-7
 
 <p align="center">
 La noche no quiere venir<br />
@@ -66,7 +66,7 @@ El encuentro es nocturno en este caso («el día no quiere venir»). Igual que e
 - Tiene animales repugnantes («sapos») a los que el poeta está dispuesto a entregar su corazón («mordido clavel»).
 - Es un reino de aguas hediondas («turbias cloacas de la oscuridad»).
 
-### Versos 15-17
+## Versos 15-17
 
 <p align="center">
 Ni la noche ni el día quieren venir<br />
