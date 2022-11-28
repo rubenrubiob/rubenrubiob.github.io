@@ -1,4 +1,9 @@
-# Del paisatge a l’entorn per a conservar la natura (2021)
+---
+date: 2021-03-20
+layout: filoara-detail
+---
+
+# Del paisatge a l’entorn per a conservar la natura
 
 Al llarg de la història han coexistit dues actituds davant la natura: l'actitud prometeica l'actitud `òrfica. Això no
 obstant, al segle XX es va produir tal tecnificació de la societat que va queda constituïda com un engranatge. A

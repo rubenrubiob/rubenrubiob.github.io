@@ -1,4 +1,9 @@
-# Cura sui: de l’individu a la comunitat (2018)
+---
+date: 2018-06-30
+layout: filoara-detail
+---
+
+# Cura sui: de l’individu a la comunitat
 
 En aquest article es pretén mostrar com passar de l'individu a la comunitat a la tradició de la _cura sui_. Per dur-ho a
 terme, primer es fa una explicació de l'hermenèutica de la cura de si mateix que hom pot trobar a «Ésser i temps», de
