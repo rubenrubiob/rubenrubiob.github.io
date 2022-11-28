@@ -1,4 +1,9 @@
-# La revolució silenciosa de les imatges (2019)
+---
+date: 2019-06-30
+layout: filoara-detail
+---
+
+# La revolució silenciosa de les imatges
 
 En el darrer segle, les imatges han augmentat la seva importància social. En aquest article, n'analitzem el seu
 desenvolupament i veiem quin impacte tenen sobre el territori en la forma de turisme extractivista.

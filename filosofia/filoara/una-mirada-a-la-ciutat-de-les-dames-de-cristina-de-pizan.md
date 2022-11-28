@@ -1,4 +1,9 @@
-# Una mirada a «La Ciutat de les Dames» de Cristina de Pizan (2020)
+---
+date: 2019-12-30
+layout: filoara-detail
+---
+
+# Una mirada a «La Ciutat de les Dames» de Cristina de Pizan
 
 En aquest article es fa una curta biografia sobre Cristina de Pizan, i se n'explica la seva obra més famosa, «La Ciutat
 de les Dames». Aquesta obra, malgrat ser escrita el 1405, és de gran actualitat feminista a causa de les seves

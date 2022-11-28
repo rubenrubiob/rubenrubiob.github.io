@@ -511,6 +511,14 @@ article.page > .entry a {
   text-decoration: underline;
 }
 
+.home-content-list {
+  display: flex;
+}
+
+.home-content-list .column {
+  flex: 50%;
+}
+
 .author_title{
   text-align: center;
   color: #939aa1;

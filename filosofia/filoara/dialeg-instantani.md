@@ -1,4 +1,9 @@
-# Diàleg instantani (2017)
+---
+date: 2017-12-31
+layout: filoara-detail
+---
+
+# Diàleg instantani
 
 En aquest article es pretén mostrar la impossibilitat de mantenir un _veritable diàleg_ amb sistemes de missatgeria
 instantània. Per fer-ho, primer s'intenta definir què és un veritable diàleg basant-se en l'etimologia de la paraula
