@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<article class="page">
+  <div class="entry">
+    {{ content }}
+
+    <h2>Darrers articles</h2>
+    <div class="home-content-list">
+      {% assign content_pages=site.pages | where:"is-content-page", true | sort: 'order' %}
+      {% assign content_pages=content_pages | where: "lang", page.lang  %}
+      <div class="column">
+        <h3>Dev</h3>
+        En procés...
+        <!--<ul>
+          {% for content_page in site.pages limit:5 %}
+          <li>
+            <a href="{{ site.baseurl }}{{ content_page.url }}">
+              {{ content_page.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>-->
+      </div>
+      <div class="column">
+        <h3>Filosofia</h3>
+        <ul>
+          {% assign filosofia_pages=site.pages | where_exp: "item", "item.url contains '/filosofia/filoara/'" | sort: 'date' | reverse %}
+          {% for content_page in filosofia_pages limit:5 %}
+          <li>
+            <a href="{{ site.baseurl }}{{ content_page.url }}">
+              {{ content_page.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</article>
