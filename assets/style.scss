@@ -556,12 +556,12 @@ article.page > .entry a {
 
 // Using numbers instead of bullets for listing
 #markdown-toc ul {
-  list-style: decimal;
+  list-style: none;
 }
 
 #markdown-toc {
   border: 1px solid $darkerGray;
-  list-style: decimal;
+  list-style: none;
   display: inline-block;
   padding: 10px 30px 10px 50px;
 }
