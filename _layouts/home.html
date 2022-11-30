@@ -8,20 +8,20 @@ layout: default
 
     <h2>Darrers articles</h2>
     <div class="home-content-list">
-      {% assign content_pages=site.pages | where:"is-content-page", true | sort: 'order' %}
-      {% assign content_pages=content_pages | where: "lang", page.lang  %}
+      {% assign dev_pages=site.pages | where_exp: "item", "item.url contains '/dev/'" | sort: 'date' | reverse %}
       <div class="column">
         <h3>Dev</h3>
-        En procés...
-        <!--<ul>
-          {% for content_page in site.pages limit:5 %}
-          <li>
-            <a href="{{ site.baseurl }}{{ content_page.url }}">
-              {{ content_page.title }}
-            </a>
-          </li>
+        <ul>
+          {% for dev_page in dev_pages limit:5 %}
+            {% if dev_page.url != '/dev/' %}
+              <li>
+                <a href="{{ site.baseurl }}{{ dev_page.url }}">
+                  {{ dev_page.title }}
+                </a>
+              </li>
+            {% endif %}
           {% endfor %}
-        </ul>-->
+        </ul>
       </div>
       <div class="column">
         <h3>Filosofia</h3>

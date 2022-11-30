@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<article class="page">
+
+  <h1>{{ page.title }}</h1>
+
+  <div class="entry">
+    {{ content }}
+
+    {% assign dev_pages=site.pages | where_exp: "item", "item.url contains '/dev/'" | sort: 'date' | reverse %}
+    {% for content_page in dev_pages %}
+      {% if content_page.url != '/dev/' %}
+        <p>
+          <a href="{{ site.baseurl }}{{ content_page.url }}">
+            {{ content_page.title }}
+          </a>
+        </p>
+      {% endif %}
+    {% endfor %}
+  </div>
+</article>
