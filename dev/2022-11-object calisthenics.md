@@ -18,9 +18,9 @@ El sentit[^2] de la «cal·listènia d'objectes» en els llenguatges de programa
 
 La cal·listènia d'objectes consisteix en nou regles. Com diu el seu mateix nom, són una sèrie d'exercicis, no un dogma.
 
-## 1. Només un nivell d'indentacióó per mètode
+## 1. Només un nivell d'indentació per mètode
 
-Aquesta regla proposa que només hi hauria d'haver un nivell d'indentacióó per cadascun dels mètodes que tenim a una classe.
+Aquesta regla proposa que només hi hauria d'haver un nivell d'indentació per cadascun dels mètodes que tenim a una classe.
 
 Suposem que tenim el següent mètode:
 
