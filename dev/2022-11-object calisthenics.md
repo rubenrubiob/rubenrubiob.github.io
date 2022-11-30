@@ -5,7 +5,7 @@ date: 2022-11-30
 # _Object calisthenics_
 {:.no_toc}
 
-* A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
+* TOC
 {:toc}
 
 ## Introducció
@@ -14,13 +14,13 @@ En grec clàssic, cal·listènia, (καλός-σθένος), vol dir, etimològi
 
 Ara bé, què és la «cal·listènia d'objectes» en el desenvolupament de _software_?
 
-El sentit[^2] de la «cal·listènia d'objectes» en els llenguatges de programació orientats a objecte és millorar el codi. Concretament, per a incrementar el manteniment, la lectura, la comprensió i la capacitat de _testeig_ del codi mitjançant una sèrie d'exercicis.
+El sentit[^2] de la «cal·listènia d'objectes» en els llenguatges de programació orientats a objecte és millorar el codi. Concretament, per a incrementar el manteniment, la lectura, la comprensió i la capacitat de testatge del codi mitjançant una sèrie d'exercicis.
 
 La cal·listènia d'objectes consisteix en nou regles. Com diu el seu mateix nom, són una sèrie d'exercicis, no un dogma.
 
-## 1. Només un nivell d'identació per mètode
+## 1. Només un nivell d'indentacióó per mètode
 
-Aquesta regla proposa que només hi hauria d'haver un nivell d'identació per cadascun dels mètodes que tenim a una classe.
+Aquesta regla proposa que només hi hauria d'haver un nivell d'indentacióó per cadascun dels mètodes que tenim a una classe.
 
 Suposem que tenim el següent mètode:
 
@@ -38,7 +38,7 @@ final class ProcessVideoAudioElements
 }
 ```
 
-Aplicant cal·listènia d'objectes, podríem aplicar la regla i obtenir el següent codi:
+Aplicant aquesta regla obtindríem el següent codi:
 
 ```php
 final class ProcessVideoAudioElements
@@ -130,7 +130,7 @@ public function link(string $status): string
 }
 ```
 
-## 3. Embolcallar totes les primitives i `string`
+## 3. Embolcallar totes les primitives
 
 Aquesta regla ens commina a fer servir _Value Objects_ per a encapsular totes les primitives dins d'objectes amb el seu propi significat.
 
@@ -254,7 +254,7 @@ final class Response
 }
 ```
 
-Aleshores, es possible executar el següent codi:
+Aleshores, és possible executar el següent codi:
 
 ```php
 echo $response->audio()->language()->code();
@@ -434,7 +434,7 @@ $cart->applyDiscount();
 
 ## Resum
 
-La «cal·listènia d'objectes» consisteix en una sèrie d'exercicis per a millorar el manteniment, la lectura, la comprensió i la capacitat de _testeig_ del nostre codi.
+La «cal·listènia d'objectes» consisteix en una sèrie d'exercicis per a millorar el manteniment, la lectura, la comprensió i la capacitat de testatge del nostre codi.
 
 No totes les regles són sempre aplicables, però fora bo tenir-les present com una guia a seguir.
 
@@ -443,4 +443,4 @@ No totes les regles són sempre aplicables, però fora bo tenir-les present com 
 
 [^2]: Seguint a Heidegger, no ens hem de preguntar mai per la cosa, sinó pel sentit de la cosa.
 
-[^3]: En general, no abrevieu mai, ni quan parleu ni quan escriviu.
+[^3]: En general, no abrevieu mai, ni quan parleu ni quan escriviu. Què en fareu, dels 30 segons que guanyareu per abreviar durant tota la vostra vida?
