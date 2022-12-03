@@ -10,17 +10,27 @@ date: 2022-12-03
 
 ## Introducció
 
-En el desenvolupament d'aplicacions web ens trobem sovint amb la necessitat de rebre dades en cru i convertir-les al nostre domini, on totes les primitives haurien d'estar embolcallades en _Value Objects_. Així doncs, necessitem convertir dades externes i _tipar-les_ en _Value Objects_ al nostre domini.
+En el desenvolupament d'aplicacions web ens trobem sovint amb la necessitat de rebre dades en cru i convertir-les al
+nostre domini, on totes les primitives haurien d'estar embolcallades en _Value Objects_. Així doncs, necessitem
+convertir dades externes i _tipar-les_ en _Value Objects_ al nostre domini.
 
-PHP és un llenguatge feblement tipat, però en les darreres versions ha fet moltes passes per a tenir un sistema de tipus robust. Això ha permès que apareguessin llibreries i utilitats per a garantir i fer complir els tipus de dades al nostre codi.
+PHP és un llenguatge feblement tipat, però en les darreres versions ha fet moltes passes per a tenir un sistema de tipus
+robust. Això ha permès que apareguessin llibreries i utilitats per a garantir i fer complir els tipus de dades al nostre
+codi.
 
-En aquest article, veurem una llibreria que fa ús d'aquestes millores en el sistema de tipus per a convertir dades externes al nostre domini.
+En aquest article, veurem una llibreria que fa ús d'aquestes millores en el sistema de tipus per a convertir dades
+externes al nostre domini.
 
 ## Llibreria `cuyz/valinor`
 
-Fa poc va aparèixer la versió 1.0.0 de la llibreria [Valinor](https://valinor.cuyz.io/latest/), que permet convertir dades en cru (_arrays_, JSONs...) a objectes tipats, de manera que sempre tenen un estat vàlid.
+Fa poc va aparèixer la versió 1.0.0 de la llibreria [Valinor](https://valinor.cuyz.io/latest/), que permet convertir
+dades en cru (_arrays_, JSONs...) a objectes tipats, de manera que sempre tenen un estat vàlid.
 
-Aquesta llibreria fa ús de `__construct` per a construir els objectes. Això no obstant, té diverses opcions de configuració, una de les quals és la de registrar _named constructors_. Això és útil pels _Value Objects_, ja que és [bona pràctica fer-ne servir _named constructors_ per a instanciar-los](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460614781).
+Aquesta llibreria fa ús de `__construct` per a construir els objectes. Això no obstant, té diverses opcions de
+configuració, una de les quals és la de registrar _named constructors_. Això és útil pels _Value Objects_, ja que
+és [bona pràctica fer-ne servir _named
+constructors_ per a instanciar-los](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460614781)
+.
 
 A continuació hi ha un exemple d'ús de la llibreria fent servir un _named constructor_:
 
@@ -33,22 +43,33 @@ A continuació hi ha un exemple d'ús de la llibreria fent servir un _named cons
 
 ## Configuració a Symfony
 
-Actualment no existeix cap _bundle_ de Symfony per a Valinor, de manera que cal configurar la llibreria a mà. Ara bé, qualsevol aplicació web, per petita que sigui, acostuma a tenir una gran quantitat de _Value Objects_. Per a cadascun d'aquests _Value Objects_ caldria afegir una crida a `registerConstructor` de la llibreria per a indicar-li el _named constructor_. Això suposa sobretot dos problemes:
+Actualment, no existeix cap _bundle_ de Symfony per a Valinor, de manera que cal configurar la llibreria a mà. Ara bé,
+qualsevol aplicació web, per petita que sigui, acostuma a tenir una gran quantitat de _Value Objects_. Per a cadascun
+d'aquests _Value Objects_ caldria afegir una crida a `registerConstructor` de la llibreria per a indicar-li el _named
+constructor_. Això suposa sobretot dos problemes:
 
 - Genera uns fitxers de configuració enormes, sobretot, si es fa servir YAML.
-- Fa que cada desenvolupador s'hagi d'enrecordar de registrar cada _Value Object_ que crea, cosa que pot suposar oblits, ja que cal pensar en la infraestructura mentre s'està desenvolupant el domini.
+- Fa que cada desenvolupador hagi de recordar registrar cada _Value Object_ que crea, cosa que pot suposar oblits, ja
+  que cal pensar en la infraestructura mentre s'està desenvolupant el domini.
 
-Fóra bo tenir una manera de registrar automàticament els constructors dels _Value Objects_, ja que simplificaria la configuració de l'aplicació i n'evitaria oblits.
+Fóra bo tenir una manera de registrar automàticament els constructors dels _Value Objects_, perquè simplificaria la
+configuració de l'aplicació i n'evitaria oblits.
 
-La solució és fer servir un [`CompilerPass` de Symfony](https://symfony.com/doc/current/service_container/compiler_passes.html) per a registrar automàticament els _named constructors_ de tots els _Value Objects_ de la nostra aplicació. D'aquesta manera, quan es compila el _kernel_, es registren automàticament tots els _named constructors_ requerits.
+La solució és fer servir
+un [`CompilerPass` de Symfony](https://symfony.com/doc/current/service_container/compiler_passes.html) per a registrar
+automàticament els _named constructors_ de tots els _Value Objects_ de la nostra aplicació. D'aquesta manera, quan es
+compila el _kernel_, es registren automàticament tots els _named constructors_ requerits.
 
-Aquesta solució no té cap impacte en el rendiment de l'aplicació en entorns de producció, ja que el _kernel_ compilat es _cacheja_ i no es reconstrueix amb cada petició.
+Aquesta solució no té cap impacte en el rendiment de l'aplicació en entorns de producció, ja que el _kernel_ compilat
+es _cacheja_ i no es reconstrueix amb cada petició.
 
 A continuació veurem com implementar-ho.
 
 ### Interfície `ValueObject`
 
-Abans de res, necessitem una manera d'unificar tots els _Value Object_, per a poder-ne obtenir els seus _named constructor_ programàticament. La solució és fer servir una interfície que tingui un mètode que retorni el _callable_ del _named constructor_:
+Abans de res, necessitem una manera d'unificar tots els _Value Object_, per a poder-ne obtenir els seus _named
+constructor_ programàticament. La solució és fer servir una interfície que tingui un mètode que retorni el _callable_
+del _named constructor_:
 
 ```php
 <?php
@@ -96,19 +117,27 @@ final class Email implements ValueObject
 
 ```
 
-Fent servir aquesta sintaxi ens assegurem que el nostre IDE indexi el nom del mètode `create`, de manera que permet autocompletar i refactoritzar el codi automàticament.
+Fent servir aquesta sintaxi ens assegurem que el nostre IDE indexi el nom del mètode 'create', de manera que permet
+autocompletar el codi i refactoritzar-lo sense errors.
 
 ### `CompilerPass`
 
-Necessitem una llibreria que ens permeti recorrer el nostre codi per descobrir els _Value Objects_ que implementin la interfície `ValueObject`. En aquest cas, farem servir [`league/construct-finder`](https://github.com/thephpleague/construct-finder).
+Necessitem una llibreria que ens permeti recórrer el nostre codi per descobrir els _Value Objects_ que implementin la
+interfície `ValueObject`. En aquest cas, farem
+servir [`league/construct-finder`](https://github.com/thephpleague/construct-finder).
 
 Així doncs, ja podem implementar `ValinorMapperRegisterConstructorCompilerPass`:
-- Definim el servei `TreeMapper` amb les [definicions de servei de Symfony](https://symfony.com/doc/current/service_container/definitions.html).
-- Després, hi afegim les crides al `registerConstructor`:
-    - Recorrem totes les classes del nostre codi dins de `src`.
-    - Filtrem el _namespace_ dels _Value Objects_: tots els _Value Object_ han de ser a un _namespace_ pel qual es pugui escriure una expressió regular.
-    - Filtrem tots els _Value Object_ que implementin la interfície, i n'obtenim el _callable_ de _named constructor_ fent servir _reflection_.
-- És important fer notar que cada crida a un mètode de Valinor retorna una nova instància, de manera que a cada `addMethodCall` hem de passar-hi el _flag_ `clone` a `true`.
+
+- Definim el servei `TreeMapper` amb
+  les [definicions de servei de Symfony](https://symfony.com/doc/current/service_container/definitions.html).
+- Després, hi afegim les crides al `registerConstructor` de Valinor:
+  - Recorrem totes les classes del nostre codi dins de `src`.
+  - Filtrem el _namespace_ dels _Value Objects_: tots els _Value Object_ han de ser a un _namespace_ pel qual es pugui
+    escriure una expressió regular.
+  - Filtrem tots els _Value Object_ que implementin la interfície, i n'obtenim el _callable_ de _named constructor_ fent
+    servir _reflection_.
+- És important fer notar que cada crida a un mètode de Valinor retorna una nova instància, de manera que a
+  cada `addMethodCall` hem de passar-hi el _flag_ `clone` a `true`.
 - Addicionalment, podem afegir més crides a `addMethodCall` per a configurar la llibreria.
 
 ```php
@@ -269,12 +298,15 @@ class Kernel extends BaseKernel
 
 ```
 
-Amb això, la nostra aplicació registrarà automàticament tots els _named constructors_ dels nostres _Value Objects_ a la llibreria Valinor, que estarà a punt per utilitzar-se amb el servei `TreeMapper`.
+Amb això, la nostra aplicació registrarà automàticament tots els _named constructors_ dels nostres _Value Objects_ a la
+llibreria Valinor, que estarà a punt per utilitzar-se amb el servei `TreeMapper`.
 
 ## Resum
 
 En el desenvolupament d'aplicacions web necessitem convertir dades en cru a objectes tipats del nostre domini.
 
-Valinor és una solució vàlida a aquest problema, però cal configurar-la per millorar-ne l'experiència de desenvolupament i evitar possibles errors.
+Valinor és una solució vàlida a aquest problema, però cal configurar-la per millorar-ne l'experiència de desenvolupament
+i evitar possibles errors.
 
-Això ho aconseguim amb els `CompilerPass` de Symfony, que són una eina complexa però potent per a fer configuracions avançades de llibreries.
+Això ho aconseguim amb els `CompilerPass` de Symfony, que són una eina complexa però alhora potent per a fer
+configuracions avançades de llibreries.
