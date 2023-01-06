@@ -15,13 +15,13 @@ encapsular les dades del nostre domini. Els tipus de dades que ens ofereix el ll
 domini: una adreça de correu electrònic és sempre un `string`, però un `string` arbitrari no és una adreça de correu
 electrònic.
 
-El nostre domini el desem en un sistema de dades persistent, normalment, però no únicament, una base de dades relacional
+El nostre domini el desem en un sistema de dades persistent, normalment —però no únicament— una base de dades relacional
 com MySQL o PostrgreSQL. Fent servir PHP i Symfony, la llibreria habitual per realitzar la persistència és Doctrine.
 
 ### Doctrine _Custom Types_
 
 Ara bé, quan fem servir _Value Objects_ al nostre domini, Doctrine no sap com convertir els nostres tipus de dades
-propis als de la base de dades en intentar persistir. Per resoldreo-ho, Doctrine permet
+propis als de la base de dades en intentar persistir. Per resoldre-ho, Doctrine permet
 crear [tipus de mapatge propis](https://www.doctrine-project.org/projects/doctrine-dbal/en/current/reference/types.html#custom-mapping-types){:target="_blank"}
 . El que fan aquests _custom types_ és convertir en ambdues direccions: de PHP a la base de dades, i viceversa. N'hem de
 crear tants tipus com _Value Objects_ tenim, i realitzar la conversió en el tipus.
@@ -78,7 +78,7 @@ final class Email extends StringType
             return $value;
         }
 
-        return parent::convertToDatabaseValue($value->value(), $platform);
+        return parent::convertToDatabaseValue($value->asString(), $platform);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Email
@@ -103,21 +103,21 @@ final class Email extends StringType
 
 ### Configuració
 
-Cadascun dels tipus que creem s'ha de registrar. En una aplicació Symfony, això es pot fer
-al [fitxer de configuració de Doctrine](https://symfony.com/doc/current/doctrine/dbal.html#registering-custom-mapping-types){:target="_blank"}
-. Cal fer servir el nom del tipus com a clau i el _namespace_ del tipus com a valor:
+Cadascun dels tipus que creem s'ha de registrar a Doctrine. En una aplicació Symfony, això es pot fer
+al [fitxer de configuració de Doctrine](https://symfony.com/doc/current/doctrine/dbal.html#registering-custom-mapping-types){:target="_blank"}.
+Cal fer servir el nom del tipus com a clau i el _namespace_ del tipus com a valor. Amb l'exemple anterior, la
+configuració seria:
 
 ```yml
 # config/packages/doctrine.yaml
 doctrine:
     dbal:
         types:
-            custom_first:  App\Type\CustomFirst
-            custom_second: App\Type\CustomSecond
+            email:  rubenrubiob\User\Infrastructure\Persistence\Doctrine\ValueObject\EmailType
 ```
 
 Ara bé, si la nostra aplicació creix, tindrem molts _Value Objects_, cadascun amb el seu tipus de Doctrine. Hem de
-registrar tots aquests tipus al fitxer de configuració, cosa que pot fer que creixi molt i acabi sent redundant i
+registrar tots aquests tipus al fitxer de configuració, cosa que pot fer que acabi sent redundant i
 difícil de mantenir. A més, és responsabilitat de cada desenvolupador afegir el tipus cada vegada que en crea un, fet
 que pot donar peu a oblits.
 
@@ -136,7 +136,7 @@ Així doncs, el que hem de fer al `CompilerPass` és recórrer tots els nostres 
 aquest `array`. Per fer-ho, podem fer servir la
 llibreria [`league/construct-finder`](https://github.com/thephpleague/construct-finder){:target="_blank"}.
 
-Amb això ja podem implementar el `CompilerPass`.
+Amb això ja podem implementar el `CompilerPass`:
 
 - Recorrem totes les classes del nostre codi dins de `src`.
 - Filtrem el _namespace_ dels tipus de Doctrine: tots els _Value Object_ han de ser a un _namespace_ pel qual es pugui
