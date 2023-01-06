@@ -22,8 +22,8 @@ com MySQL o PostrgreSQL. Fent servir PHP i Symfony, la llibreria habitual per re
 
 Ara bé, quan fem servir _Value Objects_ al nostre domini, Doctrine no sap com convertir els nostres tipus de dades
 propis als de la base de dades en intentar persistir. Per resoldre-ho, Doctrine permet
-crear [tipus de mapatge propis](https://www.doctrine-project.org/projects/doctrine-dbal/en/current/reference/types.html#custom-mapping-types){:target="_blank"}
-. El que fan aquests _custom types_ és convertir en ambdues direccions: de PHP a la base de dades, i viceversa. N'hem de
+crear [tipus de mapatge propis](https://www.doctrine-project.org/projects/doctrine-dbal/en/current/reference/types.html#custom-mapping-types){:target="_blank"}.
+El que fan aquests _custom types_ és convertir en ambdues direccions: de PHP a la base de dades, i viceversa. N'hem de
 crear tants tipus com _Value Objects_ tenim, i realitzar la conversió en el tipus.
 
 Per exemple, si tenim el següent _Value Object_ que representa una adreça de correu electrònic[^1]:
