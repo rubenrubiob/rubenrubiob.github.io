@@ -225,7 +225,7 @@ final class ValinorMapperRegisterConstructorCompilerPass implements CompilerPass
         $valueObjects = [];
 
         foreach ($classNames as $className) {
-            if (preg_match(self::VO_NAMESPACE_PATTERN, $className) === false) {
+            if (preg_match(self::VO_NAMESPACE_PATTERN, $className) === 0) {
                 continue;
             }
 
