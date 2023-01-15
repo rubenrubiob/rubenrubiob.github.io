@@ -2,7 +2,7 @@
 date: 2023-01-13
 ---
 
-# Expressions regulars
+# Referència d'expressions regulars
 {:.no_toc}
 
 * TOC
@@ -13,22 +13,20 @@ date: 2023-01-13
 Les expressions regulars són una eina per a processar i analitzar text. Consisteixen en una seqüència de caràcters que
 coincideixen amb un patró regular.
 
-Les expressions regulars són una eina complexa de fer servir, ja que no són gaire llegibles; però, alhora, són
-potentíssimes.
+Les expressions regulars són complexes de fer servir, ja que no són gaire llegibles; però, alhora, són
+potentíssimes, com satiritza la següent vinyeta de XKCD:
 
-![](https://imgs.xkcd.com/comics/regular_expressions.png){: width="1000" }
+![](https://imgs.xkcd.com/comics/regular_expressions.png){: width="500" }
 
 El format de les expressions regulars POSIX, el més estès, és el següent:
 
 `/regex/modifiers`
 
-Les barres (`/`) son el delimitador de l'expressió regular, no en formen part. Es pot fer servir algun altre caràcter,
+Les barres (`/`) són el delimitador de l'expressió regular, no en formen part. Es pot fer servir algun altre caràcter,
 com `#`. Si es vol fer una coincidència del delimitador dins de l'expressió regular, cal escapar el caràcter.
 
 En aquest post veurem les parts bàsiques que formen part de les expressions regulars. A més proposarem uns exercicis per
-a practicar.
-
-![](/images/dev/regular-expression/feelings-of-power.png){: width="400" }
+a practicar i familiaritzar-nos amb el seu ús.
 
 ## Components de les expressions regulars
 
@@ -176,7 +174,7 @@ Coincidències
 ### Exercici 5
 
 Coincideix un URI de la forma `/productes/{categoria}/`, que no coincideix amb un URI de la
-forma `/productos/favoritos/`. El text entre claus (`{}`) és opcional. La barra del final, també. L'URI només pot
+forma `/productes/favorits/`. El text entre claus (`{}`) és opcional. La barra del final, també. L'URI només pot
 contenir lletres en minúscula, números i barres.
 
 Text a analitzar:
@@ -220,3 +218,5 @@ Coincidències:
 - [Autoregex](https://www.autoregex.xyz/): _Effortless conversions from English <-> Regex_
 - [Regexr](https://regexr.com/): _RegExr is an online tool to learn, build, & test Regular Expressions (RegEx / RegExp)._
 - [iHateRegex](https://ihateregex.io/).
+ 
+![](/images/dev/regular-expression/feelings-of-power.png){: width="350" }
