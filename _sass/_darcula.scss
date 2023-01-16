@@ -10,10 +10,24 @@ code {
     color: #d8d8d8;
 }
 
-.highlighter-rouge { 
-    background-color: #FAFAFA; 
-    color: #FF554A; 
-    font-size: 16px;
+.markdown-body code, .markdown-body tt {
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    white-space: break-spaces;
+    background-color: var(--color-neutral-muted);
+    border-radius: 6px;
+}
+
+.highlighter-rouge {
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    white-space: break-spaces;
+    border-radius: 6px;
+    background-color: rgba(175,184,193,0.2);
+    color: rgb(36, 41, 47);
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
 }
 
 .highlight .hll { background-color: #f1fa8c }
