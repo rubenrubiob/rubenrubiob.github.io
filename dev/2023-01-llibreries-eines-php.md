@@ -1,4 +1,12 @@
+---
+date: 2023-01-23
+---
+
 # Llibreries i eines per a PHP
+{:.no_toc}
+
+* TOC
+{:toc}
 
 PHP és un llenguatge amplament utilitzat. Té una comunitat i ecosistema enormes. A continuació llistem algunes
 llibreries, eines i comprovacions a fer en integració contínua, algunes específiques per a Symfony.
@@ -22,6 +30,18 @@ llibreries, eines i comprovacions a fer en integració contínua, algunes espec�
 - _Money_:
     - [brick/money](https://github.com/brick/money): A money and currency library for PHP
     - [moneyphp](https://github.com/moneyphp/money): PHP implementation of Fowler's Money pattern
+
+## Llibreries per a test
+
+- [Infection](https://infection.github.io/): PHP Mutation Testing library. Plugins:
+  - [roave/infection-static-analysis-plugin](https://github.com/Roave/infection-static-analysis-plugin): Static analysis on top of mutation testing - prevents escaped mutants from being invalid according to static analysis
+  - [bitexpert/captainhook-infection](https://github.com/bitExpert/captainhook-infection): Captain Hook Plugin to run InfectionPHP only against the changed files of a commit
+- [roave/no-leaks](https://github.com/Roave/no-leaks): PHPUnit Plugin for detecting Memory Leaks in code and tests
+- [lulco/populator](https://github.com/lulco/populator): Allows populate fake data to your database.
+- [OpenAPI PSR-7 Message (HTTP Request/Response) Validator](https://github.com/thephpleague/openapi-psr7-validator):
+  It validates PSR-7 messages (HTTP request/response) against OpenAPI specifications.
+- [Paratest](https://github.com/paratestphp/paratest): Parallel testing for PHPUnit
+- [PHPUnit SpeedTrap](https://github.com/johnkary/phpunit-speedtrap): Reports on slow-running tests in your PHPUnit test suite.
 
 ## Eines
 
@@ -48,18 +68,6 @@ llibreries, eines i comprovacions a fer en integració contínua, algunes espec�
     - [spaze/phpstan-disallowed-calls](https://github.com/spaze/phpstan-disallowed-calls): PHPStan rules to detect disallowed calls and constant & namespace usages
     - [roave/no-floaters](https://github.com/Roave/no-floaters): static analysis rules to prevent IEEE-754 floating point errors.
     - [More extensions](https://phpstan.org/user-guide/extension-library)
-
-## Test
-
-- [Infection](https://infection.github.io/): PHP Mutation Testing library. Plugins:
-    - [roave/infection-static-analysis-plugin](https://github.com/Roave/infection-static-analysis-plugin): Static analysis on top of mutation testing - prevents escaped mutants from being invalid according to static analysis
-    - [bitexpert/captainhook-infection](https://github.com/bitExpert/captainhook-infection): Captain Hook Plugin to run InfectionPHP only against the changed files of a commit
-- [roave/no-leaks](https://github.com/Roave/no-leaks): PHPUnit Plugin for detecting Memory Leaks in code and tests
-- [lulco/populator](https://github.com/lulco/populator): Allows populate fake data to your database.
-- [OpenAPI PSR-7 Message (HTTP Request/Response) Validator](https://github.com/thephpleague/openapi-psr7-validator):
-It validates PSR-7 messages (HTTP request/response) against OpenAPI specifications.
-- [Paratest](https://github.com/paratestphp/paratest): Parallel testing for PHPUnit
-- [PHPUnit SpeedTrap](https://github.com/johnkary/phpunit-speedtrap): Reports on slow-running tests in your PHPUnit test suite.
 
 ## Eines de Composer
 
