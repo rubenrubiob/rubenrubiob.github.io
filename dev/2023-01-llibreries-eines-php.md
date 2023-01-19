@@ -7,14 +7,18 @@ llibreries, eines i comprovacions a fer en integració contínua, algunes espec�
 
 - [brick/date-time](https://github.com/brick/date-time): Date and time library for PHP
 - [thecodingmachine/safe](https://github.com/thecodingmachine/safe): All PHP functions, rewritten to throw exceptions instead of returning false
-- [ronanguilloux/isocodes](https://github.com/ronanguilloux/IsoCodes): PHP library - Validators for standards from ISO, International Finance, Public Administrations, GS1, Manufacturing Industry, Phone numbers & Zipcodes for many countries
-- [box/spout](http://opensource.box.com/spout/): Read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way
+- [azjezz/psl](https://github.com/azjezz/psl): PHP Standard Library - a modern, consistent, centralized, well-typed, non-blocking set of APIs for PHP programmers
 - [Valinor](https://github.com/CuyZ/Valinor/): PHP library that helps to map any input into a strongly-typed value object structure.
 - [league/tactician](https://github.com/thephpleague/tactician): A small, flexible command bus.
 - [league/flysystem](https://flysystem.thephpleague.com/docs/): Abstraction for local and remote filesystems
+- [Golem-AI/messenger-kit](https://github.com/golem-ai/messenger-kit): This command simulates consumer failures and prints a timeline of the events. It lets you check whether your retry strategy configuration does what you expect it to.
+- [swarrot/swarrot](https://github.com/swarrot/swarrot): A lib to consume message from any Broker
+- [ronanguilloux/isocodes](https://github.com/ronanguilloux/IsoCodes): PHP library - Validators for standards from ISO, International Finance, Public Administrations, GS1, Manufacturing Industry, Phone numbers & Zipcodes for many countries
 - [PHP Units of Measure](https://github.com/PhpUnitsOfMeasure/php-units-of-measure): A library for handling physical quantities and the units of measure in which they're represented.
 - [T-Regx](https://github.com/T-Regx/T-Regx): PHP regular expression brought up to modern standards.
-- [Golem-AI/messenger-kit](https://github.com/golem-ai/messenger-kit): This command simulates consumer failures and prints a timeline of the events. It lets you check whether your retry strategy configuration does what you expect it to.
+- [mpratt/embera](https://github.com/mpratt/Embera): A Oembed consumer library, that gives you information about urls. It helps you replace urls to youtube or vimeo for example, with their html embed code. It has advanced features like offline support, responsive embeds and caching support.
+- [spatie/geocoder](https://github.com/spatie/geocoder): Geocode addresses to coordinates
+- [flack/ranger](https://github.com/flack/ranger): Formatter for date and time ranges with i18n support
 - _Money_:
     - [brick/money](https://github.com/brick/money): A money and currency library for PHP
     - [moneyphp](https://github.com/moneyphp/money): PHP implementation of Fowler's Money pattern
@@ -77,7 +81,7 @@ It validates PSR-7 messages (HTTP request/response) against OpenAPI specificatio
     - YAML: `bin/console lint:yaml config src`
     - Twig: `bin/console lint:twig src`
 - Symfony + Doctrine:
-    - Deprecations: `bin/console debug:container --deprecations` (does not return exit code ≠ 0)
+    - Deprecations: `bin/console debug:container --deprecations` (si falla, no retorna un _exit code_ diferent de 0)
     - Doctrine schema: `bin/console doctrine:schema:validate --skip-sync`
 - Composer
     - Audit (The audit command checks for security vulnerability advisories for installed packages.): `composer audit`
