@@ -16,7 +16,8 @@ llibreries, eines i comprovacions a fer en integració contínua, algunes espec�
 - [brick/date-time](https://github.com/brick/date-time): Date and time library for PHP
 - [thecodingmachine/safe](https://github.com/thecodingmachine/safe): All PHP functions, rewritten to throw exceptions instead of returning false
 - [azjezz/psl](https://github.com/azjezz/psl): PHP Standard Library - a modern, consistent, centralized, well-typed, non-blocking set of APIs for PHP programmers
-- [Valinor](https://github.com/CuyZ/Valinor/): PHP library that helps to map any input into a strongly-typed value object structure.
+- [cuyz/valinor](https://github.com/CuyZ/Valinor/): PHP library that helps to map any input into a strongly-typed value object structure.
+- [particle/validator](https://github.com/particle-php/Validator): Particle\Validator is a validation library with an extremely clean API which makes validation fun! 
 - [league/tactician](https://github.com/thephpleague/tactician): A small, flexible command bus.
 - [league/flysystem](https://flysystem.thephpleague.com/docs/): Abstraction for local and remote filesystems
 - [Golem-AI/messenger-kit](https://github.com/golem-ai/messenger-kit): This command simulates consumer failures and prints a timeline of the events. It lets you check whether your retry strategy configuration does what you expect it to.
