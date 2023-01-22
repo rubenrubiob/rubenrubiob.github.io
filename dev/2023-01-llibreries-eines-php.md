@@ -20,11 +20,11 @@ llibreries, eines i comprovacions a fer en integració contínua, algunes espec�
 - [particle/validator](https://github.com/particle-php/Validator): Particle\Validator is a validation library with an extremely clean API which makes validation fun! 
 - [league/tactician](https://github.com/thephpleague/tactician): A small, flexible command bus.
 - [league/flysystem](https://flysystem.thephpleague.com/docs/): Abstraction for local and remote filesystems
-- [Golem-AI/messenger-kit](https://github.com/golem-ai/messenger-kit): This command simulates consumer failures and prints a timeline of the events. It lets you check whether your retry strategy configuration does what you expect it to.
+- [golem-ai/messenger-kit](https://github.com/golem-ai/messenger-kit): This command simulates consumer failures and prints a timeline of the events. It lets you check whether your retry strategy configuration does what you expect it to.
 - [swarrot/swarrot](https://github.com/swarrot/swarrot): A lib to consume message from any Broker
 - [ronanguilloux/isocodes](https://github.com/ronanguilloux/IsoCodes): PHP library - Validators for standards from ISO, International Finance, Public Administrations, GS1, Manufacturing Industry, Phone numbers & Zipcodes for many countries
-- [PHP Units of Measure](https://github.com/PhpUnitsOfMeasure/php-units-of-measure): A library for handling physical quantities and the units of measure in which they're represented.
-- [T-Regx](https://github.com/T-Regx/T-Regx): PHP regular expression brought up to modern standards.
+- [php-units-of-measure/php-units-of-measure](https://github.com/PhpUnitsOfMeasure/php-units-of-measure): A library for handling physical quantities and the units of measure in which they're represented.
+- [rawr/t-regx](https://github.com/T-Regx/T-Regx): PHP regular expression brought up to modern standards.
 - [mpratt/embera](https://github.com/mpratt/Embera): A Oembed consumer library, that gives you information about urls. It helps you replace urls to youtube or vimeo for example, with their html embed code. It has advanced features like offline support, responsive embeds and caching support.
 - [spatie/geocoder](https://github.com/spatie/geocoder): Geocode addresses to coordinates
 - [flack/ranger](https://github.com/flack/ranger): Formatter for date and time ranges with i18n support
@@ -39,10 +39,9 @@ llibreries, eines i comprovacions a fer en integració contínua, algunes espec�
   - [bitexpert/captainhook-infection](https://github.com/bitExpert/captainhook-infection): Captain Hook Plugin to run InfectionPHP only against the changed files of a commit
 - [roave/no-leaks](https://github.com/Roave/no-leaks): PHPUnit Plugin for detecting Memory Leaks in code and tests
 - [lulco/populator](https://github.com/lulco/populator): Allows populate fake data to your database.
-- [OpenAPI PSR-7 Message (HTTP Request/Response) Validator](https://github.com/thephpleague/openapi-psr7-validator):
-  It validates PSR-7 messages (HTTP request/response) against OpenAPI specifications.
-- [Paratest](https://github.com/paratestphp/paratest): Parallel testing for PHPUnit
-- [PHPUnit SpeedTrap](https://github.com/johnkary/phpunit-speedtrap): Reports on slow-running tests in your PHPUnit test suite.
+- [league/openapi-psr7-validator](https://github.com/thephpleague/openapi-psr7-validator): It validates PSR-7 messages (HTTP request/response) against OpenAPI specifications.
+- [brianium/paratest](https://github.com/paratestphp/paratest): Parallel testing for PHPUnit
+- [johnkary/phpunit-speedtrap](https://github.com/johnkary/phpunit-speedtrap): Reports on slow-running tests in your PHPUnit test suite.
 
 ## Eines
 
