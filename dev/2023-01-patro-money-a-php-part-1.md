@@ -19,8 +19,8 @@ Depèn del cas, el problema pot ser més o menys greu. Per exemple, en un comer�
 que cobrem de menys al client, fent que el comerç perdi diners; o que li cobrem de més, provocant un possible problema
 legal.
 
-Un problema d'aquest estil em vaig trobar en un projecte de comerç electrònic, on teníem fins i tot un Excel anomenat _
-pitote_ descrivint-ne exemples. Per il·lustrar-ho, suposem dos dels productes del comerç: un amb un PVP de 5'50 €, i un
+Un problema d'aquest estil em vaig trobar en un projecte de comerç electrònic, on teníem fins i tot un Excel anomenat
+_pitote_ descrivint-ne exemples. Per il·lustrar-ho, suposem dos dels productes del comerç: un amb un PVP de 5'50 €, i un
 altre, de 5'30 €. Si un client compra cinc unitats de cada producte, esperaríem una factura desglossada com la que es
 mostra a la següent taula:
 
