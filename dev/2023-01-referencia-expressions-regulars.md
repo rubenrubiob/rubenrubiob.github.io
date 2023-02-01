@@ -97,7 +97,7 @@ Afecten el comportament de tota l'expressió regular.
 
 ## Exercicis
 
-Es pot fer servir l'eina [Regex101](regex101.com) per a verificar les respostes.
+Es pot fer servir l'eina [Regex101](https://regex101.com){:target="_blank"} per a verificar les respostes.
 
 ### Exercici 1
 
@@ -213,10 +213,10 @@ Coincidències:
 
 ## Referències
 
-- [_Mastering regular expressions_, de Jeffrey Friedl](http://regex.info/book.html)
-- [_Writing better regular expressions in PHP_](https://php.watch/articles/php-regex-readability)
-- [Autoregex](https://www.autoregex.xyz/): _Effortless conversions from English <-> Regex_
-- [Regexr](https://regexr.com/): _RegExr is an online tool to learn, build, & test Regular Expressions (RegEx / RegExp)._
-- [iHateRegex](https://ihateregex.io/).
+- [_Mastering regular expressions_, de Jeffrey Friedl](http://regex.info/book.html){:target="_blank"}
+- [_Writing better regular expressions in PHP_](https://php.watch/articles/php-regex-readability){:target="_blank"}
+- [Autoregex](https://www.autoregex.xyz/){:target="_blank"}: _Effortless conversions from English <-> Regex_
+- [Regexr](https://regexr.com/){:target="_blank"}: _RegExr is an online tool to learn, build, & test Regular Expressions (RegEx / RegExp)._
+- [iHateRegex](https://ihateregex.io/){:target="_blank"}.
  
 ![](/images/dev/regular-expression/feelings-of-power.png){: width="350" }

@@ -23,13 +23,13 @@ externes al nostre domini.
 
 ## Llibreria `cuyz/valinor`
 
-Fa poc va aparèixer la versió 1.0.0 de la llibreria [Valinor](https://valinor.cuyz.io/latest/), que permet convertir
+Fa poc va aparèixer la versió 1.0.0 de la llibreria [Valinor](https://valinor.cuyz.io/latest/){:target="_blank"}, que permet convertir
 dades en cru (_arrays_, JSONs...) a objectes tipats, de manera que sempre tenen un estat vàlid.
 
 Aquesta llibreria fa ús de `__construct` per a construir els objectes. Això no obstant, té diverses opcions de
 configuració, una de les quals és la de registrar _named constructors_. Això és útil pels _Value Objects_, ja que
 és [bona pràctica fer-ne servir _named
-constructors_ per a instanciar-los](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460614781)
+constructors_ per a instanciar-los](https://github.com/ShittySoft/symfony-live-berlin-2018-doctrine-tutorial/pull/3#issuecomment-460614781){:target="_blank"}
 .
 
 A continuació hi ha un exemple d'ús de la llibreria fent servir un _named constructor_:
@@ -56,7 +56,7 @@ Fóra bo tenir una manera de registrar automàticament els constructors dels _Va
 configuració de l'aplicació i n'evitaria oblits.
 
 La solució és fer servir
-un [`CompilerPass` de Symfony](https://symfony.com/doc/current/service_container/compiler_passes.html) per a registrar
+un [`CompilerPass` de Symfony](https://symfony.com/doc/current/service_container/compiler_passes.html){:target="_blank"} per a registrar
 automàticament els _named constructors_ de tots els _Value Objects_ de la nostra aplicació. D'aquesta manera, quan es
 compila el _kernel_, es registren automàticament tots els _named constructors_ requerits.
 
@@ -124,12 +124,12 @@ autocompletar el codi i refactoritzar-lo sense errors.
 
 Necessitem una llibreria que ens permeti recórrer el nostre codi per descobrir els _Value Objects_ que implementin la
 interfície `ValueObject`. En aquest cas, farem
-servir [`league/construct-finder`](https://github.com/thephpleague/construct-finder).
+servir [`league/construct-finder`](https://github.com/thephpleague/construct-finder){:target="_blank"}.
 
 Així doncs, ja podem implementar `ValinorMapperRegisterConstructorCompilerPass`:
 
 - Definim el servei `TreeMapper` amb
-  les [definicions de servei de Symfony](https://symfony.com/doc/current/service_container/definitions.html).
+  les [definicions de servei de Symfony](https://symfony.com/doc/current/service_container/definitions.html){:target="_blank"}.
 - Després, hi afegim les crides al `registerConstructor` de Valinor:
   - Recorrem totes les classes del nostre codi dins de `src`.
   - Filtrem el _namespace_ dels _Value Objects_: tots els _Value Object_ han de ser a un _namespace_ pel qual es pugui

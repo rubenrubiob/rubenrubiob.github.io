@@ -439,7 +439,7 @@ La «cal·listènia d'objectes» consisteix en una sèrie d'exercicis per a mill
 No totes les regles són sempre aplicables, però fora bo tenir-les present com una guia a seguir.
 
 
-[^1]: [Termcat: cal·listènia](https://www.termcat.cat/ca/diccionaris-en-linia/30/fitxa/NjQ3NTg5)
+[^1]: [Termcat: cal·listènia](https://www.termcat.cat/ca/diccionaris-en-linia/30/fitxa/NjQ3NTg5){:target="_blank"}
 
 [^2]: Seguint a Heidegger, no ens hem de preguntar mai per la cosa, sinó pel sentit de la cosa.
 

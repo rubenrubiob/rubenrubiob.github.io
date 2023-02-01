@@ -13,7 +13,7 @@ date: 2023-01-30
 Quan treballem amb nombres, podem trobar-nos operacions en les quals perdem precisió, o bé perquè el nombre és
 immensament gran, o bé perquè té decimals infinits. El problema és representar nombres infinits en un sistema finit: per
 molta memòria que tinguem disponible, sempre serà finita. Aquesta representació es coneix com
-a [punt flotant (IEEE 754)](https://en.wikipedia.org/wiki/IEEE_754).
+a [punt flotant (IEEE 754)](https://en.wikipedia.org/wiki/IEEE_754){:target="_blank"}.
 
 Depèn del cas, el problema pot ser més o menys greu. Per exemple, en un comerç electrònic, un error de precisió pot fer
 que cobrem de menys al client, fent que el comerç perdi diners; o que li cobrem de més, provocant un possible problema
@@ -106,7 +106,7 @@ compte. Si el negoci no s'expandeix a una regió amb una altra moneda, aquesta a
 podem estar segurs al cent per cent que això no succeeixi al futur.
 
 Per resoldre el problema de l'arrodoniment d'imports, aleshores, podem fer servir el [patró moneda (_Money
-pattern_)](https://www.martinfowler.com/eaaCatalog/money.html), que consisteix a fer servir un _Value Object_ amb dos
+pattern_)](https://www.martinfowler.com/eaaCatalog/money.html){:target="_blank"}, que consisteix a fer servir un _Value Object_ amb dos
 atributs: la moneda i la quantitat en la menor unitat de la moneda. És a dir, la quantitat `89'99` es desaria com
 a `8999`.
 
@@ -117,13 +117,13 @@ amb números molt grans (amb un límit), i tenir imports amb quantitat i moneda.
 
 Les dues llibreries més importants són:
 
-- [brick/money](https://github.com/brick/money)
-- [moneyphp/money](https://github.com/moneyphp/money)
+- [brick/money](https://github.com/brick/money){:target="_blank"}
+- [moneyphp/money](https://github.com/moneyphp/money){:target="_blank"}
 
-Internament, fan servir l'extensió [`BCMath`](https://www.php.net/manual/en/book.bc.php) de PHP per a fer els càlculs,
+Internament, fan servir l'extensió [`BCMath`](https://www.php.net/manual/en/book.bc.php){:target="_blank"} de PHP per a fer els càlculs,
 sigui representant els nombres amb `string`, sigui amb `int`, de manera que no hi ha pèrdua de decimals.
 
-[Existeix una comparativa entre les dues llibreries](https://github.com/brick/money/issues/28), però qualsevol de les
+[Existeix una comparativa entre les dues llibreries](https://github.com/brick/money/issues/28){:target="_blank"}, però qualsevol de les
 dues és una bona opció i permet fer càlculs monetaris de manera segura.
 
 ## Conclusions
