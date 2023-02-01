@@ -10,7 +10,7 @@ date: 2023-02-06
 
 ## Introducció
 
-En el post previ (afegir enllaç) vam veure els problemes que suposava treballar amb decimals a causa de la pèrdua de
+En el [post previ](/dev/2023-01-patro-money-a-php-part-1/){:target="_blank"} vam veure els problemes que suposava treballar amb decimals a causa de la pèrdua de
 precisió de la representació dels nombres en punt flotant. Vam explicar que la solució per a treballar amb valors
 monetaris consisteix a fer servir el patró moneda, que encapsula una quantitat amb una moneda dins d'un _Value Object_.
 
@@ -35,7 +35,7 @@ En el cas que vam veure, el client establia el PVP i esperava obtenir-ne els seg
 | 4'38 | 0'92 | 5'30 |
 | *44'65* | *9'35* | *54'00* |
 
-El cas de l'import `5'50` és interessant, perquè mostra l'ambigüitat a la qual ens enfrontem.
+El cas de l'import de 5'50 € és interessant, perquè mostra l'ambigüitat a la qual ens enfrontem.
 
 Per a calcular l'import del 21% d'IVA a partir del preu final, fem la següent
 operació: `ImportIva = PreuFinal - PreuFinal/1'21`. En aquest cas, n'obtenim: `0'954` que, arrodonit, és `0,95`.
@@ -44,12 +44,12 @@ En canvi, si calculem l'import de l'IVA a partir del preu net, fem la següent o
 aquest cas, n'obtenim `0'955` que, arrodonit, és `0'96`.
 
 Així doncs, depenent del valor que fem servir per a calcular els impostos, obtindrem uns preus o uns altres. Per a
-l'exemple que tractarem, el client volia que el preu final fos `5'50 €`, de manera que farem els càlculs a partir
+l'exemple que tractarem, el client volia que el preu final fos 5'50 €, de manera que farem els càlculs a partir
 d'aquest valor. Però això depèn de cada cas d'ús, de com estigui definit el domini i de quines dades disposem, no hi ha
 una solució única. En menesters de diners, el millor és estar assessorat per experts.
 
 A continuació veurem les parts més rellevants de les implementacions. Es poden veure senceres
-al [repositori on hi ha tots els exemples](https://github.com/rubenrubiob/blog-src).
+al [repositori on hi ha tots els exemples](https://github.com/rubenrubiob/blog-src){:target="_blank"}.
 
 ### `PercentatgeImpostos`
 
@@ -403,5 +403,4 @@ implementació amb l'exemple real.
 Per últim, hem vist una possible implementació d'un _Value Object_ que representa un import, amb la seva capa de
 persistència amb Doctrine ORM.
 
-[^1]: `brick/money` requereix el paquet `brick/math`, però sempre és millor
-evitar [dependències transitives](https://github.com/maglnet/ComposerRequireChecker).
+[^1]: `brick/money` requereix el paquet `brick/math`, però sempre és millor evitar [dependències transitives](https://github.com/maglnet/ComposerRequireChecker){:target="_blank"}.
