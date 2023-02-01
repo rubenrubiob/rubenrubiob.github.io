@@ -10,6 +10,6 @@ de les Dames». Aquesta obra, malgrat ser escrita el 1405, és de gran actualita
 reflexions. S'hi afegeixen cites de l'obra per comprovar com un text escrit a finals de l'Edat Mitjana conté idees tan
 d'actualitat com la desconfiança que les dones han de tenir envers les opinions que d'elles tenen els homes.
 
-[Llegir article complet a la revista _Filosofia, Ara!_ (PDF)](http://www.infofilosofia.info/revista-prova/index.php/FA/article/view/242/331){:target="_blank"}
+[Llegir article complet a la revista _Filosofia, Ara!_ (PDF)](http://www.filosofia-ara.net/FA/index.php/FA/article/view/242/331){:target="_blank"}
 
-[Llegir article complet a la revista _Filosofia, Ara!_ (HTML)](http://www.infofilosofia.info/revista-prova/index.php/FA/article/view/242/308){:target="_blank"}
+[Llegir article complet a la revista _Filosofia, Ara!_ (HTML)](http://www.filosofia-ara.net/FA/index.php/FA/article/view/242/308){:target="_blank"}

@@ -12,6 +12,6 @@ violentant la natura i dominant l'home. A continuació, s'explica com podem torn
 natura per tal d'evitar l'ecocidi que tots els científics pronostiquen: a partir d'una contemplació i valoració estètica
 de la natura, on l'entorn es converteix en un concepte primordial.
 
-[Llegir article complet a la revista _Filosofia, Ara!_ (PDF)](http://www.infofilosofia.info/revista-prova/index.php/FA/article/view/258/353){:target="_blank"}
+[Llegir article complet a la revista _Filosofia, Ara!_ (PDF)](http://www.filosofia-ara.net/FA/index.php/FA/article/view/258/353){:target="_blank"}
 
-[Llegir article complet a la revista _Filosofia, Ara!_ (HTML)](http://www.infofilosofia.info/revista-prova/index.php/FA/article/view/258/364){:target="_blank"}
+[Llegir article complet a la revista _Filosofia, Ara!_ (HTML)](http://www.filosofia-ara.net/FA/index.php/FA/article/view/258/364){:target="_blank"}

@@ -11,6 +11,6 @@ Martin Heidegger, que s'emmarca en les tradicions de la _cura sui_ de les escole
 existència pròpia. A continuació s'explica com aquesta cura de si mateix pot passar de l'individu a la comunitat.
 Finalment es fa una analogia de la forma de vida pròpia amb la novena simfonia de Beethoven.
 
-[Llegir article complet a la revista _Filosofia, Ara!_ (PDF)](http://www.infofilosofia.info/revista-prova/index.php/FA/article/view/Cura-sui/201){:target="_blank"}
+[Llegir article complet a la revista _Filosofia, Ara!_ (PDF)](http://www.filosofia-ara.net/FA/index.php/FA/article/view/Cura-sui/201){:target="_blank"}
 
-[Llegir article complet a la revista _Filosofia, Ara!_ (HTML)](http://www.infofilosofia.info/revista-prova/index.php/FA/article/view/Cura-sui/202){:target="_blank"}
+[Llegir article complet a la revista _Filosofia, Ara!_ (HTML)](http://www.filosofia-ara.net/FA/index.php/FA/article/view/Cura-sui/202){:target="_blank"}
