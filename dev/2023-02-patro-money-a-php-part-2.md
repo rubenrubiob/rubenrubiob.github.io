@@ -14,7 +14,7 @@ En el [post previ](/dev/2023-01-patro-money-a-php-part-1/){:target="_blank"} vam
 precisió de la representació dels nombres en punt flotant. Vam explicar que la solució per a treballar amb valors
 monetaris consisteix a fer servir el patró moneda, que encapsula una quantitat amb una moneda dins d'un _Value Object_.
 
-A PHP hi ha llibreries de codi obert d'aquest patró. En aquest post veurem una implementació per resoldre l'exemple que
+A PHP hi ha llibreries de codi obert d'aquest patró. En aquest post veurem una implementació per a resoldre l'exemple que
 vam mostrar en el post anterior.
 
 ## Implementació
@@ -160,7 +160,7 @@ final readonly class Import
 - Construïm un `Import` amb el _named constructor_ a partir de preu final, perquè així ho indica el domini.
 - Fem servir `Money` de `Brick` per a validar tant el valor com la moneda. En cas d'error, llancem una excepció pròpia
   del nostre domini.
-- Per a càlcul dels impostos, es fa servir `BigDecimal`, de la llibreria `brick/math`[^1]. Com que a les divisions hi ha
+- Pel càlcul dels impostos, es fa servir `BigDecimal`, de la llibreria `brick/math`[^1]. Com que a les divisions hi ha
   possible pèrdua de decimals, és necessari no arrodonir en fer els càlculs: un `Money` no ens serveix perquè sempre
   arrodoneix al nombre de decimals de la moneda. Per exemple, per a euros, sempre arrodoniria a dos decimals.
 
@@ -216,7 +216,8 @@ protected function preuNetIImpostProvider(): array
 - Testegem els exemples de què disposem, per assegurar-nos que els càlculs són correctes.
 - La validació dels valors la fem amb la unitat menor dels imports monetaris, però es podria fer servir `Money`, per
   exemple.
-- Fem servir un _data provider_ construint els valors des de `float`, però al test complet també ho fem amb `string`.
+- Fem servir un _data provider_ construint els valors des de `float`, però al test complet també ho fem amb `string` (es
+  pot consultar al repositori).
 
 ### `LlistaImports`
 
@@ -397,7 +398,7 @@ Seguint l'exemple que vam veure en el post anterior, hem vist els càlculs que c
 quantitat d'impostos a partir del preu final, tal com ens indica el domini.
 
 Hem vist una implementació per a resoldre el problema: amb un `Import` unitari que conté tots els components i
-un `LlistatImports`, que representa un conjunt d'imports unitaris. Gràcies als test, hem pogut validar la nostra
+un `LlistatImports`, que representa un conjunt d'imports unitaris. Gràcies als tests, hem pogut validar la nostra
 implementació amb l'exemple real.
 
 Per últim, hem vist una possible implementació d'un _Value Object_ que representa un import, amb la seva capa de
