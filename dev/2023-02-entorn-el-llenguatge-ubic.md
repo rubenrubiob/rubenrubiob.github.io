@@ -1,5 +1,5 @@
 ---
-date: 2023-02-24
+date: 2023-02-27
 ---
 
 # Entorn el llenguatge ubic
@@ -24,10 +24,10 @@ Per tant,
 _refactoritza_ el codi, reanomenant classes, mètodes i mòduls per a adaptar-se al nou model. Resol qualsevol confusió sobre els termes en converses, de la mateixa manera que ens posem d'acord en el significat de les paraules d'ús comú.
 
 Així doncs, és a partir del diàleg com aconseguim resoldre els problemes dins de l'enginyeria del _software_. El
-llenguatge ubic és basa justament en el diàleg: hem de dialogar per a comprendre'ns i revelar les solucions, entre tots
+llenguatge ubic es basa justament en el diàleg: hem de dialogar per a comprendre'ns i revelar les solucions entre tots
 els participants en un projecte, siguin els experts de domini, siguin els desenvolupadors. Però, per a fer-ho, hem de
-fer servir el mateix llenguatge i els mateixos conceptes dins del mateix context, sota pena de no comprendre'ns per a
-resoldre el problema. El llenguatge ubic proposa supeditar el codi al llenguatge, no a la inversa: el codi ha de
+fer servir el mateix llenguatge i els mateixos conceptes dins del mateix context, sota pena de no comprendre'ns.
+El llenguatge ubic proposa supeditar el codi al llenguatge, no a la inversa: el codi ha de
 reflectir el llenguatge que fem servir per a resoldre el problema. Qualsevol canvi que es doni en el llenguatge obliga a
 canviar el codi, tantes vegades com calgui.
 
@@ -49,8 +49,8 @@ de cinc persones.
 
 Suposem que, així i tot, volem escriure el codi en anglès. Què succeeix si els conceptes del domini són mots que no
 tenen traducció a l'anglès? A català en tenim exemples, com ara «seny» o «vespre», però sembla difícil que mai emprem
-aquestes paraules en un context tècnic. Ara bé, hi ha casos d'ús que són específicament local i no tenen equivalent a
-altres països, com ho poden els d'àmbit administratiu o legal. Per exemple, vaig treballar en un projecte que
+aquestes paraules en un context tècnic. Ara bé, hi ha casos d'ús que són específicament locals i no tenen equivalent a
+altres llengües, com ho poden ser els d'àmbit administratiu o legal. Per exemple, vaig treballar en un projecte que
 emmagatzemava licitacions del sistema sanitari espanyol, on hi ha conceptes molt específics i tècnics. Vam fer el codi
 en anglès, mentre que el client parlava català i expressava els conceptes en castellà o català. Com a resultat, vam
 tenir problemes per a comprendre'ns, perquè havíem de traduir constantment mentre parlàvem amb ell.
@@ -74,10 +74,10 @@ Al principi es feia estrany veure aquesta barreja de castellà i anglès al codi
 aviat, i va resultar en una comunicació immediata i senzilla amb l'expert de domini, perquè sempre ens referíem als
 mateixos conceptes amb les mateixes paraules.
 
-No hi ha una solució vàlida per a tots els casos, fer servir un idioma o un altre per al domini dependrà de molts
-factors, molts d'ells que no venen imposats i no es poden canviar. El millor sempre és parlar-ho i acordar-ho amb
-l'equip. I, encara que hi hagi reticència a no fer el codi en anglès, cal almenys plantejar la pregunta per a fer
-reflexionar.
+Amb això no vull dir que s'hagi de fer servir sempre l'idioma del domini, o que sigui millor o pitjor. No hi ha una
+solució vàlida per a tots els casos, fer servir un idioma o un altre per al domini dependrà de molts factors, molts dels
+quals venen imposats i no es poden canviar. El millor sempre és parlar-ho i acordar-ho amb l'equip. I, encara que hi
+hagi reticència a no fer el codi en anglès, cal almenys plantejar la pregunta per a fer reflexionar.
 
 [^1]: Evans, E. (2015). _Domain-Driven Design Reference. Definitions and Pattern Summaries_. [Publicació en línia](https://www.domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf).
 [^2]: Totes les traduccions són meves.
