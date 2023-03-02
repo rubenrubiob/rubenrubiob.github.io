@@ -1,5 +1,5 @@
 ---
-date: 2023-02-27
+date: 2023-03-06
 ---
 
 # Entorn el llenguatge ubic
@@ -76,8 +76,8 @@ mateixos conceptes amb les mateixes paraules.
 
 Amb això no vull dir que s'hagi de fer servir sempre l'idioma del domini, o que sigui millor o pitjor. No hi ha una
 solució vàlida per a tots els casos, fer servir un idioma o un altre per al domini dependrà de molts factors, molts dels
-quals venen imposats i no es poden canviar. El millor sempre és parlar-ho i acordar-ho amb l'equip. I, encara que hi
-hagi reticència a no fer el codi en anglès, cal almenys plantejar la pregunta per a fer reflexionar.
+quals venen imposats i no es poden canviar. El millor sempre és parlar-ho i acordar-ho amb l'equip. I trobo que,
+almenys, cal plantejar la pregunta per a fer reflexionar.
 
 [^1]: Evans, E. (2015). _Domain-Driven Design Reference. Definitions and Pattern Summaries_. [Publicació en línia](https://www.domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf).
 [^2]: Totes les traduccions són meves.
