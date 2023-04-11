@@ -2,7 +2,7 @@
 date: 2023-04-11
 ---
 
-# Controladors nets a Symfony (part 1)
+# Controladors nets a Symfony (I): gestió d'excepcions
 {:.no_toc}
 
 * TOC
