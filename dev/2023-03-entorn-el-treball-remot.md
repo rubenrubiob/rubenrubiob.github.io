@@ -112,11 +112,11 @@ mental —per no parlar del pobre transport públic a les nostres contrades, on 
 d'anar a l'oficina sense cap justificació, plogui, nevi o faci 40˚, segurament té més a veure amb l'exercici del poder
 que no pas amb l'interès merament optimitzant del capitalisme.
 
-[^1]: El contingut del missatge de correu electrònic es [pot llegir aquí (en anglès)](https://www.businessinsider.com/read-elon-musk-email-tesla-employees-return-office-2022-6).
+[^1]: El contingut del missatge de correu electrònic es [pot llegir aquí (en anglès)](https://www.businessinsider.com/read-elon-musk-email-tesla-employees-return-office-2022-6){:target="_blank"}.
 
-[^2]: Un d'ells, per exemple, es va publicar a la [revista Nature](https://www.nature.com/articles/s41586-022-04643-y).
+[^2]: Un d'ells, per exemple, es va publicar a la [revista Nature](https://www.nature.com/articles/s41586-022-04643-y){:target="_blank"}.
 
-[^3]: Tot just el mes de febrer de 2023 [Amazon va fer saber als seus treballadors que haurien de tornar a l'oficina l'1 de maig del mateix any](https://www.aboutamazon.com/news/company-news/andy-jassy-update-on-amazon-return-to-office).
+[^3]: Tot just el mes de febrer de 2023 [Amazon va fer saber als seus treballadors que haurien de tornar a l'oficina l'1 de maig del mateix any](https://www.aboutamazon.com/news/company-news/andy-jassy-update-on-amazon-return-to-office){:target="_blank"}.
 
 [^4]: Que quedi clar, això sí, que no totes les feines es poden fer en remot, i que no totes les feines són sempre creatives.
 
@@ -124,8 +124,8 @@ que no pas amb l'interès merament optimitzant del capitalisme.
 
 [^6]: La part del cervell que processa les emocions.
 
-[^7]: Vegeu, per exemple, [aquest article](https://www.apa.org/monitor/2020/04/nurtured-nature). Si es vol aprofundir en el tema, recomano llegir el llibre «Last Child in the Woods», de Richard Louv ([disponible en castellà publicat per l'editorial Capitán Swing](https://capitanswing.com/libros/los-ultimos-ninos-en-el-bosque/)).
+[^7]: Vegeu, per exemple, [aquest article](https://www.apa.org/monitor/2020/04/nurtured-nature){:target="_blank"}. Si es vol aprofundir en el tema, recomano llegir el llibre «Last Child in the Woods», de Richard Louv ([disponible en castellà publicat per l'editorial Capitán Swing](https://capitanswing.com/libros/los-ultimos-ninos-en-el-bosque/){:target="_blank"}).
 
-[^8]: Podeu consultar [aquest article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8066196/), [aquest](https://memtrax.com/walking-for-mental-health-and-memory-the-surprising-benefits/) o [aquest altre](https://www.psychologytoday.com/us/blog/experience-engineering/202001/how-walking-enhances-cognitive-performance).
+[^8]: Podeu consultar [aquest article](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8066196/){:target="_blank"}, [aquest](https://memtrax.com/walking-for-mental-health-and-memory-the-surprising-benefits/){:target="_blank"} o [aquest altre](https://www.psychologytoday.com/us/blog/experience-engineering/202001/how-walking-enhances-cognitive-performance){:target="_blank"}.
 
-[^9]: Segons explica el principi de Peter. Vegeu [aquest vídeo](https://youtu.be/39wzku9KIEM) on el mateix autor l'explica.
+[^9]: Segons explica el principi de Peter. Vegeu [aquest vídeo](https://youtu.be/39wzku9KIEM){:target="_blank"} on el mateix autor l'explica.

@@ -79,6 +79,6 @@ solució vàlida per a tots els casos, fer servir un idioma o un altre per al do
 quals venen imposats i no es poden canviar. El millor sempre és parlar-ho i acordar-ho amb l'equip. I trobo que,
 almenys, cal plantejar la pregunta per a fer reflexionar.
 
-[^1]: Evans, E. (2015). _Domain-Driven Design Reference. Definitions and Pattern Summaries_. [Publicació en línia](https://www.domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf).
+[^1]: Evans, E. (2015). _Domain-Driven Design Reference. Definitions and Pattern Summaries_. [Publicació en línia](https://www.domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf){:target="_blank"}.
 [^2]: Totes les traduccions són meves.
-[^3]: En [aquest fil de Twitter](https://twitter.com/rubenrubiob/status/1170639007518248960) hi ha un debat interessant al respecte.
+[^3]: En [aquest fil de Twitter](https://twitter.com/rubenrubiob/status/1170639007518248960){:target="_blank"} hi ha un debat interessant al respecte.

@@ -115,7 +115,7 @@ controladors i centralitzar el formatatge dels errors.
 ## Esdeveniments del _Kernel_ de Symfony
 
 El flux d'execució web consisteix a rebre una petició i retornar una resposta. El component
-[`HttpKernel`](https://symfony.com/doc/current/components/http_kernel.html) de Symfony és prou flexible per a gestionar
+[`HttpKernel`](https://symfony.com/doc/current/components/http_kernel.html){:target="_blank"} de Symfony és prou flexible per a gestionar
 aquest flux per a _frameworks_ sencers, _microframeworks_ o un CMS com Drupal.
 
 El _Kernel_ de Symfony és enfocat a esdeveniments, de manera que tota la lògica de gestió de peticions està abstreta,
@@ -126,7 +126,7 @@ gestió d'una petició. Aquests punts es poden veure a la imatge següent[^1]:
 
 Així doncs, podem delegar la gestió de les excepcions a un _Listener_ o _Subscriber_ del _Kernel_ que gestioni les
 excepcions. En el nostre cas, optem per un _Subscriber_. Per a decidir-nos per un o
-altre, [a la documentació de Symfony hi tenen una comparativa](https://symfony.com/doc/current/event_dispatcher.html#listeners-or-subscribers).
+altre, [a la documentació de Symfony hi tenen una comparativa](https://symfony.com/doc/current/event_dispatcher.html#listeners-or-subscribers){:target="_blank"}.
 
 ## `ExceptionResponseSubscriber`: primera versió
 
@@ -202,7 +202,7 @@ En el _Subscriber_ també hi formatem la resposta d'error, que és molt bàsica:
 l'excepció[^2].
 
 En funció del format de la resposta, caldria afegir més lògica al _Subscriber_, per exemple si fem
-servir [Problem Details](https://www.rfc-editor.org/rfc/rfc7807) o [JSON:API](https://jsonapi.org//format/#errors)[^3].
+servir [Problem Details](https://www.rfc-editor.org/rfc/rfc7807){:target="_blank"} o [JSON:API](https://jsonapi.org//format/#errors){:target="_blank"}[^3].
 
 Si fem servir l'autoconfiguració per a definir els serveis de Symfony, el nostre _Subscriber_ ja estarà automàticament
 configurat a l'aplicació.
@@ -393,7 +393,9 @@ final readonly class ExceptionResponseSubscriber implements EventSubscriberInter
 
 ```
 
-Amb només les dues interfícies, ens estalviem haver d'afegir cadascuna de les excepcions que implementem al nostre codi. Qualsevol excepció que sorgeixi d'un _Value Object_ invàlid o d'un `NotFound` retornarà un codi de resposta HTTP adequat.
+Amb només les dues interfícies, ens estalviem haver d'afegir cadascuna de les excepcions que implementem al nostre codi.
+Qualsevol excepció que sorgeixi d'un _Value Object_ invàlid o d'un `NotFound` retornarà un codi de resposta HTTP
+adequat.
 
 ## Conclusions
 
@@ -412,8 +414,8 @@ Com sempre, el millor és anar evolucionant el codi en funció de les necessitat
   manera centralitzada.
 
 
-[^1]: Es pot consultar la taula de tots els esdeveniments i els paràmetres que reben a la [documentació oficial de Symfony](https://symfony.com/doc/current/components/http_kernel.html#component-http-kernel-event-table).
+[^1]: Es pot consultar la taula de tots els esdeveniments i els paràmetres que reben a la [documentació oficial de Symfony](https://symfony.com/doc/current/components/http_kernel.html#component-http-kernel-event-table){:target="_blank"}.
 
 [^2]: Mostrar directament el missatge de l'excepció no és una bona opció, perquè acostumen a ser missatges escrits per i per a desenvolupadors. A més a més, poden contenir dades o informació sensible que mai no hauríem d'exposar públicament.
 
-[^3]: Per a veure una bona descripció de possibles alternatives, consulteu [aquest article d'_APIs you won't hate_](https://apisyouwonthate.com/blog/useful-api-errors-for-rest-graphql-and-grpc/).
+[^3]: Per a veure una bona descripció de possibles alternatives, consulteu [aquest article d'_APIs you won't hate_](https://apisyouwonthate.com/blog/useful-api-errors-for-rest-graphql-and-grpc/){:target="_blank"}.

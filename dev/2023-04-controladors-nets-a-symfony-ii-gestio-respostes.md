@@ -10,7 +10,7 @@ date: 2023-04-17
 
 ## Introducció
 
-Suposem que tenim el mateix _endpoint_ [que en el post anterior](/dev/2023-04-controladors-nets-a-symfony-i-gestio-excepcions/) (per simplicitat, només en mostrem la resposta correcta):
+Suposem que tenim el mateix _endpoint_ [que en el post anterior](/dev/2023-04-controladors-nets-a-symfony-i-gestio-excepcions/){:target="_blank"} (per simplicitat, només en mostrem la resposta correcta):
 
 - Url: `GET /llibres/{uuid}`
 - Resposta correcta
@@ -148,7 +148,7 @@ requisits del domini. És una feina de paciència. Un estàndard com OpenAPI ens
 definició[^1].
 
 Pel que fa a la implementació de l'_endpoint_, igual que vam fer amb les excepcions
-al [post anterior](https://rubenrubiob.github.io/dev/2023-04-controladors-nets-a-symfony-i-gestio-excepcions/), podem
+al [post anterior](https://rubenrubiob.github.io/dev/2023-04-controladors-nets-a-symfony-i-gestio-excepcions/){:target="_blank"}, podem
 delegar el formatat de les respostes al _framework_.
 
 ## `kernel.view` esdeveniment
@@ -161,7 +161,9 @@ Veiem que hi ha dos punts que s'executen després del controlador:
 - El punt 5, si el controlador retorna un objecte `Response`.
 - El punt 6, si el controlador no retorna un objecte `Response`. S'executa l'esdeveniment `view`.
 
-Consultant la [documentació de Symfony](https://symfony.com/doc/current/components/http_kernel.html#6-the-kernel-view-event), veiem que aquest esdeveniment ens permet processar el valor de resposta d'un controlador per a obtenir un objecte `Response`:
+Consultant
+la [documentació de Symfony](https://symfony.com/doc/current/components/http_kernel.html#6-the-kernel-view-event){:target="_blank"}, veiem que aquest esdeveniment ens permet processar el valor de resposta d'un controlador per a obtenir
+un objecte `Response`:
 
 > _If the controller doesn't return a `Response` object, then the kernel dispatches another event - `kernel.view`. The job of a listener to this event is to use the return value of the controller (e.g. an array of data or an object) to create a `Response`._
 
@@ -215,8 +217,8 @@ final readonly class LlibreDTOPresenter
 ### Symfony Serializer
 
 Per a gestionar la presentació de dades a l'esdeveniment `kernel.view` emprarem
-el [Serializer de Symfony](https://symfony.com/doc/current/components/serializer.html). Aquest serialitzador fa
-servir [normalitzadors](https://symfony.com/doc/current/components/serializer.html#normalizers) per a convertir objectes
+el [Serializer de Symfony](https://symfony.com/doc/current/components/serializer.html){:target="_blank"}. Aquest serialitzador fa
+servir [normalitzadors](https://symfony.com/doc/current/components/serializer.html#normalizers){:target="_blank"} per a convertir objectes
 a `array`, i viceversa. El serialitzador permet afegir nous normalitzadors.
 
 Podem aprofitar aquest fet per a afegir un normalitzador per a passar el nostre `LlibreDTO` a JSON. Seria com aquest:
@@ -342,7 +344,7 @@ El que fem és establir com a contingut de la resposta el valor serialitzat que 
 
 Cal tenir en compte que és una implementació un xic simplista: sempre s'estableix el codi de resposta HTTP 200 si el
 controlador retorna un valor diferent de `null`; si no, retorna un 204, de `No Content`. Si calgués retornar altres
-codis, com el 201 de `Created` caldria afegir lògica per a controlar-ho.
+codis, com el 201 de `Created`, caldria afegir lògica per a controlar-ho.
 
 També cal tenir en compte que el format de resposta és sempre JSON. En el futur veurem com fer flexible també aquest
 format de resposta.
@@ -436,4 +438,4 @@ l'esdeveniment `kernel.view` només s'executa quan el controlador no retorna un 
 - Hem creat un `Subscriber` per a l’esdeveniment `kernel.view` per a gestionar les respostes d’una API de manera centralitzada.
 - Hem simplificat els nostres controladors perquè tinguin la mínima lògica possible.
 
-[^1]: Per a bones pràctiques en el disseny d'API, vegeu per exemple [aquest article de Swagger](https://swagger.io/resources/articles/best-practices-in-api-design/) o [aquest altre d'Stack Overfow](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/).
+[^1]: Per a bones pràctiques en el disseny d'API, vegeu per exemple [aquest article de Swagger](https://swagger.io/resources/articles/best-practices-in-api-design/){:target="_blank"} o [aquest altre d'Stack Overfow](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/){:target="_blank"}.
