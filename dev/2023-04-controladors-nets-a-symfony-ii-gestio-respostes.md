@@ -221,7 +221,7 @@ el [Serializer de Symfony](https://symfony.com/doc/current/components/serializer
 servir [normalitzadors](https://symfony.com/doc/current/components/serializer.html#normalizers){:target="_blank"} per a convertir objectes
 a `array`, i viceversa. El serialitzador permet afegir nous normalitzadors.
 
-Podem aprofitar aquest fet per a afegir un normalitzador per a passar el nostre `LlibreDTO` a JSON. Seria com aquest:
+Podem aprofitar aquest fet per a afegir un normalitzador per a passar el nostre `LlibreDTO` a JSON. Seria com aquest[^2]:
 
 ```php
 <?php
@@ -232,11 +232,11 @@ namespace rubenrubiob\Infrastructure\Ui\Http\Response\Serializer;
 
 use rubenrubiob\Domain\DTO\Llibre\LlibreDTO;
 use rubenrubiob\Infrastructure\Ui\Http\Response\Presenter\LlibreDTOPresenter;
-use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 use function assert;
 
-final readonly class LlibreDTOJsonNormalizer implements ContextAwareNormalizerInterface
+final readonly class LlibreDTOJsonNormalizer implements NormalizerInterface
 {
     private const FORMAT = 'json';
 
@@ -246,7 +246,7 @@ final readonly class LlibreDTOJsonNormalizer implements ContextAwareNormalizerIn
     }
 
     /** @param array<array-key, mixed> $context */
-    public function supportsNormalization(mixed $data, string $format = null, array $context = [])
+    public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
     {
         return $format === self::FORMAT && $data instanceof LlibreDTO;
     }
@@ -267,6 +267,7 @@ final readonly class LlibreDTOJsonNormalizer implements ContextAwareNormalizerIn
         return $this->presenter->__invoke($object);
     }
 }
+
 
 ```
 
@@ -439,3 +440,5 @@ l'esdeveniment `kernel.view` només s'executa quan el controlador no retorna un 
 - Hem simplificat els nostres controladors perquè tinguin la mínima lògica possible.
 
 [^1]: Per a bones pràctiques en el disseny d'API, vegeu per exemple [aquest article de Swagger](https://swagger.io/resources/articles/best-practices-in-api-design/){:target="_blank"} o [aquest altre d'Stack Overfow](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/){:target="_blank"}.
+
+[^2]: A Symfony 5.4 la interfície `NormalizerInterface` varia una mica. Es pot fer servir en el seu lloc `ContextAwareNormalizer`. 
