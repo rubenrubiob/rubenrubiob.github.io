@@ -138,7 +138,7 @@ Per exemple, Symfony incorpora una implementació de `ValueResolver` que mira si
 és de tipus `Request`; si ho és, n'injecta la petició actual.
 
 El que farem és aprofitar aquesta resolució d'arguments per a poder injectar objectes que representin les nostres
-peticions, de manera que ja vinguin validats amb el component Validator.
+peticions, de manera que ja vinguin validats amb el component Validator[^2].
 
 ## Implementació
 
@@ -353,4 +353,6 @@ algun error de domini durant l'execució del `Command`.
 - Hem creat un `ArgumentValueResolver` que converteix peticions JSON a un objecte de tipus `APIRequestBody` i en valida els atributs.
 - Hem simplificat els nostres controladors perquè tinguin la mínima lògica possible.
 
-[^1]: A Symfony 5.4 cal fer implementar la interfície `ArgumentValueResolverInterface`.
+[^1]: A Symfony 5.4 cal implementar la interfície `ArgumentValueResolverInterface`.
+
+[^2]: A Symfony 6.3 han afegit una funcionalitat similar: [Mapping Request Data to Typed Objects](https://symfony.com/blog/new-in-symfony-6-3-mapping-request-data-to-typed-objects)
