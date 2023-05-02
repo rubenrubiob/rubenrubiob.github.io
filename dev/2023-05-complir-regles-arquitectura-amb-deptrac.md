@@ -128,7 +128,7 @@ de [`doctrine/collections`](https://www.doctrine-project.org/projects/collection
 ORM, les relacions entre entitats han de ser objectes del tipus `Doctrine\Common\Collection`.
 
 El domini, segons hem explicat, hauria de ser pur, però hi ha vegades en què hem de fer concessions: val la pena
-reimplementar un sistema de generació d'UUID només per a mantenir pur el nostre domini? La resposta és que no. La major
+reimplementar un sistema de generació de UUID només per a mantenir pur el nostre domini? La resposta és que no. La major
 part de les vegades no cal reinventar la roda. Podem dir no a tenir codi extern al nostre domini i, alhora, dir sí a les
 llibreries que necessitem al domini. Sempre ha de ser una llista blanca, és a dir, hem d'escollir quines llibreries
 volem al nostre domini, no permetre-les totes per defecte. Hem de prendre aquestes decisions de manera conscient i
@@ -148,7 +148,7 @@ codi d'una llibreria que no hem especificat de manera explícita.
 Així doncs, definim una capa més general anomenada `Vendor`, on especifiquem les llibreries que permetem a la nostra
 capa d'infraestructura. En aquest cas, també fem servir un `collector` per _namespace_ de la classe.
 
-Amb les capes ja definides, podem finalment definir les regles de dependència (_ruleset_) entre capes:
+Amb les capes ja definides, podem finalment definir les regles de dependència (`ruleset`) entre capes:
 
 - `Domain`: pot accedir a `DomainVendor`, com ja hem explicat.
 - `Application`: només pot accedir a `Domain`.
