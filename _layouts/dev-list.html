@@ -12,11 +12,12 @@ layout: default
     {% assign dev_pages=site.pages | where_exp: "item", "item.url contains '/dev/'" | sort: 'date' | reverse %}
     {% for content_page in dev_pages %}
       {% if content_page.url != '/dev/' %}
-        <p>
+        <div>
+          <p class="post_list_date">{{content_page.date}}</p>
           <a href="{{ site.baseurl }}{{ content_page.url }}">
             {{ content_page.title }}
           </a>
-        </p>
+        </div>
       {% endif %}
     {% endfor %}
   </div>

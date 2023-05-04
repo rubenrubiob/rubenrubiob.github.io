@@ -111,12 +111,12 @@ final readonly class CreateLlibreController
 Veiem que al controlador hem de validar el JSON que ens ve a la petició: que vinguin tots els camps, que tinguin el
 format correcte...
 
-A Symfony existeix el [component Form](https://symfony.com/doc/current/forms.html), que permet validar les dades que
+A Symfony existeix el [component Form](https://symfony.com/doc/current/forms.html){:target="_blank"}, que permet validar les dades que
 vinguin a una petició. Ara bé, el component Form té sentit per a aplicacions tradicionals, en què PHP renderitza el
 _backend_ i el _frontend_ d'una aplicació, no tant per a una API. A més a més, és complex de configurar en aquest cas
 d'ús.
 
-Ara bé, internament, el component Form empra el [component Validator](https://symfony.com/doc/current/validation.html)
+Ara bé, internament, el component Form empra el [component Validator](https://symfony.com/doc/current/validation.html){:target="_blank"}
 per a validar els camps. Aquest és el component que conté tota la potència de validació del component Form.
 
 Per a simplificar el nostre controlador, aprofitarem el component Validator fent servir els esdeveniments del `Kernel`
@@ -129,10 +129,10 @@ Tal com vam explicar, el `Kernel` de Symfony fa servir esdeveniments en què el 
 ![Font: documentació de Symfony](/images/dev/symfony-kernel-events.png)
 
 Veiem que hi ha un punt que s'executa immediatament abans del controlador, el 4,
-que [resol els seus arguments](https://symfony.com/doc/current/components/http_kernel.html#4-getting-the-controller-arguments).
+que [resol els seus arguments](https://symfony.com/doc/current/components/http_kernel.html#4-getting-the-controller-arguments){:target="_blank"}.
 El que fa el `Kernel` de Symfony és executar un controlador, que és un `callable`, passant-li un `array` d'arguments.
 Per a cadascun d'aquests arguments, Symfony en calcula el valor emprant serveis que implementen la
-interfície [`ValueResolverInterface`](https://github.com/symfony/symfony/blob/6.2/src/Symfony/Component/HttpKernel/Controller/ValueResolverInterface.php)[^1].
+interfície [`ValueResolverInterface`](https://github.com/symfony/symfony/blob/6.2/src/Symfony/Component/HttpKernel/Controller/ValueResolverInterface.php){:target="_blank"}[^1].
 
 Per exemple, Symfony incorpora una implementació de `ValueResolver` que mira si un dels arguments del controlador
 és de tipus `Request`; si ho és, n'injecta la petició actual.
@@ -195,9 +195,9 @@ Cal notar que tots els atributs són públics, ja que aquesta classe és un DTO.
 Amb tot això, ja podem implementar el nostre `ValueResolverInterface`, que transformarà una petició en un
 objecte de tipus `APIRequestBody`.
 
-Fem servir la llibreria [cuyz/valinor](https://valinor.cuyz.io/latest/) que
-ja [vam configurar al `Kernel`](/dev/2022-12-valinor-a-symfony-amb-value-objects/). També cal instal·lar
-el [component Validator de Symfony](https://symfony.com/doc/current/validation.html).
+Fem servir la llibreria [cuyz/valinor](https://valinor.cuyz.io/latest/){:target="_blank"} que
+ja [vam configurar al `Kernel`](/dev/2022-12-valinor-a-symfony-amb-value-objects/){:target="_blank"}. També cal instal·lar
+el [component Validator de Symfony](https://symfony.com/doc/current/validation.html){:target="_blank"}.
 
 La implementació és la següent:
 
@@ -355,4 +355,4 @@ algun error de domini durant l'execució del `Command`.
 
 [^1]: A Symfony 5.4 cal implementar la interfície `ArgumentValueResolverInterface`.
 
-[^2]: A Symfony 6.3 han afegit una funcionalitat similar: [Mapping Request Data to Typed Objects](https://symfony.com/blog/new-in-symfony-6-3-mapping-request-data-to-typed-objects)
+[^2]: A Symfony 6.3 han afegit una funcionalitat similar: [Mapping Request Data to Typed Objects](https://symfony.com/blog/new-in-symfony-6-3-mapping-request-data-to-typed-objects){:target="_blank"}

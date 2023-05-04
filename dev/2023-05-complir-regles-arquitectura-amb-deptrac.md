@@ -41,9 +41,9 @@ revisem a fons el codi.
 Afortunadament, PHP té un ecosistema molt ric i existeixen utilitats per a verificar les regles de la nostra
 arquitectura:
 
-- [Deptrac](https://github.com/qossmic/deptrac)
-- [PHP Architecture Tester](https://github.com/carlosas/phpat) (com a _plugin_ de PHPStan)
-- [PHPArkitect](https://github.com/phparkitect/arkitect)
+- [Deptrac](https://github.com/qossmic/deptrac){:target="_blank"}
+- [PHP Architecture Tester](https://github.com/carlosas/phpat){:target="_blank"} (com a _plugin_ de PHPStan)
+- [PHPArkitect](https://github.com/phparkitect/arkitect){:target="_blank"}
 
 En aquest post veurem com configurar Deptrac per a fer complir les regles de l'arquitectura hexagonal que hem descrit
 més a dalt.
@@ -56,10 +56,10 @@ dependències a la integració contínua del nostre projecte.
 
 ### Conceptes
 
-Els [conceptes principals de Deptrac](https://qossmic.github.io/deptrac/concepts/) són els següents:
+Els [conceptes principals de Deptrac](https://qossmic.github.io/deptrac/concepts/){:target="_blank"} són els següents:
 
 - Capes (_layers_): són agrupacions de _tokens_ (classes, funcions...). Per exemple, totes les classes que formen part de
-  la nostra capa de domini. Deptrac ofereix múltiples [col·lectors](https://qossmic.github.io/deptrac/collectors/) per a
+  la nostra capa de domini. Deptrac ofereix múltiples [col·lectors](https://qossmic.github.io/deptrac/collectors/){:target="_blank"} per a
   seleccionar aquestes capes: per directori, per _namespace_ de la classe, per nom de funció...
 - Regles (_rulesets_): són les regles que defineixen les comunicacions permeses entre capes. Per exemple, la capa
   d'aplicació pot accedir a la capa de domini. Per defecte, no hi ha cap dependència permesa entre capes, sempre s'han
@@ -124,7 +124,7 @@ En teoria, el nostre domini només ha de contenir codi PHP pur, és a dir, sense
 certes llibreries que volem fer servir al nostre domini, com per exemple la llibreria `ramsey/uuid` per a generar UUID o
 les llibreries `brick/math` i `brick/money`, que ens permeten treballar amb nombres i imports monetaris al nostre
 domini. Un altre exemple habitual és el
-de [`doctrine/collections`](https://www.doctrine-project.org/projects/collections.html): quan fem servir Doctrine com a
+de [`doctrine/collections`](https://www.doctrine-project.org/projects/collections.html){:target="_blank"}: quan fem servir Doctrine com a
 ORM, les relacions entre entitats han de ser objectes del tipus `Doctrine\Common\Collection`.
 
 El domini, segons hem explicat, hauria de ser pur, però hi ha vegades en què hem de fer concessions: val la pena
@@ -185,7 +185,7 @@ La sortida de l'execució és similar a això:
  -------------------- ----- 
 ```
 
-Deptrac ofereix [diversos formatadors](https://qossmic.github.io/deptrac/formatters/), que no cobrirem en aquest post.
+Deptrac ofereix [diversos formatadors](https://qossmic.github.io/deptrac/formatters/){:target="_blank"}, que no cobrirem en aquest post.
 
 ## Conclusions
 

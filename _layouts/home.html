@@ -10,11 +10,11 @@ layout: default
     <div class="home-content-list">
       {% assign dev_pages=site.pages | where_exp: "item", "item.url contains '/dev/'" | sort: 'date' | reverse %}
       <div class="column">
-        <h3>Dev</h3>
-        <ul>
+        <ul class="post_list">
           {% for dev_page in dev_pages limit:5 %}
             {% if dev_page.url != '/dev/' %}
               <li>
+                <p class="post_list_date">{{dev_page.date}}</p>
                 <a href="{{ site.baseurl }}{{ dev_page.url }}">
                   {{ dev_page.title }}
                 </a>
@@ -22,19 +22,8 @@ layout: default
             {% endif %}
           {% endfor %}
         </ul>
-      </div>
-      <div class="column">
-        <h3>Filosofia</h3>
-        <ul>
-          {% assign filosofia_pages=site.pages | where_exp: "item", "item.url contains '/filosofia/filoara/'" | sort: 'date' | reverse %}
-          {% for content_page in filosofia_pages limit:5 %}
-          <li>
-            <a href="{{ site.baseurl }}{{ content_page.url }}">
-              {{ content_page.title }}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
+        <p class="home_view_all"><a href="{{ site.baseurl }}/dev/">Veure tot</a></p>
+
       </div>
     </div>
 
