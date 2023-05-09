@@ -11,9 +11,9 @@ date: 2023-05-09
 ## Introducció
 
 En enginyeria de _software_, escriure tests és bona pràctica, i molt necessari per a tenir confiança en el nostre codi.
-Ara bé, com sabem que els nostres tests comproven correctament? Com podem construir confiança en els nostres tests?
+Ara bé, com sabem que els nostres tests comproven correctament el codi? Com podem construir confiança en els nostres tests?
 
-Una de les mètriques més conegudes és la de la cobertura de codi, que consisteix en el percentatge de línies de codi que
+Una de les mètriques més conegudes és la cobertura de codi, que consisteix en el percentatge de línies de codi que
 tenen test. Ara bé, amb aquesta mètrica no n'hi prou.
 
 Per exemple, suposem que tenim tests que executen tot el nostre codi. Ara bé, les úniques comprovacions que es fan als
@@ -44,8 +44,8 @@ executa mutacions per al nostre codi i en dona unes mètriques.
 [Infection fa servir les següents mètriques](https://infection.github.io/guide/#Metrics-Mutation-Score-Indicator-MSI){:target="_blank"}:
 
 - _Mutation Score Indicator (MSI)_: és el percentatge de mutants detectats (eliminats) del total generat pel nostre codi
-  font. Com més alt és aquest percentatge, més robust serà el nostre codi.
-- _Mutation Code Coverage (MCC)_: és el percentatge de codi cobert pels mutants. Acostuma a ser el mateix que la
+  font. Com més alt és aquest percentatge, més robust seran els nostres tests.
+- _Mutation Code Coverage (MCC)_: és el percentatge de codi cobert pels mutants. Acostuma a ser igual que la
   cobertura del codi.
 - _Covered Code Mutation Score Indicator_: és el MSI per al codi que realment és cobert pels nostres tests.
 
@@ -125,7 +125,7 @@ Escaped mutants:
 
 Veiem que no estem comprovant correctament el límit de la comparativa. Quan escrivim tests per a intervals, hem de
 testejar sempre els límits. Realment, a partir del nombre `0` i pujant, tots els nombres són positius, tant és comprovar
-10 com 98.764.343, el valor important és el `0`.
+10 com 98.764.343: el valor important és el `0`.
 
 I viceversa, tot i que no és estrictament necessari en aquest cas, però és bona pràctica: a partir del nombre `-1` i
 baixant, tots els nombres són negatius. El valor realment rellevant és `-1`.
@@ -252,7 +252,7 @@ infection --threads=max --min-msi=100 --test-framework-options=\"--testsuite=Uni
 El que fem en aquesta comanda és:
 
 - Indiquem que empri els màxims _threads_ disponibles del sistema operatiu, per a accelerar-ne l'execució.
-- Forcem un codi de retorn diferent de `0`si no hi ha un MSI mínim del 100%. Això és útil sobretot a _pipelines_.
+- Forcem un codi de retorn diferent de `0` si no hi ha un MSI mínim del 100%. Això és útil sobretot a _pipelines_.
 - Executem només els tests unitaris passant l'opció pel _framework_ de test, en aquest cas, PHPUnit.
 
 Tal com l'hem configurat, Infection genera un _log_ HTML que és molt útil per a visualitzar tots els mutants que genera
