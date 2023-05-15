@@ -1,5 +1,5 @@
 ---
-date: 2023-05-16
+date: 2023-05-15
 ---
 
 # Testejar l'especificació d'OpenAPI a PHP
