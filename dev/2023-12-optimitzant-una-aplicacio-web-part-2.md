@@ -84,7 +84,7 @@ CREATE FULLTEXT INDEX IDX_DATA ON `order` (data)
 
 
 ```sql
-SELECT %s
+SELECT *
 FROM `order`
 WHERE MATCH (data) AGAINST (:parametrized_values IN BOOLEAN MODE)
 ```
